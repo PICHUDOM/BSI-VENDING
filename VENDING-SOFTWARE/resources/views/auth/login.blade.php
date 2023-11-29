@@ -18,13 +18,13 @@
                                     <h5 class="card-title text-center">Login</h5><br>
                                     <form method="POST" action="{{ route('login') }}">
                                         @csrf
-                                        <div class="row mb-2">
-                                            <label for="email"
-                                                class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                                        <div class="row mb-2 justify-content-center">
+                                            {{-- <label for="email"
+                                                class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label> --}}
                                             <div class="col-md-8">
                                                 <input id="email" type="email"
                                                     class="form-control @error('email') is-invalid @enderror" name="email"
-                                                    value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                                    value="{{ old('email') }}" required autocomplete="email" placeholder="Username" autofocus>
                                                 @error('email')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -33,14 +33,14 @@
                                             </div>
                                         </div><br>
         
-                                        <div class="row mb-2">
-                                            <label for="password"
-                                                class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                                        <div class="row mb-2 justify-content-center">
+                                            {{-- <label for="password"
+                                                class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label> --}}
         
                                             <div class="col-md-8">
                                                 <input id="password" type="password"
                                                     class="form-control @error('password') is-invalid @enderror" name="password"
-                                                    required autocomplete="current-password">
+                                                    required autocomplete="current-password" placeholder="password">
         
                                                 @error('password')
                                                     <span class="invalid-feedback" role="alert">
@@ -63,16 +63,16 @@
                                     </div>
                                 </div> --}}
         
-                                        <div class="row mb-0">
-                                            <div class="col-md-8 offset-md-4">
-                                                <button type="submit" class="btn btn-primary">
+                                        <div class="row mb-0 justify-content-center">
+                                            <div class="col-md-8 offset-md-1 ">
+                                                <button type="submit" class=" btn btn-primary">
                                                     {{ __('LOGIN') }}
                                                 </button>
-                                                <button type="#" class="btn btn-primary float-end">
+                                                <button type="#" class=" btn btn-primary offset-md-4">
                                                     {{ __('EXIT') }}
                                                 </button>
         
-                                            </div>
+                                            </div><br><br>
         
         
                                             @if (Route::has('password.request'))
@@ -83,8 +83,9 @@
                                         {{ __('Haven’t account ?  Sign up.') }}
                                     </a> --}}
                                             @endif
+                                            
                                             <div class="row mb-3">
-                                                <div class="col-md-12 offset-md-4">
+                                                <div class="col-md-12 offset-md-3">
                                                     @if (Route::has('password.request'))
                                                         {{-- <a class="btn btn-link" href="{{ route('password.request') }}">
                                             {{ __('Forgot Your Password?') }}
@@ -127,7 +128,6 @@
       border-left: 5px solid #D9D9D9;
       left: 50%;
     }
-
 </style>
 
 

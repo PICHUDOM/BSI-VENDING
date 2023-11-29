@@ -68,7 +68,7 @@
                                                 <button type="submit" class="btn btn-primary">
                                                     {{ __('LOGIN') }}
                                                 </button>
-                                                <button type="submit" class="btn btn-primary float-end">
+                                                <button type="#" class="btn btn-primary float-end">
                                                     {{ __('EXIT') }}
                                                 </button>
         

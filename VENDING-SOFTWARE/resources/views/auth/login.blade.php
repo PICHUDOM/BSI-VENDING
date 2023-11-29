@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container contain-spac">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="title-style"><h5>Inventory Management System</h5></div>
+                    <div class="title-style"><h4>Inventory Management System</h4></div>
                     <div class="card-body">
                         <div class="row no-gutters ">
                             <div class="col-md-6 ">
@@ -127,6 +127,13 @@
     .vertical {
       border-left: 5px solid #D9D9D9;
       left: 50%;
+    }
+    .card-body{
+        padding: 0px !important;
+    }
+    .contain-spac{
+        padding-top: 5.5rem!important;
+        padding-bottom: 1.5rem!important;
     }
 </style>
 

@@ -2,7 +2,7 @@
 @section('content')
     <div class="container contain-spac">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="title-style"><h4>Inventory Management System</h4></div>
                     <div class="card-body">
@@ -63,11 +63,11 @@
                                 </div> --}}
         
                                         <div class="row mb-0 justify-content-center">
-                                            <div class="col-md-8 offset-md-1 ">
-                                                <button type="submit" class=" btn btn-primary">
+                                            <div class="col-md-8  ">
+                                                <button type="submit" class=" btn btn-primary ">
                                                     {{ __('LOGIN') }}
                                                 </button>
-                                                <button type="#" class=" btn btn-primary offset-md-4">
+                                                <button type="#" class=" btn btn-primary float-end ">
                                                     {{ __('EXIT') }}
                                                 </button>
         
@@ -83,17 +83,19 @@
                                     </a> --}}
                                             @endif
                                             
-                                            <div class="row mb-3">
-                                                <div class="col-md-12 offset-md-3">
+                                            <div class="row mb-3 justify-content-center">
                                                     @if (Route::has('password.request'))
                                                         {{-- <a class="btn btn-link" href="{{ route('password.request') }}">
                                             {{ __('Forgot Your Password?') }}
                                         </a> --}}
-                                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                                        <a class="btn btn-link" 
+                                                        {{-- href="{{ route('password.request') }} --}}
+                                                        href="{{ url('/') }}"
+                                                        
+                                                        ">
                                                             {{ __('Haven’t account ?  Sign up.') }}
                                                         </a>
                                                     @endif
-                                                </div>
                                             </div>
                                         </div>
                                     </form>

@@ -1,0 +1,18 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "172.28.23.2",
+            "port": 2026,
+            "driver": "MariaDB",
+            "name": "Vending DB",
+            "database": "vending_db",
+            "username": "bsiadmin",
+            "password": "IT@dmin4DB"
+        }
+    ]
+}

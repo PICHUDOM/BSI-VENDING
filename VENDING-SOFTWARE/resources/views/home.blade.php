@@ -21,8 +21,8 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="detail">
-                                        <p class="detail-subtitle">New Orders</p>
-                                        <span class="number">6,267</span>
+                                        <p class="detail-subtitle">Devices</p>
+                                        <span class="number">12</span>
                                     </div>
                                 </div>
                             </div>
@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="detail">
-                                        <p class="detail-subtitle">Revenue</p>
+                                        <p class="detail-subtitle">Daily Income</p>
                                         <span class="number">$180,900</span>
                                     </div>
                                 </div>
@@ -71,8 +71,8 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="detail">
-                                        <p class="detail-subtitle">Page views</p>
-                                        <span class="number">28,210</span>
+                                        <p class="detail-subtitle">Expense</p>
+                                        <span class="number">$28,21</span>
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +96,7 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="detail">
-                                        <p class="detail-subtitle">Support Request</p>
+                                        <p class="detail-subtitle">Daily sale report</p>
                                         <span class="number">75</span>
                                     </div>
                                 </div>
@@ -121,8 +121,8 @@
                                         <h5 class="mb-0">Traffic Overview</h5>
                                         <p class="text-muted">Current year website visitor data</p>
                                     </div>
-                                    <div class="canvas-wrapper">
-                                        <canvas class="chart" id="trafficflow"></canvas>
+                                    <div class="canvas-wrapper ">
+                                        <canvas class="chart" id="pieChart"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -142,7 +142,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="card">
                         <div class="content">
                             <div class="head">
@@ -197,75 +197,6 @@
                                         <tr>
                                             <td><i class="flag-icon flag-icon-nz"></i> New Zealand</td>
                                             <td class="text-end">1,700</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="content">
-                            <div class="head">
-                                <h5 class="mb-0">Most Visited Pages</h5>
-                                <p class="text-muted">Current year website visitor data</p>
-                            </div>
-                            <div class="canvas-wrapper">
-                                <table class="table table-striped">
-                                    <thead class="success">
-                                        <tr>
-                                            <th>Page Name</th>
-                                            <th class="text-end">Visitors</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>/about.html <a href="#"><i class="fas fa-link blue"></i></a></td>
-                                            <td class="text-end">8,340</td>
-                                        </tr>
-                                        <tr>
-                                            <td>/special-promo.html <a href="#"><i class="fas fa-link blue"></i></a>
-                                            </td>
-                                            <td class="text-end">7,280</td>
-                                        </tr>
-                                        <tr>
-                                            <td>/products.html <a href="#"><i class="fas fa-link blue"></i></a></td>
-                                            <td class="text-end">6,210</td>
-                                        </tr>
-                                        <tr>
-                                            <td>/documentation.html <a href="#"><i class="fas fa-link blue"></i></a>
-                                            </td>
-                                            <td class="text-end">5,176</td>
-                                        </tr>
-                                        <tr>
-                                            <td>/customer-support.html <a href="#"><i
-                                                        class="fas fa-link blue"></i></a></td>
-                                            <td class="text-end">4,276</td>
-                                        </tr>
-                                        <tr>
-                                            <td>/index.html <a href="#"><i class="fas fa-link blue"></i></a></td>
-                                            <td class="text-end">3,176</td>
-                                        </tr>
-                                        <tr>
-                                            <td>/products-pricing.html <a href="#"><i
-                                                        class="fas fa-link blue"></i></a></td>
-                                            <td class="text-end">2,176</td>
-                                        </tr>
-                                        <tr>
-                                            <td>/product-features.html <a href="#"><i
-                                                        class="fas fa-link blue"></i></a></td>
-                                            <td class="text-end">1,886</td>
-                                        </tr>
-                                        <tr>
-                                            <td>/contact-us.html <a href="#"><i class="fas fa-link blue"></i></a>
-                                            </td>
-                                            <td class="text-end">1,509</td>
-                                        </tr>
-                                        <tr>
-                                            <td>/terms-and-condition.html <a href="#"><i
-                                                        class="fas fa-link blue"></i></a></td>
-                                            <td class="text-end">1,100</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -330,6 +261,7 @@
             </div>
         </div>
     </div>
+
     <script src="{{ asset('assets/vendor/chartsjs/Chart.min.js') }}"></script>
     <script src="{{ asset('assets/js/dashboard-charts.js') }}"></script>
 @endsection

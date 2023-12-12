@@ -30,10 +30,10 @@
                         <a href="{{ url('/dashboard') }}"><i class="fas fa-home "></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="{{ url('/vending_mac') }}"><i class="fas fa-file-alt"></i>Vending Machine</a>
+                        <a href="{{ url('/vending_mac') }}"><i class="fas fa-file-alt"></i> Vending Machine</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fas fa-table"></i>Product</a>
+                        <a href="#"><i class="fas fa-table"></i> Product</a>
                     </li>
                     <li>
                         <a href="#"><i class="fas fa-chart-bar"></i> Inventory</a>

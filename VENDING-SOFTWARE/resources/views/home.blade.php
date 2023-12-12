@@ -41,7 +41,7 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="icon-big text-center">
-                                        <i class="olive fas fa-money-bill-alt"></i>
+                                        <i class="machine fas fa-money-bill-alt"></i>
                                     </div>
                                 </div>
                                 <div class="col-sm-8">

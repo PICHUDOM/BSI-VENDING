@@ -452,3 +452,6 @@ table.dataTable > tbody > tr.child ul.dtr-details {
         flex-direction: row;
     }
 }
+.machine{
+    color: #ff6608;
+}

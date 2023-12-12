@@ -60,14 +60,29 @@
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
+                                    </a> --}}
+                                            {{-- <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        {{ __('Haven’t account ?  Sign up.') }}
+                                    </a> --}}
+                                        @endif
+
+                                        <div class="row mb-3 justify-content-center">
+                                            @if (Route::has('password.request'))
+                                                {{-- <a class="btn btn-link" href="{{ route('password.request') }}">
+                                            {{ __('Forgot Your Password?') }}
+                                        </a> --}}
+                                                <a class="btn btn-link" {{-- href="{{ route('password.request') }} --}} href="{{ url('/') }}" ">
+                                                                {{ __('Haven’t account ?  Sign up.') }}
+                                                            </a>
+     @endif
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

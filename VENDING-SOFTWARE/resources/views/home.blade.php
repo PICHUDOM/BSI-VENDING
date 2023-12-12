@@ -118,7 +118,7 @@
                             <div class="card">
                                 <div class="content">
                                     <div class="head">
-                                        <h5 class="mb-0">Traffic Overview</h5>
+                                        <h5 class="mb-0">Top Products</h5>
                                         <p class="text-muted">Current year website visitor data</p>
                                     </div>
                                     <div class="canvas-wrapper ">
@@ -131,8 +131,8 @@
                             <div class="card">
                                 <div class="content">
                                     <div class="head">
-                                        <h5 class="mb-0">Sales Overview</h5>
-                                        <p class="text-muted">Current year sales data</p>
+                                        <h5 class="mb-0">Sales Transection</h5>
+                                        <p class="text-muted">Current year sales transection data</p>
                                     </div>
                                     <div class="canvas-wrapper">
                                         <canvas class="chart" id="sales"></canvas>
@@ -146,7 +146,7 @@
                     <div class="card">
                         <div class="content">
                             <div class="head">
-                                <h5 class="mb-0">Top Visitors by Country</h5>
+                                <h5 class="mb-0">Product Instock</h5>
                                 <p class="text-muted">Current year website visitor data</p>
                             </div>
                             <div class="canvas-wrapper">

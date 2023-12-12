@@ -16,7 +16,7 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="icon-big text-center">
-                                        <i class="teal fas fa-shopping-cart"></i>
+                                        <i class="machine fas fa-fax"></i>
                                     </div>
                                 </div>
                                 <div class="col-sm-8">
@@ -41,7 +41,7 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="icon-big text-center">
-                                        <i class="olive fas fa-money-bill-alt"></i>
+                                        <i class="machine fas fa-money-bill-alt"></i>
                                     </div>
                                 </div>
                                 <div class="col-sm-8">
@@ -66,7 +66,7 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="icon-big text-center">
-                                        <i class="violet fas fa-eye"></i>
+                                        <i class="machine fas fa-hand-holding-usd"></i>
                                     </div>
                                 </div>
                                 <div class="col-sm-8">
@@ -91,7 +91,7 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="icon-big text-center">
-                                        <i class="orange fas fa-envelope"></i>
+                                        <i class="machine fas fa-file-signature"></i>
                                     </div>
                                 </div>
                                 <div class="col-sm-8">

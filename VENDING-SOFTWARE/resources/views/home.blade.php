@@ -153,50 +153,60 @@
                                 <table class="table table-striped">
                                     <thead class="success">
                                         <tr>
-                                            <th>Country</th>
-                                            <th class="text-end">Unique Visitors</th>
+                                            <th>Num</th>
+                                            <th>Product</th>
+                                            <th>Price</th>
+                                            <th class="text-end">QTY</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="img-size">
                                         <tr>
-                                            <td><i class="flag-icon flag-icon-us"></i> United States</td>
+                                            <td>1</td>
+                                            <td> <img src="/images/Coca.png" alt="logo">Coca cola</td>
+                                            <td>$1</td>
                                             <td class="text-end">27,340</td>
                                         </tr>
                                         <tr>
-                                            <td><i class="flag-icon flag-icon-in"></i> India</td>
+                                            <td>2</td>
+                                            <td> <img src="/images/water.png" alt="logo">Water</td>
+                                            <td>$0.5</td>
                                             <td class="text-end">21,280</td>
                                         </tr>
                                         <tr>
-                                            <td><i class="flag-icon flag-icon-jp"></i> Japan</td>
+                                            <td>3</td>
+                                            <td> <img src="/images/pepsi.png" alt="logo">Pepsi</td>
+                                            <td>$0.5</td>
                                             <td class="text-end">18,210</td>
                                         </tr>
                                         <tr>
-                                            <td><i class="flag-icon flag-icon-gb"></i> United Kingdom</td>
+                                            <td>4</td>
+                                            <td> <img src="/images/Nodle.png" alt="logo">Nodle</td>
+                                            <td>$0.5</td>
                                             <td class="text-end">15,176</td>
                                         </tr>
                                         <tr>
-                                            <td><i class="flag-icon flag-icon-es"></i> Spain</td>
+                                            <td>5</td>
+                                            <td> <img src="/images/pepsi.png" alt="logo">Pepsi</td>
+                                            <td>$1</td>
                                             <td class="text-end">14,276</td>
                                         </tr>
                                         <tr>
-                                            <td><i class="flag-icon flag-icon-de"></i> Germany</td>
+                                            <td>6</td>
+                                            <td> <img src="/images/water.png" alt="logo">Water</td>
+                                            <td>$0.5</td>
                                             <td class="text-end">13,176</td>
                                         </tr>
                                         <tr>
-                                            <td><i class="flag-icon flag-icon-br"></i> Brazil</td>
+                                            <td>7</td>
+                                            <td> <img src="/images/Nodle.png" alt="logo">Nodle</td>
+                                            <td>$0.5</td>
                                             <td class="text-end">12,176</td>
                                         </tr>
                                         <tr>
-                                            <td><i class="flag-icon flag-icon-id"></i> Indonesia</td>
+                                            <td>8</td>
+                                            <td> <img src="/images/pepsi.png" alt="logo">Pepsi</td>
+                                            <td>$1</td>
                                             <td class="text-end">11,886</td>
-                                        </tr>
-                                        <tr>
-                                            <td><i class="flag-icon flag-icon-ph"></i> Philippines</td>
-                                            <td class="text-end">11,509</td>
-                                        </tr>
-                                        <tr>
-                                            <td><i class="flag-icon flag-icon-nz"></i> New Zealand</td>
-                                            <td class="text-end">1,700</td>
                                         </tr>
                                     </tbody>
                                 </table>

@@ -159,14 +159,6 @@
         <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('assets/js/script.js') }}"></script>
     </div>
-    <script>
-        // $(document).ready(function() {
-        //     $('#sidebar .list-unstyled.components a').on('click', function() {
-        //         $('#sidebar .list-unstyled.components a').removeClass('active');
-        //         $(this).addClass('active');
-        //     });
-        // });s
-    </script>
 </body>
 
 </html>

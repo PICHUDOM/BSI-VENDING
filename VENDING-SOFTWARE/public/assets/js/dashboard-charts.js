@@ -1,6 +1,5 @@
 var trafficchart = document.getElementById("trafficflow");
 var saleschart = document.getElementById("sales");
-// new
 var myChart2 = new Chart(saleschart, {
     type: "bar",
     data: {
@@ -57,19 +56,15 @@ var myChart2 = new Chart(saleschart, {
                 position: "left",
             },
         },
+        aspectRatio: 1, 
+        maintainAspectRatio: false,
     },
 });
 var pieChartElement = document.getElementById("pieChart");
 var myPieChart = new Chart(pieChartElement, {
     type: "pie",
     data: {
-        labels: [
-            "Category 1",
-            "Category 2",
-            "Category 3",
-            "Category 4",
-            "Category 5",
-        ],
+        labels: ["Water", "Noodle", "Pepsi", "Coca", "Beer"],
         datasets: [
             {
                 data: [30, 20, 15, 25, 10],
@@ -98,5 +93,7 @@ var myPieChart = new Chart(pieChartElement, {
                 position: "left",
             },
         },
+        aspectRatio: 1,
+        maintainAspectRatio: false,
     },
 });

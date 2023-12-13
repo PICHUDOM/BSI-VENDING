@@ -92,8 +92,8 @@
                                             {{ __('Forgot Your Password?') }}
                                         </a> --}}
                                                 <a class="btn btn-link" {{-- href="{{ route('password.request') }} --}} href="{{ url('/') }}" ">
-                                                                {{ __('Haven’t account ?  Sign up.') }}
-                                                            </a>
+                                                                    {{ __('Haven’t account ?  Sign up.') }}
+                                                                </a>
      @endif
                                         </div>
                                     </div>

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Vending_maController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +20,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::redirect('/', '/login');
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/vending_mac', [Vending_maController::class, 'show']);

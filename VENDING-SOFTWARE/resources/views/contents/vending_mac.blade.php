@@ -1,22 +1,30 @@
 @extends('layouts.app-nav')
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+    <div class="bootstrap-iso">
+        {{-- <div class="container-fluid"> --}}
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <form class="form-horizontal" method="post">
 
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
+                    <div class="col-sm-5">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar">
+                                </i>
                             </div>
-                        @endif
-
-                        {{ __('You are logged in!') }}
+                            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY"
+                                type="text" />
+                        </div>
                     </div>
-                </div>
+                    <label class="col-sm-2 requiredField" for="date">
+                        <button class="btn btn-primary " name="submit" type="submit">
+                            Submit
+                        </button>
+                    </label>
+
+                </form>
             </div>
         </div>
+        {{-- </div> --}}
     </div>
 @endsection

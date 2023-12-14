@@ -13,6 +13,10 @@
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/master.css" rel="stylesheet">
     <link href="assets/vendor/flagiconcss/css/flag-icon.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+    <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
 </head>
 
 <body>
@@ -131,6 +135,12 @@
                                         role="button" data-bs-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }}
+                                        @if (Auth::user()->profile_picture)
+                                            <img src="{{ asset('path_to_user_images/' . Auth::user()->prof_img) }}"
+                                                alt="Profile Picture" class="profile-image">
+                                        @else
+                                            <img src="images/defaul.jpg" alt="logo" class="profile-image">
+                                        @endif
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -150,7 +160,7 @@
                         </ul>
                     </div>
                 </nav>
-                <main class="py-4">
+                <main class="py-4 main">
                     @yield('content')
                 </main>
             </div>
@@ -158,6 +168,15 @@
         <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
         <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('assets/js/script.js') }}"></script>
+        <script src="{{ asset('assets/js/select-packer.js') }}"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js" defer></script>
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js" defer>
+        </script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+
     </div>
 </body>
 

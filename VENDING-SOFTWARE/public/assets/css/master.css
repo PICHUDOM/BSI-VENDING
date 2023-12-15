@@ -344,7 +344,7 @@ table.dataTable > tbody > tr.child ul.dtr-details {
 }
 
 .tab-content {
-    padding: 15px;
+    padding: 2px;
 }
 
 .svg-inline--fa {
@@ -471,9 +471,18 @@ table.dataTable > tbody > tr.child ul.dtr-details {
 .bootstrap-iso form button:hover {
     color: white !important;
 }
-
+.bootstrap-iso {
+    background-color: transparent !important;
+    padding-bottom: 13px; /* Add this line to make background transparent */
+}
 .asteriskField {
     color: red;
+}
+.bootstrap-iso .btn-create {
+    padding: 5px 12px;
+    border-radius: 5px;
+    background: #ffffff;
+    border: 1px solid #cccccc;
 }
 .profile-image {
     max-width: 30px;

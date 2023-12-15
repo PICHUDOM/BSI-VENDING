@@ -13,6 +13,7 @@
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/master.css" rel="stylesheet">
     <link href="assets/vendor/flagiconcss/css/flag-icon.min.css" rel="stylesheet">
+    <link href="assets/vendor/datatables/datatables.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
     <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
     <link rel="stylesheet"
@@ -34,7 +35,19 @@
                         <a href="{{ url('/dashboard') }}"><i class="fas fa-home "></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="{{ url('/vending_mac') }}"><i class="fas fa-file-alt"></i> Vending Machine</a>
+                        <a href="#uielementsmenu" data-bs-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle no-caret-down"><i class="fas fa-layer-group"></i>Vending Machine</a>
+                        <ul class="collapse list-unstyled" id="uielementsmenu">
+                            <li>
+                                <a href="{{ url('/vending_machines') }}"><i class="fas fa-angle-right"></i> Machine</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fas fa-angle-right"></i> Slot</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fas fa-angle-right"></i> Location</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="#"><i class="fas fa-table"></i> Product</a>
@@ -45,31 +58,7 @@
                     <li>
                         <a href="#"><i class="fas fa-icons"></i> Income</a>
                     </li>
-                    <li>
-                        <a href="#uielementsmenu" data-bs-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle no-caret-down"><i class="fas fa-layer-group"></i> Expenses</a>
-                        <ul class="collapse list-unstyled" id="uielementsmenu">
-                            <li>
-                                <a href="ui-buttons.html"><i class="fas fa-angle-right"></i> Reports</a>
-                            </li>
-                            <li>
-                                <a href="ui-badges.html"><i class="fas fa-angle-right"></i> Badges</a>
-                            </li>
-                            <li>
-                                <a href="ui-cards.html"><i class="fas fa-angle-right"></i> Cards</a>
-                            </li>
-                            <li>
-                                <a href="ui-alerts.html"><i class="fas fa-angle-right"></i> Alerts</a>
-                            </li>
-                            <li>
-                                <a href="ui-tabs.html"><i class="fas fa-angle-right"></i> Tabs</a>
-                            </li>
-                            <li>
-                                <a href="ui-date-time-picker.html"><i class="fas fa-angle-right"></i> Date & Time
-                                    Picker</a>
-                            </li>
-                        </ul>
-                    </li>
+
                     <li>
                         <a href="#authmenu" data-bs-toggle="collapse" aria-expanded="false"
                             class="dropdown-toggle no-caret-down"><i class="fas fa-user-shield"></i> Authentication</a>
@@ -176,6 +165,9 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
         <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+        <script src="{{ asset('assets/vendor/datatables/datatables.min.js') }}"></script>
+        <script src="{{ asset('assets/js/initiate-datatables.js') }}"></script>
+
 
     </div>
 </body>

@@ -25,3 +25,5 @@ Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/vending_machines', [MachinesController::class, 'show']);
 Route::post('/create', [MachinesController::class, 'store']);
 Route::get('/destroy/{id}', [MachinesController::class, 'destroy']);
+
+

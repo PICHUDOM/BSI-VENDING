@@ -12,8 +12,6 @@ class Machines extends Model
 
     protected $fillable = [
         'm_name',
-        'installation_date',
-        'expiry_date',
         'address',
     ];
 }

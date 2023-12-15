@@ -18,7 +18,7 @@
                     <div class="col-md-6">
                         <p class="text-muted">General settings such as,machines name, time description, address and so on.
                         </p>
-                        <form action="{{ url('/create') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ url('/create') }}" method="POST">
                             @csrf
                             <div class="mb-3">
                                 <label for="m_name" class="form-label">Machines name</label>

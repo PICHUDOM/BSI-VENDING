@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Vending_maController;
+use App\Http\Controllers\MachinesController;
 
 
 /*
@@ -22,4 +22,5 @@ Route::get('/', function () {
 Auth::routes();
 Route::redirect('/', '/login');
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index']);
-Route::get('/vending_mac', [Vending_maController::class, 'show']);
+Route::get('/vending_machines', [MachinesController::class, 'show']);
+Route::post('/create', [MachinesController::class, 'store']);

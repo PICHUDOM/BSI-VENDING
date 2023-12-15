@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('tab_vending_machines', function (Blueprint $table) {
             $table->id();
+            $table->string('m_name')->nullable();
+            $table->tinyInteger('id_customer')->nullable();
+            $table->date('installation_date')->nullable();
+            $table->date('expiry_date')->nullable();
+            $table->string('address')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

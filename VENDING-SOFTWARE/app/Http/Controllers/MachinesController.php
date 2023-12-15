@@ -37,6 +37,8 @@ class MachinesController extends Controller
     {
         $validatedData = $request->validate([
             'm_name' => 'required|string',
+            // 'installation_date' => 'required|string',
+            // 'expiry_date' => 'required|string',
             'address' => 'required|string',
 
         ]);
@@ -58,7 +60,8 @@ class MachinesController extends Controller
      */
     public function show(Machines $machines)
     {
-        return view('contents/vending_machines');
+        $data = Machines::all();
+        return view('contents/vending_machines', compact('data'));
     }
 
     /**
@@ -90,8 +93,10 @@ class MachinesController extends Controller
      * @param  \App\Models\Machines  $machines
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Machines $machines)
+    public function destroy($id)
     {
         //
+        Machines::destroy($id);
+        return redirect('vending_machines')->with('flash_message', 'Machine deleted!');
     }
 }

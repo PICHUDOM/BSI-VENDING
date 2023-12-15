@@ -22,7 +22,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class=" testing navbar-brand href="{{ url('/') }}">
+                <a class=" testing navbar-brand" href="{{ url('/') }}">
                     <img style="max-width: 27px" src="/images/official_logo1.png" alt="logo">
                     B Scientific Instrument
                 </a>

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->binary('prof_imag')->nullable();
+            $table->binary('prof_img')->nullable();
         });
     }
 

@@ -36,7 +36,7 @@
                     </li>
                     <li>
                         <a href="#uielementsmenu" data-bs-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle no-caret-down"><i class="fas fa-layer-group"></i>Vending Machine</a>
+                            class="dropdown-toggle no-caret-down"><i class="fas fa-layer-group"></i> Vending Machine</a>
                         <ul class="collapse list-unstyled" id="uielementsmenu">
                             <li>
                                 <a href="{{ url('/vending_machines') }}"><i class="fas fa-angle-right"></i> Machine</a>

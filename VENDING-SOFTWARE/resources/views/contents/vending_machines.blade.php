@@ -18,7 +18,7 @@
                     <div class="col-md-6">
                         <p class="text-muted">General settings such as,machines name, time description, address and so on.
                         </p>
-                        <form action="{{ url('/create') }}" method="POST">
+                        <form action="{{ url('/create') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label for="m_name" class="form-label">Machines name</label>
@@ -90,6 +90,7 @@
                                         <table width="100%" class="table table-hover" id="dataTables-example">
                                             <thead>
                                                 <tr>
+                                                    <th>#</th>
                                                     <th>Name</th>
                                                     <th>Installation Date</th>
                                                     <th>Expired Date</th>
@@ -99,97 +100,20 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @foreach($data as $data)
                                                 <tr>
-                                                    <td>Philipddddd Chaney</td>
-                                                    <td>01-02-2023</td>
-                                                    <td>01-02-2525</td>
-                                                    <td>Phnom penh</td>
+                                                    <td>{{$loop->iteration }}</td>
+                                                    <td>{{$data->m_name}}</td>
+                                                    <td>{{$data->installation_date}}</td>
+                                                    <td>{{$data->expiry_date}}</td>
+                                                    <td>{{$data->address}}</td>
                                                     <td>Active</td>
                                                     <td class="text-end">
-                                                        <a href="" class="btn btn-outline-info btn-rounded"><i
-                                                                class="fas fa-pen"></i></a>
-                                                        <a href="" class="btn btn-outline-danger btn-rounded"><i
-                                                                class="fas fa-trash"></i></a>
+                                                        <a href="" class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></a>
+                                                        <a href="/destroy/{{ $data->id }}" class="btn btn-outline-danger btn-rounded" onclick="return confirm('{{ __('Are you sure you want to deleted?') }}')"><i class="fas fa-trash"></i></a>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>Philip Chaney</td>
-                                                    <td>01-02-2023</td>
-                                                    <td>01-02-2025</td>
-                                                    <td>Phnom penh</td>
-                                                    <td>Active</td>
-                                                    <td class="text-end">
-                                                        <a href="" class="btn btn-outline-info btn-rounded"><i
-                                                                class="fas fa-pen"></i></a>
-                                                        <a href="" class="btn btn-outline-danger btn-rounded"><i
-                                                                class="fas fa-trash"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Philip Chaney</td>
-                                                    <td>01-02-2023</td>
-                                                    <td>01-02-2025</td>
-                                                    <td>Phnom penh</td>
-                                                    <td>Active</td>
-                                                    <td class="text-end">
-                                                        <a href="" class="btn btn-outline-info btn-rounded"><i
-                                                                class="fas fa-pen"></i></a>
-                                                        <a href="" class="btn btn-outline-danger btn-rounded"><i
-                                                                class="fas fa-trash"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Philip Chaney</td>
-                                                    <td>01-02-2023</td>
-                                                    <td>01-02-2025</td>
-                                                    <td>Phnom penh</td>
-                                                    <td>Active</td>
-                                                    <td class="text-end">
-                                                        <a href="" class="btn btn-outline-info btn-rounded"><i
-                                                                class="fas fa-pen"></i></a>
-                                                        <a href="" class="btn btn-outline-danger btn-rounded"><i
-                                                                class="fas fa-trash"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Philip Chaney</td>
-                                                    <td>01-02-2023</td>
-                                                    <td>01-02-2025</td>
-                                                    <td>Phnom penh</td>
-                                                    <td>Active</td>
-                                                    <td class="text-end">
-                                                        <a href="" class="btn btn-outline-info btn-rounded"><i
-                                                                class="fas fa-pen"></i></a>
-                                                        <a href="" class="btn btn-outline-danger btn-rounded"><i
-                                                                class="fas fa-trash"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Philip Chaney</td>
-                                                    <td>01-02-2023</td>
-                                                    <td>01-02-2025</td>
-                                                    <td>Phnom penh</td>
-                                                    <td>Active</td>
-                                                    <td class="text-end">
-                                                        <a href="" class="btn btn-outline-info btn-rounded"><i
-                                                                class="fas fa-pen"></i></a>
-                                                        <a href="" class="btn btn-outline-danger btn-rounded"><i
-                                                                class="fas fa-trash"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Philip Chaney</td>
-                                                    <td>01-02-2023</td>
-                                                    <td>01-02-2025</td>
-                                                    <td>Phnom penh</td>
-                                                    <td>Active</td>
-                                                    <td class="text-end">
-                                                        <a href="" class="btn btn-outline-info btn-rounded"><i
-                                                                class="fas fa-pen"></i></a>
-                                                        <a href="" class="btn btn-outline-danger btn-rounded"><i
-                                                                class="fas fa-trash"></i></a>
-                                                    </td>
-                                                </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>

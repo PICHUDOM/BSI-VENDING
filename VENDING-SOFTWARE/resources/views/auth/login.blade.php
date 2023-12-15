@@ -94,7 +94,7 @@
                                                 <a class="btn btn-link" {{-- href="{{ route('password.request') }} --}} href="{{ url('/') }}" ">
                                                                     {{ __('Haven’t account ?  Sign up.') }}
                                                                 </a>
-     @endif
+                                         @endif
                                         </div>
                                     </div>
                                 </form>

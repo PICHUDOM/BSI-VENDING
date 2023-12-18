@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Machines extends Model
 {
@@ -13,5 +14,8 @@ class Machines extends Model
     protected $fillable = [
         'm_name',
         'address',
+        'installation_date',
+        'expiry_date',
+        'm_image',
     ];
 }

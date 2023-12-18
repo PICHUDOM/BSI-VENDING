@@ -4,20 +4,18 @@
 * Author: Alexis Luna
 * Website: https://github.com/alexis-luna/bootstrap-simple-admin-template
 -------------------------------------------------------------------*/
-(function() {
-    'use strict';
+(function () {
+    "use strict";
 
     // Toggle sidebar on Menu button click
-    $('#sidebarCollapse').on('click', function() {
-        $('#sidebar').toggleClass('active');
-        $('#body').toggleClass('active');
+    $("#sidebarCollapse").on("click", function () {
+        $("#sidebar").toggleClass("active");
+        $("#body").toggleClass("active");
+
+        if ($("#sidebar").hasClass("active")) {
+            $("#body").css("margin-left", "0");
+        } else {
+            $("#body").css("margin-left", "250px");
+        }
     });
-
-    // Auto-hide sidebar on window resize if window size is small
-    // $(window).on('resize', function () {
-    //     if ($(window).width() <= 768) {
-    //         $('#sidebar, #body').addClass('active');
-    //     }
-    // });
 })();
-

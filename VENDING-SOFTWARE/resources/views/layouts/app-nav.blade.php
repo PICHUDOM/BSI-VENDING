@@ -12,6 +12,7 @@
     <link href="assets/vendor/fontawesome/css/brands.min.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/master.css" rel="stylesheet">
+    <link href="assets/css/nav-scroll.css" rel="stylesheet">
     <link href="assets/vendor/flagiconcss/css/flag-icon.min.css" rel="stylesheet">
     <link href="assets/vendor/datatables/datatables.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
@@ -24,7 +25,6 @@
     <div id="app">
         <div class="wrapper">
             <nav id="sidebar">
-                {{-- <nav id="sidebar" class="active"> --}}
                 <div class="sidebar-header">
                     <img src="images/official_logo1.png" class="logo-off" alt="logo">
                     <h6 class=" tx-uner-logo">B Scientific Instrument</h6>
@@ -98,13 +98,12 @@
                 </ul>
             </nav>
             <div id="body" class="active">
-                <!-- navbar navigation component -->
                 <nav class="navbar navbar-expand-lg navbar-white bg-white">
                     <button type="button" id="sidebarCollapse" class="btn btn-light">
                         <i class="fas fa-bars"></i><span></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto">
+                    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                        <ul class="navbar-nav  ms-auto ">
                             <!-- Authentication Links -->
                             @guest
                                 @if (Route::has('login'))
@@ -167,7 +166,6 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
         <script src="{{ asset('assets/vendor/datatables/datatables.min.js') }}"></script>
         <script src="{{ asset('assets/js/initiate-datatables.js') }}"></script>
-
 
     </div>
 </body>

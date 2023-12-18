@@ -34,12 +34,20 @@ class MachinesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {//dd($request->all());
         $validatedData = $request->validate([
             'm_name' => 'required|string',
             'address' => 'required|string',
-
+            'installation_date' => 'required|date',
+            'expiry_date' => 'required|date',
+            'm_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+        if ($request->hasFile('m_image')) {
+            $image = $request->file('m_image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('public/images', $imageName);
+            $validatedData['m_image'] = 'images/' . $imageName; // Store the path relative to the public directory
+        }
 
         // Handle image upload if it's included in the form
 
@@ -60,7 +68,6 @@ class MachinesController extends Controller
     {
         $data = Machines::all();
         return view('contents/vending_machines', compact('data'));
-
     }
 
     /**
@@ -97,6 +104,6 @@ class MachinesController extends Controller
         //
         Machines::destroy($id);
         return redirect('vending_machines')->with('flash_message', 'Machine deleted!');
+    }
 
-}
 }

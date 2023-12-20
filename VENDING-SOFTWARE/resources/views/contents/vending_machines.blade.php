@@ -15,38 +15,54 @@
         <div class="tab-pane fade" id="email" role="tabpanel" aria-labelledby="email-tab">
             <div class="content">
                 <div class="container">
-                    <div class="col-md-6">
-                        <p class="text-muted">General settings such as,machines name, time description, address and so on.
-                        </p>
-                        <form action="{{ url('/create') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="m_name" class="form-label">Machines name</label>
-                                <input type="text" name="m_name" class="form-control">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="col-md-6">
+                                <form action="{{ url('/create') }}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                <div class="card">
+                                    <div class="card-header"><h5>Machines Information</h5></div>
+                                    <div class="card-body">
+                                        <div class="mb-3">
+                                            <label for="m_name" class="form-label">Machines name</label>
+                                            <input type="text" name="m_name" class="form-control">
+                                        </div>
+                                        <div class="row col-md-12">
+                                            <div class="mb-3 col-md-6">
+                                                <label for="installation_date" class="form-label">Installation date</label>
+                                                <input type="date" name="installation_date" class="form-control">
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="expired_date" class="form-label">Expired date</label>
+                                                <input type="date" name="expiry_date" class="form-control">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="mb-3">
+                                            <label class="form-label">Machines image</label>
+                                            <input class="form-control" name="m_image" type="file" id="formFile1">
+                                            <small class="text-muted">The image must have a maximum size of 1MB</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header"><h5>Machines Address</h5></div>
+                                    <div class="card-body">    
+                                
+                                        <div class="mb-3">
+                                            <label for="address" class="form-label">Address</label>
+                                            <textarea class="form-control" name="address"></textarea>
+                                        </div>
+                                        <div class="mb-3 text-end">
+                                            <button class="btn btn-success" type="submit"><i class="fas fa-check"></i> Save</button>
+                                        </div>
+                                
+                                    </div>
+                                </div>
+                            </form> 
                             </div>
-                            <div class="mb-3">
-                                <label for="installation_date" class="form-label">Installation date</label>
-                                <input type="date" name="installation_date" class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label for="expired_date" class="form-label">Expired date</label>
-                                <input type="date" name="expiry_date" class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label for="address" class="form-label">Address</label>
-                                <textarea class="form-control" name="address"></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Machines image</label>
-                                <input class="form-control" name="m_image" type="file" id="formFile1">
-                                <small class="text-muted">The image must have a maximum size of 1MB</small>
-                            </div>
-                            <div class="mb-3 text-end">
-                                <button class="btn btn-success" type="submit"><i class="fas fa-check"></i> Save</button>
-                            </div>
-
-                        </form>
-                    </div>
+                        </div>
+                      </div>
                 </div>
             </div>
         </div>

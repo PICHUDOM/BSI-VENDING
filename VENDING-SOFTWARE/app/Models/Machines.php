@@ -18,4 +18,9 @@ class Machines extends Model
         'expiry_date',
         'm_image',
     ];
+
+    public function scopeByOwner($query)
+    {
+        return $query->where('m_name', '!=', 'NULL');
+    }
 }

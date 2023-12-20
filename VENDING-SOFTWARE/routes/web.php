@@ -1,7 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AddressController;
+use App\Http\Controllers\DistrictsController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MachinesController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
+
 
 
 /*
@@ -21,9 +27,14 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::redirect('/', '/login');
-Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/dashboard', [HomeController::class, 'index']);
 Route::get('/vending_machines', [MachinesController::class, 'show']);
 Route::post('/create', [MachinesController::class, 'store']);
 Route::get('/destroy/{id}', [MachinesController::class, 'destroy']);
+Route::get('/location', [AddressController::class, 'show']);
+Route::post('/create', [AddressController::class, 'store']);
 
 
+
+
+Route::get('/welcome', [DistrictsController::class, 'index']);

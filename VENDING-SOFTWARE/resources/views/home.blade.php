@@ -22,7 +22,7 @@
                                 <div class="col-sm-8">
                                     <div class="detail">
                                         <p class="detail-subtitle">Devices</p>
-                                        <span class="number">12</span>
+                                        <span class="number">{{ $machinesByOwner }}</span>
                                     </div>
                                 </div>
                             </div>

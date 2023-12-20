@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Machines;
+use App\Models\Address;
 use Illuminate\Http\Request;
 
-class MachinesController extends Controller
+class AddressController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,46 +34,43 @@ class MachinesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {//dd($request->all());
-        $validatedData = $request->validate([
-            'm_name' => 'required|string',
-            'address' => 'required|string',
-            'installation_date' => 'required|date',
-            'expiry_date' => 'required|date',
-            'm_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-        if ($request->hasFile('m_image')) {
-            $image = $request->file('m_image');
-            $imageName = time() . '_' . $image->getClientOriginalName();
-            $image->storeAs('public/images', $imageName);
-            $validatedData['m_image'] = 'images/' . $imageName; // Store the path relative to the public directory
-        }
+    {
 
-        Machines::create($validatedData);
+        $validatedData = $request->validate([
+            'location_name' => 'required|string',
+            'latitude' => 'required|float',
+            'logtitude' => 'required|float',
+        ]);
+
+        Address::create($validatedData);
 
         return redirect()->back()->with('success', 'Machine data has been saved successfully.');
     }
 
-
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Machines  $machines
+     * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function show(Machines $machines)
+    public function show()
     {
-        $data = Machines::all();
-        return view('contents/vending_machines', compact('data'));
+        $province_ph = Address::find(12);
+        $districts = $province_ph->districts;
+        $province_bmc = Address::find(1);
+        $districts_bms = $province_bmc->districts;
+
+        $data = Address::all();
+        return view('contents/location', compact('data', 'districts', 'districts_bms'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Machines  $machines
+     * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function edit(Machines $machines)
+    public function edit(Address $address)
     {
         //
     }
@@ -82,10 +79,10 @@ class MachinesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Machines  $machines
+     * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Machines $machines)
+    public function update(Request $request, Address $address)
     {
         //
     }
@@ -93,14 +90,11 @@ class MachinesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Machines  $machines
+     * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Address $address)
     {
         //
-        Machines::destroy($id);
-        return redirect('vending_machines')->with('flash_message', 'Machine deleted!');
     }
-
 }

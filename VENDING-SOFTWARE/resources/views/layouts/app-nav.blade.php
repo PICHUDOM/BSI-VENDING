@@ -42,10 +42,10 @@
                                 <a href="{{ url('/vending_machines') }}"><i class="fas fa-angle-right"></i> Machine</a>
                             </li>
                             <li>
-                                <a href="#"><i class="fas fa-angle-right"></i> Slot</a>
+                                <a href="{{ url('/welcome') }}"><i class="fas fa-angle-right"></i> Slot</a>
                             </li>
                             <li>
-                                <a href="#"><i class="fas fa-angle-right"></i> Location</a>
+                                <a href="{{ url('/location') }}"><i class="fas fa-angle-right"></i> Location</a>
                             </li>
                         </ul>
                     </li>
@@ -56,7 +56,7 @@
                         <a href="#"><i class="fas fa-chart-bar"></i> Inventory</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fas fa-icons"></i> Income</a>
+                        <a href="#"><i class="fas fa-dollar-sign"> </i> Income </a>
                     </li>
 
                     <li>
@@ -75,25 +75,10 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#pagesmenu" data-bs-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle no-caret-down"><i class="fas fa-copy"></i> Pages</a>
-                        <ul class="collapse list-unstyled" id="pagesmenu">
-                            <li>
-                                <a href="blank.html"><i class="fas fa-file"></i> Blank page</a>
-                            </li>
-                            <li>
-                                <a href="404.html"><i class="fas fa-info-circle"></i> 404 Error page</a>
-                            </li>
-                            <li>
-                                <a href="500.html"><i class="fas fa-info-circle"></i> 500 Error page</a>
-                            </li>
-                        </ul>
+                        <a href="users.html"><i class="fas fa-user-friends"></i> Users</a>
                     </li>
                     <li>
-                        <a href="users.html"><i class="fas fa-user-friends"></i>Users</a>
-                    </li>
-                    <li>
-                        <a href="settings.html"><i class="fas fa-cog"></i>Settings</a>
+                        <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
                     </li>
                 </ul>
             </nav>
@@ -119,9 +104,8 @@
                                 @endif
                             @else
                                 <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
-                                        role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false" v-pre>
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }}
                                         @if (Auth::user()->profile_picture)
                                             <img src="{{ asset('path_to_user_images/' . Auth::user()->prof_img) }}"

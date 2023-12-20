@@ -6,16 +6,16 @@
 -------------------------------------------------------------------*/
 (function () {
     "use strict";
-
-    // Toggle sidebar on Menu button click
     $("#sidebarCollapse").on("click", function () {
         $("#sidebar").toggleClass("active");
         $("#body").toggleClass("active");
 
         if ($("#sidebar").hasClass("active")) {
             $("#body").css("margin-left", "0");
+            $(".navbar").css("width", "100%");
         } else {
             $("#body").css("margin-left", "250px");
+            $(".navbar").css("width", "83%");
         }
     });
 })();

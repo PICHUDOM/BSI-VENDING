@@ -18,7 +18,7 @@ body {
 .navbar {
     position: fixed;
     top: 0;
-    width: 100%;
+    width: 83%;
     z-index: 1000;
 }
 .re-logo {

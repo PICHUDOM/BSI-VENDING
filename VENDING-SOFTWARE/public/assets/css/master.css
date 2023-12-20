@@ -491,3 +491,6 @@ table.dataTable > tbody > tr.child ul.dtr-details {
 .ms-pr {
     justify-content: center;
 }
+.card-header{
+    background-color: #fff;
+}

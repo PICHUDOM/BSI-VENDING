@@ -42,23 +42,3 @@ $(document).ready(function () {
         console.log("province ID:", provinceId);
     });
 });
-$("#provinc").change(function () {
-    var provinceId = $(this).val();
-
-    // Enable the district select box
-    $("#distric").prop("disabled", false);
-
-    // Clear existing options
-    $("#distric").html('<option value="" disabled selected>Districts</option>');
-
-    // Render district options based on the selected province
-    if (provinceId == 12) {
-        // Render districts for province ID 12
-        console.log("hhhhh");
-    } else if (provinceId == 1) {
-        console.log("tttt");
-    } else {
-        // Disable the district select box if no province is selected
-        $("#distric").prop("disabled", true);
-    }
-});

@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\AddressController;
-use App\Http\Controllers\DistrictsController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\MachinesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SlotsController;
+use App\Http\Controllers\AddressController;
+use App\Http\Controllers\MachinesController;
+use App\Http\Controllers\DistrictsController;
 
 
 
@@ -33,7 +34,7 @@ Route::post('/create', [MachinesController::class, 'store']);
 Route::get('/destroy/{id}', [MachinesController::class, 'destroy']);
 Route::get('/location', [AddressController::class, 'show']);
 Route::post('/create', [AddressController::class, 'store']);
-
+Route::get('/slot', [SlotsController::class, 'show']);
 
 
 

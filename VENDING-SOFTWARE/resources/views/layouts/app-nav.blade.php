@@ -38,13 +38,13 @@
                     </li>
                     <li>
                         <a href="#uielementsmenu" data-bs-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle no-caret-down"><i class="fas fa-layer-group"></i> Vending Machine</a>
+                            class="dropdown-toggle no-caret-down"><i class="fas fa-layer-group"></i> Vending Machine &emsp;<i class="fas fa-chevron-down"></i></a>
                         <ul class="collapse list-unstyled" id="uielementsmenu">
                             <li>
                                 <a href="{{ url('/vending_machines') }}"><i class="fas fa-angle-right"></i> Machine</a>
                             </li>
                             <li>
-                                <a href="{{ url('/welcome') }}"><i class="fas fa-angle-right"></i> Slot</a>
+                                <a href="{{ url('/slot') }}"><i class="fas fa-angle-right"></i> Slot</a>
                             </li>
                             <li>
                                 <a href="{{ url('/location') }}"><i class="fas fa-angle-right"></i> Location</a>

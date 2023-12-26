@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('tab_users', function (Blueprint $table) {
-            // $table->binary('prof_img1')->nullable();
+        Schema::table('tab_vending_machines', function (Blueprint $table) {
+            $table->string('province')->nullable();
+            $table->string('district')->nullable();
+            $table->string('commune')->nullable();
+            $table->string('village')->nullable();
         });
     }
 
@@ -25,7 +28,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('tab_users', function (Blueprint $table) {
+        Schema::table('tab_vending_machines', function (Blueprint $table) {
             //
         });
     }

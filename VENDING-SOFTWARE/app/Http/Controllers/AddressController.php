@@ -55,13 +55,8 @@ class AddressController extends Controller
      */
     public function show()
     {
-        $province_ph = Address::find(12);
-        $districts = $province_ph->districts;
-        $province_bmc = Address::find(1);
-        $districts_bms = $province_bmc->districts;
-
         $data = Address::all();
-        return view('contents/location', compact('data', 'districts', 'districts_bms'));
+        return view('contents/location', compact('data'));
     }
 
     /**

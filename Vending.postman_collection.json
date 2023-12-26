@@ -1,0 +1,233 @@
+{
+	"info": {
+		"_postman_id": "12704103-30d3-4d5f-9959-57fd03d8886f",
+		"name": "Vending",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19785427"
+	},
+	"item": [
+		{
+			"name": "provinces",
+			"item": [
+				{
+					"name": "get_provinces",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/provinces",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"provinces"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "districts",
+			"item": [
+				{
+					"name": "get_districts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/districts/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"districts",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "communes",
+			"item": [
+				{
+					"name": "get_communes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/communes/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"communes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "villages",
+			"item": [
+				{
+					"name": "get_villages",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/villages/23",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"villages",
+								"23"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patients",
+			"item": [
+				{
+					"name": "get_patients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/patient",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"patient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post_patients",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "changedata111",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "changedata@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "09752523",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "ប្រុស",
+									"type": "text"
+								},
+								{
+									"key": "date_of_birth",
+									"value": "1998-01-08",
+									"type": "text"
+								},
+								{
+									"key": "province",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "districts",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "communes",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "village_id",
+									"value": "12",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/patient/store",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"patient",
+								"store"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

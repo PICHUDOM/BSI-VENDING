@@ -22,7 +22,6 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 </head>
-
 <body>
     <div id="app">
         <div class="wrapper">
@@ -38,7 +37,9 @@
                     </li>
                     <li>
                         <a href="#uielementsmenu" data-bs-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle no-caret-down"><i class="fas fa-layer-group"></i> Vending Machine &emsp;<i class="fas fa-chevron-down"></i></a>
+                            class="dropdown-toggle no-caret-down">
+                            <i class="fas fa-layer-group"></i> Vending Machine &emsp;<i class="fas fa-angle-right"></i>
+                        </a>
                         <ul class="collapse list-unstyled" id="uielementsmenu">
                             <li>
                                 <a href="{{ url('/vending_machines') }}"><i class="fas fa-angle-right"></i> Machine</a>
@@ -52,10 +53,20 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#"><i class="fas fa-table"></i> Product</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fas fa-chart-bar"></i> Inventory</a>
+                        {{-- <a href="#"><i class="fas fa-table"></i> Product</a> --}}
+                        <a href="#pro" data-bs-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle no-caret-down">
+                            <i class="fas fa-table"></i> Product <i class="fas fa-angle-right"></i>
+                        </a>
+                        <ul class="collapse list-unstyled" id="pro">
+                            <li>
+                                <a href="{{ url('/products') }}"><i class="fas fa-angle-right"></i> Product List</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/productCategory') }}"><i class="fas fa-angle-right"></i>
+                                    Categories</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="#"><i class="fas fa-dollar-sign"> </i> Income </a>
@@ -77,7 +88,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="users.html"><i class="fas fa-user-friends"></i> Users</a>
+                        <a href="{{ url('/user') }}"><i class="fas fa-user-friends"></i> Users</a>
                     </li>
                     <li>
                         <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
@@ -106,8 +117,9 @@
                                 @endif
                             @else
                                 <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                                        role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }}
                                         @if (Auth::user()->profile_picture)
                                             <img src="{{ asset('path_to_user_images/' . Auth::user()->prof_img) }}"
@@ -139,7 +151,7 @@
                 </main>
             </div>
         </div>
-        
+
         <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
         <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('assets/js/script.js') }}"></script>

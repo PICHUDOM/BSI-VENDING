@@ -34,13 +34,19 @@ class MachinesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {//dd($request->all());
+    {
         $validatedData = $request->validate([
             'm_name' => 'required|string',
             'address' => 'required|string',
             'installation_date' => 'required|date',
             'expiry_date' => 'required|date',
             'm_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'slot' => 'required|int',
+            // 'province' => 'required|string',
+            // 'district' => 'required|string',
+            // 'commune' => 'required|string',
+            // 'village' => 'required|string',
+
         ]);
         if ($request->hasFile('m_image')) {
             $image = $request->file('m_image');
@@ -102,5 +108,4 @@ class MachinesController extends Controller
         Machines::destroy($id);
         return redirect('vending_machines')->with('flash_message', 'Machine deleted!');
     }
-
 }

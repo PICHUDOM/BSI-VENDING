@@ -17,6 +17,11 @@ class Machines extends Model
         'installation_date',
         'expiry_date',
         'm_image',
+        'slot',
+        // 'commune',
+        // 'village',
+        // 'province',
+        // 'district'
     ];
 
     public function scopeByOwner($query)

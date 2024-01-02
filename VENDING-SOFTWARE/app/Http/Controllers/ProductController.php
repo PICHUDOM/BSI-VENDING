@@ -39,12 +39,18 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            'm_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'p_name' => 'required|string',
             'expiry_date' => 'required|date',
             'specific_code' => 'required|string',
             'id_pro_categories' => 'required|int',
         ]);
-
+        if ($request->hasFile('p_image')) {
+            $image = $request->file('p_image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('public/images', $imageName);
+            $validatedData['p_image'] = 'images/' . $imageName; // Store the path relative to the public directory
+        }
         Product::create($validatedData);
 
         return redirect()->back()->with('success', 'Machine data has been saved successfully.');

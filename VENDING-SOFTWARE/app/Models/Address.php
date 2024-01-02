@@ -8,19 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Address extends Model
 {
     use HasFactory;
-    protected $table = 'op_provinces';
+    protected $table = 'tab_location';
 
     protected $fillable = [
         'id',
-        'name'
+        'location_name',
+        'latitude',
+        'logtitude'
     ];
-    public function districts()
-    {
-        return $this->hasMany(Districts::class, 'provinces_id');
-    }
 
-    public function scopeByProvince($query, $provinceId)
-    {
-        return $query->where('id', $provinceId);
-    }
 }

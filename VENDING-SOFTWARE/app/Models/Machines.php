@@ -17,15 +17,17 @@ class Machines extends Model
         'installation_date',
         'expiry_date',
         'm_image',
-        'slot',
-        // 'commune',
-        // 'village',
-        // 'province',
-        // 'district'
+        'slot'
+
     ];
 
     public function scopeByOwner($query)
     {
         return $query->where('m_name', '!=', 'NULL');
+    }
+    //relationship
+    public function slot()
+    {
+        return $this->hasOne(Slot::class, 'id_ven_machines');
     }
 }

@@ -16,4 +16,9 @@ class Slot extends Model
         'id_ven_machines',
         'status',
     ];
+    //relathionshi[]
+    public function machine()
+    {
+        return $this->belongsTo(Machines::class, 'id_ven_machines');
+    }
 }

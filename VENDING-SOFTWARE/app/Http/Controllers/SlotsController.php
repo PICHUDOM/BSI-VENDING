@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Machines;
 use App\Models\Slot;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class SlotsController extends Controller
      */
     public function index()
     {
-        //
+        $machin = Machines::all();
+        $data = Slot::all();
+        return view('contents/slot', compact('data', 'machin'));
     }
 
     /**
@@ -46,9 +49,7 @@ class SlotsController extends Controller
      */
     public function show(Slot $slot)
     {
-        //
-        $data = Slot::all();
-        return view('contents/slot', compact('data'));
+
     }
 
     /**

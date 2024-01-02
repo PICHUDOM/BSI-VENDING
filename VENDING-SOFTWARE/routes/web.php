@@ -41,7 +41,7 @@ Route::get('/edit/{id}', [MachinesController::class, 'edit']);
 Route::get('/location', [AddressController::class, 'show']);
 Route::post('adress/create', [AddressController::class, 'store']);
 
-Route::get('/slot', [SlotsController::class, 'show']);
+Route::get('/slot', [SlotsController::class, 'index']);
 
 //product categories route
 Route::get('/productCategory', [Pro_categoryController::class, 'index']);

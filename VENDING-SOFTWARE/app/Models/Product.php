@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\Pro_category;
+use App\Models\Slot;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
@@ -21,5 +24,13 @@ class Product extends Model
     public function pro_category()
     {
         return $this->belongsTo(Pro_category::class, 'id_pro_categories', 'id');
+    }
+    public function slot(): HasMany
+    {
+        return $this->hasMany(Slot::class);
+    }
+    public function inventory(): HasMany
+    {
+        return $this->hasMany(Inventory::class);
     }
 }

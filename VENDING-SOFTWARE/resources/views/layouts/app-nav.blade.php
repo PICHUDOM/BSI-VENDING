@@ -45,7 +45,7 @@
                                 <a href="{{ url('/vending_machines') }}"><i class="fas fa-angle-right"></i> Machine</a>
                             </li>
                             <li>
-                                <a href="{{ url('/slot') }}"><i class="fas fa-angle-right"></i> Slot</a>
+                                <a href="{{ url('/slot') }}"><i class="fas fa-plus"></i>Add Slot</a>
                             </li>
                             <li>
                                 <a href="{{ url('/location') }}"><i class="fas fa-angle-right"></i> Location</a>
@@ -70,6 +70,9 @@
                     </li>
                     <li>
                         <a href="#"><i class="fas fa-dollar-sign"> </i> Income </a>
+                    </li>
+                    <li>
+                        <a href="{{url('/inventory')}}"><i class="fas fa-lock"></i> Inventory </a>
                     </li>
 
                     <li>

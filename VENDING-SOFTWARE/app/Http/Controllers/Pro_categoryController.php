@@ -62,9 +62,13 @@ class Pro_categoryController extends Controller
      * @param  \App\Models\Pro_category  $pro_category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pro_category $pro_category)
+    public function edit($id)
     {
-        //
+        // Fetch the record you want to edit
+        $proCategory = Pro_category::find($id);
+
+        // You can return a view with the form for editing
+        return view('contents/edite_pro_category', compact('proCategory'));
     }
 
     /**
@@ -74,9 +78,19 @@ class Pro_categoryController extends Controller
      * @param  \App\Models\Pro_category  $pro_category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pro_category $pro_category)
+    public function update(Request $request, $id)
     {
-        //
+        // $validatedData = $request->validate([
+        //     'type' => 'required|string',
+        // ]);
+
+        // // Find the record you want to update
+        // $proCategory = Pro_category::findOrFail($id);
+
+        // // Update the record with the new data
+        // $proCategory->update($validatedData);
+
+        // return redirect()->back()->with('success', 'Machine data has been updated successfully.');
     }
 
     /**

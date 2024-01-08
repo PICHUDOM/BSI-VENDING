@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\Slot;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class Machines extends Model
 {
@@ -24,7 +26,7 @@ class Machines extends Model
     public function scopeByOwner($query)
     {
         return $query->where('m_name', '!=', 'NULL');
-    }
+    }  
     //relationship
     public function slot()
     {

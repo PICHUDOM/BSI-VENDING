@@ -26,6 +26,8 @@
                                                             <th>Expiry Date</th>
                                                             <th>Specific Code</th>
                                                             <th>Type</th>
+                                                            <th>Created At</th>
+                                                            <th>Updated At</th>
                                                             <th>Status</th>
                                                           </tr>
                                                         </thead>
@@ -41,6 +43,8 @@
                                 <td>{{ $data->expiry_date }}</td>
                                 <td>{{ $data->specific_code }}</td>
                                 <td>{{ $data->pro_category->type ?? '' }}</td>
+                                <td>{{ $data->created_at }}</td>
+                                <td>{{ $data->updated_at }}</td>
                                 <td>Active</td>
                                 <td class="text-end">
                                     <a href="" class="btn btn-outline-muted btn-rounded"><i

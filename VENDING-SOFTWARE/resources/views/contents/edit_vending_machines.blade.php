@@ -6,7 +6,7 @@
                 <div class="content">
                     <div class="container">
                         <div class="col-md-12">
-                            <form action="{{ url('/edit') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ url('/edit/{id}') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card space-card">
                                     <div class="card-header">
@@ -15,7 +15,8 @@
                                     <div class="card-body">
                                         <div class="mb-3">
                                             <label for="m_name" class="form-label">Machines name</label>
-                                            <input type="text" name="m_name" class="form-control">
+                                            <input type="text" name="m_name" class="form-control"
+                                                value="">
                                         </div>
                                         <div class="row col-md-12">
                                             <div class="mb-3 col-md-6">
@@ -97,7 +98,9 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="address" class="form-label">Full Address</label>
-                                            <textarea class="form-control" name="address"></textarea>
+                                            <textarea class="form-control" name="address">
+                                                {{ $data->first()->address ?? '' }}
+                                            </textarea>
                                         </div>
                                         <div class="mb-3 text-end">
                                             <button class="btn btn-danger" data-bs-dismiss="modal" type="button"><i
@@ -115,4 +118,3 @@
         </div>
     </div>
 </div>
-

@@ -79,9 +79,11 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Product $product,$id)
     {
         //
+        $data = Product::findOrFail($id);
+        return view('contents/edit_product', compact('data'));
     }
 
     /**
@@ -91,9 +93,15 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Product $product,$id)
     {
         //
+        $product = Product::find($id);
+        $product->p_name = $request->input('p_name');
+        $product->expiry_date = $request->input('expiry_date');
+        $product->specific_code = $request->input('specific_code');
+        $product->update();
+        return redirect('/products')->with('flash_message', 'Products Update');
     }
 
     /**
@@ -105,6 +113,6 @@ class ProductController extends Controller
     public function destroy($id)
     {
         Product::destroy($id);
-        return redirect('products')->with('flash_message', 'Produc deleted!');
+        return redirect('products')->with('flash_message', 'Product deleted!');
     }
 }

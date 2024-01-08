@@ -85,9 +85,11 @@ class MachinesController extends Controller
      * @param  \App\Models\Machines  $machines
      * @return \Illuminate\Http\Response
      */
-    public function edit(Machines $machines)
+    public function edit(Machines $machines,$id)
     {
         //
+        $data = Machines::findOrFail($id);
+        return view('contents/edit_machine', compact('data'));
     }
 
     /**
@@ -97,9 +99,17 @@ class MachinesController extends Controller
      * @param  \App\Models\Machines  $machines
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Machines $machines)
+    public function update(Request $request, Machines $machines,$id)
     {
         //
+        $machine = Machines::find($id);
+        $machine->m_name = $request->input('m_name');
+        $machine->address = $request->input('address');
+        $machine->installation_date = $request->input('installation_date');
+        $machine->expiry_date = $request->input('expiry_date');
+        $machine->slot = $request->input('slot');
+        $machine->update();
+        return redirect('vending_machines')->with('flash_message', 'Machine Update');
     }
 
     /**

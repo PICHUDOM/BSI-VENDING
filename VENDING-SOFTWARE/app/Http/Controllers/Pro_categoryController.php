@@ -67,10 +67,8 @@ class Pro_categoryController extends Controller
     public function edit($id)
     {
         // Fetch the record you want to edit
-        $proCategory = Pro_category::find($id);
-
-        // You can return a view with the form for editing
-        return view('contents/edite_pro_category', compact('proCategory'));
+        $data = Pro_category::findOrFail($id);
+        return view('contents/edit_productCategory', compact('data'));
     }
 
     /**
@@ -82,6 +80,11 @@ class Pro_categoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $Pro_category = Pro_category::find($id);
+        $Pro_category->type = $request->input('type');
+        $Pro_category->update();
+        return redirect('/productCategory')->with('flash_message', 'Type Update');
         // $validatedData = $request->validate([
         //     'type' => 'required|string',
         // ]);

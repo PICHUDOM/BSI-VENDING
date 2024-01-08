@@ -32,7 +32,7 @@
                                 <td class="text-end">
                                     <a href="" class="btn btn-outline-muted btn-rounded"><i
                                             class="fas fa-regular fa-eye "></i></a>
-                                    <a href="{{ url('/productCategory/edit/' . $data->id) }}"
+                                    <a href="{{ url('edit_productCategory/' . $data->id) }}"
                                         class="btn btn-outline-info btn-rounded">
                                         <i class="fas fa-pen"></i> Edit
                                     </a>
@@ -50,7 +50,8 @@
                     <div class="container">
                         <div class="col-md-12">
                             <form action="{{ url('/create-proCategory') }}" method="post" enctype="multipart/form-data">
-                                @csrf <div class="card space-card">
+                                @csrf
+                                <div class="card space-card">
                                     <div class="card-header">
                                         <h5>Our Slot detail</h5>
                                     </div>

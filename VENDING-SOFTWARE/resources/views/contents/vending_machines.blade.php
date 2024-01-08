@@ -59,7 +59,7 @@
                                 <td class="text-end">
                                     <a href="" class="btn btn-outline-muted btn-rounded"><i
                                             class="fas fa-regular fa-eye "></i></a>
-                                    <a href="/{}" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                                    <a href="{{ url('edit_machine/'.$data->id) }}" data-bs-target="#staticBackdrop"
                                         class="btn btn-outline-muted btn-rounded"><i class="fas fa-pen"></i></a>
                                     <a href="/destroy/{{ $data->id }}" class="btn btn-outline-danger btn-rounded"
                                         onclick="return confirm('{{ __('Are you sure you want to deleted?') }}')"><i

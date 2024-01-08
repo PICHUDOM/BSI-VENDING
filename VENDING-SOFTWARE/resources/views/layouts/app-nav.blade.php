@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>B Scientific Instrument</title>
-    <link rel="icon" type="image" href="images/official_logo1.png" alt="favicon">
-    <link href="assets/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet">
-    <link href="assets/vendor/fontawesome/css/solid.min.css" rel="stylesheet">
-    <link href="assets/vendor/fontawesome/css/brands.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/master.css" rel="stylesheet">
-    <link href="assets/css/nav-scroll.css" rel="stylesheet">
-    <link href="assets/vendor/flagiconcss/css/flag-icon.min.css" rel="stylesheet">
-    <link href="assets/vendor/datatables/datatables.min.css" rel="stylesheet">
+    <link rel="icon" type="image" href="{{ asset('images/official_logo1.png') }}" alt="favicon">
+    <link href="{{ asset('assets/vendor/fontawesome/css/fontawesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/fontawesome/css/solid.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/fontawesome/css/brands.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/master.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/nav-scroll.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/flagiconcss/css/flag-icon.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/datatables/datatables.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
     <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
     <link rel="stylesheet"
@@ -27,7 +27,7 @@
         <div class="wrapper">
             <nav id="sidebar">
                 <div class="sidebar-header">
-                    <img src="images/official_logo1.png" class="logo-off" alt="logo">
+                    <img src="{{ asset('images/official_logo1.png') }}" class="logo-off" alt="logo">
                     <h6 class=" tx-uner-logo">B Scientific Instrument</h6>
                 </div>
 
@@ -128,7 +128,8 @@
                                             <img src="{{ asset('path_to_user_images/' . Auth::user()->prof_img) }}"
                                                 alt="Profile Picture" class="profile-image">
                                         @else
-                                            <img src="images/defaul.jpg" alt="logo" class="profile-image">
+                                            <img src="{{ asset('images/defaul.jpg') }}" alt="logo" class="profile-image">
+                                            
                                         @endif
                                     </a>
 
@@ -160,9 +161,7 @@
         <script src="{{ asset('assets/js/script.js') }}"></script>
         <script src="{{ asset('assets/js/select-packer.js') }}"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js" defer></script>
-        <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js" defer>
-        </script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js" defer></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
         <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>

@@ -44,7 +44,13 @@ class ProductController extends Controller
             'expiry_date' => 'required|date',
             'specific_code' => 'required|string',
             'id_pro_categories' => 'required|int',
-        ]);
+        ],
+        [
+            'p_name.required'=>'Please input Product name',
+            'expiry_date.required'=>'Please input Expired Date',
+            'specific_code.required'=>'Please input Specific code',
+        ]
+    );
         if ($request->hasFile('p_image')) {
             $image = $request->file('p_image');
             $imageName = time() . '_' . $image->getClientOriginalName();

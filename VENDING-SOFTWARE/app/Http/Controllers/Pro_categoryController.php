@@ -38,6 +38,8 @@ class Pro_categoryController extends Controller
     {
         $validatedData = $request->validate([
             'type' => 'required|string',
+        ],[
+            'type.required'=>'Please inpute Type'
         ]);
 
         Pro_category::create($validatedData);

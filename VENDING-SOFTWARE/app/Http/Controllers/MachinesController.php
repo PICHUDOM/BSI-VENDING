@@ -47,6 +47,12 @@ class MachinesController extends Controller
             // 'commune' => 'required|string',
             // 'village' => 'required|string',
 
+        ],[
+            'm_name.required'=>'Please input Name',
+            'address.required'=>'Please input Address',
+            'installation_date.required'=>'Please input Installation date',
+            'expiry_date.required'=>'Please input Expired Date',
+            'slot.required'=>'Please input Slot',
         ]);
         if ($request->hasFile('m_image')) {
             $image = $request->file('m_image');

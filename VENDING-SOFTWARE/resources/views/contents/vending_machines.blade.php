@@ -88,10 +88,20 @@
                                                 <div class="mb-3 col-md-6">
                                                     <label for="m_name" class="form-label">Machines name</label>
                                                     <input type="text" name="m_name" class="form-control">
+                                                    <span class="text-danger">
+                                                        @error('m_name')
+                                                            {{$message}}
+                                                        @enderror
+                                                    </span>
                                                 </div>
                                                 <div class="mb-3 col-md-6">
                                                     <label for="slot" class="form-label">Slot</label>
                                                     <input type="text" name="slot" class="form-control">
+                                                    <span class="text-danger">
+                                                        @error('slot')
+                                                            {{$message}}
+                                                        @enderror
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div class="row col-md-12">
@@ -99,10 +109,20 @@
                                                     <label for="installation_date" class="form-label">Installation
                                                         date</label>
                                                     <input type="date" name="installation_date" class="form-control">
+                                                    <span class="text-danger">
+                                                        @error('installation_date')
+                                                            {{$message}}
+                                                        @enderror
+                                                    </span>
                                                 </div>
                                                 <div class="mb-3 col-md-6">
                                                     <label for="expired_date" class="form-label">Expired date</label>
                                                     <input type="date" name="expiry_date" class="form-control">
+                                                    <span class="text-danger">
+                                                        @error('expiry_date')
+                                                            {{$message}}
+                                                        @enderror
+                                                    </span>
                                                 </div>
                                             </div>
                                             <br>
@@ -173,6 +193,11 @@
                                             <div class="mb-3">
                                                 <label for="address" class="form-label">Full Address</label>
                                                 <textarea class="form-control" name="address"></textarea>
+                                                <span class="text-danger">
+                                                    @error('address')
+                                                        {{$message}}
+                                                    @enderror
+                                                </span>
                                             </div>
                                             <div class="mb-3 text-end">
                                                 <button class="btn btn-success" type="submit"><i

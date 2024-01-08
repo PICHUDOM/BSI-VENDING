@@ -59,6 +59,11 @@
                                             <div class="mb-3 col-md-6"> <label for="type"
                                                     class="form-label">Type</label> <input type="text" name="type"
                                                     class="form-control"> </div>
+                                                    <span class="text-danger">
+                                                        @error('type')
+                                                            {{$message}}
+                                                        @enderror
+                                                    </span>
                                         </div> <br>
                                         <div class="mb-3 text-end"> <button class="btn btn-success" type="submit"><i
                                                     class="fas fa-check"></i> Save</button> </div>

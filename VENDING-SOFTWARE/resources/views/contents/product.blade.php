@@ -75,10 +75,20 @@
                                             <div class="mb-3 col-md-6">
                                                 <label for="p_name" class="form-label">Product Name</label>
                                                 <input type="text" name="p_name" class="form-control">
+                                                <span class="text-danger">
+                                                    @error('p_name')
+                                                        {{$message}}
+                                                    @enderror
+                                                </span>
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="expired_date" class="form-label">Expired date</label>
                                                 <input type="date" name="expiry_date" class="form-control">
+                                                <span class="text-danger">
+                                                    @error('expiry_date')
+                                                        {{$message}}
+                                                    @enderror
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="card-body">
@@ -86,6 +96,11 @@
                                                 <div class="mb-3 col-md-6">
                                                     <label for="p_name" class="form-label">Specific Code</label>
                                                     <input type="text" name="specific_code" class="form-control">
+                                                    <span class="text-danger">
+                                                        @error('specific_code')
+                                                            {{$message}}
+                                                        @enderror
+                                                    </span>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="mb-3 col-md-6> <label for=" province"

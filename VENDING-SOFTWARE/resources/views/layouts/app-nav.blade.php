@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 </head>
 <body>
@@ -72,7 +71,7 @@
                         <a href="#"><i class="fas fa-dollar-sign"> </i> Income </a>
                     </li>
                     <li>
-                        <a href="{{url('/inventory')}}"><i class="fas fa-lock"></i> Inventory </a>
+                        <a href="{{ url('/inventory') }}"><i class="fas fa-lock"></i> Inventory </a>
                     </li>
 
                     <li>
@@ -128,8 +127,8 @@
                                             <img src="{{ asset('path_to_user_images/' . Auth::user()->prof_img) }}"
                                                 alt="Profile Picture" class="profile-image">
                                         @else
-                                            <img src="{{ asset('images/defaul.jpg') }}" alt="logo" class="profile-image">
-                                            
+                                            <img src="{{ asset('images/defaul.jpg') }}" alt="logo"
+                                                class="profile-image">
                                         @endif
                                     </a>
 
@@ -161,13 +160,19 @@
         <script src="{{ asset('assets/js/script.js') }}"></script>
         <script src="{{ asset('assets/js/select-packer.js') }}"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js" defer></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js" defer></script>
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js" defer>
+        </script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
         <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-        <script src="{{ asset('assets/vendor/datatables/datatables.min.js') }}"></script>
-        <script src="{{ asset('assets/js/initiate-datatables.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
+        <link href="{{ asset('assets/vendor/datatables/datatables.min.css') }}" rel="stylesheet">
+
+        <script src="{{ asset('assets/vendor/datatables/datatables.min.js') }}"></script>
+
+        <script src="{{ asset('assets/js/initiate-datatables.js') }}"></script>
     </div>
 </body>
 

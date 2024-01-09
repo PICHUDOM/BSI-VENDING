@@ -75,8 +75,9 @@ class MachinesController extends Controller
      */
     public function show(Machines $machines)
     {
+        $dataPg = Machines::paginate(5);
         $data = Machines::all();
-        return view('contents/vending_machines', compact('data'));
+        return view('contents/vending_machines', compact('data','dataPg'));
     }
 
     /**

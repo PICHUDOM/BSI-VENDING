@@ -4,15 +4,15 @@
     <div class="content">
         <div class="container">
             <div class="page-title">
-                <h3 id="myTab" role="tablist">Vending Machines
-                    <a class="btn btn-sm btn-outline-primary float-end" id="machine-tab" data-bs-toggle="tab" href="#machine"
+                <h3 id="myTab" role="tablist">Inventory
+                    {{-- <a class="btn btn-sm btn-outline-primary float-end" id="machine-tab" data-bs-toggle="tab" href="#machine"
                         role="tab" aria-controls="machine" aria-selected="false">
                         <i class="fas fa-plus-circle"></i><span class="btn-header" ">Add Machines</span>
              </a>
              <a class="active btn btn-sm btn-outline-primary float-end" id="general-tab" data-bs-toggle="tab"
                 href="#general" role="tab" aria-controls="general" aria-selected="true">
              <i class="fas fa-angle-left"></i> <span class="btn-header">Return</span>
-             </a>
+             </a> --}}
           </h3>
        </div>
        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" tabindex="-1">
@@ -45,7 +45,7 @@
                                 <td>{{ $data->created_at }}</td>
                                 <td>{{ $data->updated_at }}</td>                           
                                 <td>Active</td>
-                                <td class="text-end">
+                                {{-- <td class="text-end">
                                     <a href="" class="btn btn-outline-muted btn-rounded"><i
                                             class="fas fa-regular fa-eye "></i></a>
                                     <a href="/{}" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
@@ -53,7 +53,7 @@
                                     <a href="/destroy/{{ $data->id }}" class="btn btn-outline-danger btn-rounded"
                                         onclick="return confirm('{{ __('Are you sure you want to deleted?') }}')"><i
                                             class="fas fa-trash"></i></a>
-                                </td>
+                                </td> --}}
                             </tr>
                             @endforeach
                             </tbody>

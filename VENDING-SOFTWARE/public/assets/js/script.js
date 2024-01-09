@@ -20,8 +20,8 @@
     });
 })();
 
-patient("/api/patient/web?page=1");
-$(".pagination").css("cursor", "pointer");
+// patient("/api/patient/web?page=1");
+// $(".pagination").css("cursor", "pointer");
 
 function patient(url) {
     $.ajax({

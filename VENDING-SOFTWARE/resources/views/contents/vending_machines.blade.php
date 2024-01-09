@@ -7,41 +7,42 @@
                     <a class="btn btn-sm btn-outline-primary float-end" id="machine-tab" data-bs-toggle="tab" href="#machine"
                         role="tab" aria-controls="machine" aria-selected="false">
                         <i class="fas fa-plus-circle"></i><span class="btn-header" ">Add Machines</span>
-                 </a>
-                 <a class="active btn btn-sm btn-outline-primary float-end" id="general-tab" data-bs-toggle="tab"
-                    href="#general" role="tab" aria-controls="general" aria-selected="true">
-                 <i class="fas fa-angle-left"></i> <span class="btn-header">Return</span>
-                 </a>
-              </h3>
-           </div>
-           <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" tabindex="-1">
-              <div class="modal-dialog modal-xl">
-                <div class="modal-content"> @include('contents/edit_vending_machines') </div>
-              </div>
-            </div>
-           <div class="box box-primary">
-              <div class="box-body">
-                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade active show" id="general" role="tabpanel" aria-labelledby="general-tab">
-                       <div class="table-responsive">
-                          <table width="100%" class="table table-hover" id="dataTables-example">
-                             <thead>
-                                <tr>
-                                   <th>#</th>
-                                   <th>Name</th>
-                                   <th>Machine Image</th>
-                                   <th>Slot</th>
-                                   <th>Installation Date</th>
-                                   <th>Expired Date</th>
-                                   <th>Address</th>
-                                   <th>Created At</th>
-                                   {{-- <th>Updated At</th> --}}
-                                   <th>Status</th>
-                                   <th></th>
-                                </tr>
-                             </thead>
-                             <tbody>
-                                  @foreach ($data as $data)
+                     </a>
+                     <a class="active btn btn-sm btn-outline-primary float-end" id="general-tab" data-bs-toggle="tab"
+                        href="#general" role="tab" aria-controls="general" aria-selected="true">
+                     <i class="fas fa-angle-left"></i> <span class="btn-header">Return</span>
+                     </a>
+                  </h3>
+               </div>
+               <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" tabindex="-1">
+                  <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                         @include('contents/edit_vending_machines') </div>
+                  </div>
+                </div>
+               <div class="box box-primary">
+                  <div class="box-body">
+                     <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade active show" id="general" role="tabpanel" aria-labelledby="general-tab">
+                           <div class="table-responsive">
+                              <table width="100%" class="table table-hover" id="dataTables-example">
+                                 <thead>
+                                    <tr>
+                                       <th>#</th>
+                                       <th>Name</th>
+                                       <th>Machine Image</th>
+                                       <th>Slot</th>
+                                       <th>Installation Date</th>
+                                       <th>Expired Date</th>
+                                       <th>Address</th>
+                                       {{-- <th>Created At</th> --}}
+                                       {{-- <th>Updated At</th> --}}
+                                       <th>Status</th>
+                                       <th></th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                       @foreach ($data as $data)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $data->m_name }}</td>
@@ -53,13 +54,13 @@
                                 <td>{{ $data->installation_date }}</td>
                                 <td>{{ $data->expiry_date }}</td>
                                 <td>{{ $data->address }}</td>
-                                <td>{{ $data->created_at }}</td>
+                                {{-- <td>{{ $data->created_at }}</td> --}}
                                 {{-- <td>{{ $data->updated_at }}</td>     --}}
                                 <td>Active</td>
                                 <td class="text-end">
                                     <a href="" class="btn btn-outline-muted btn-rounded"><i
                                             class="fas fa-regular fa-eye "></i></a>
-                                    <a href="{{ url('edit_machine/'.$data->id) }}" data-bs-target="#staticBackdrop"
+                                    <a href="{{ url('edit_machine/' . $data->id) }}" data-bs-target="#staticBackdrop"
                                         class="btn btn-outline-muted btn-rounded"><i class="fas fa-pen"></i></a>
                                     <a href="/destroy/{{ $data->id }}" class="btn btn-outline-danger btn-rounded"
                                         onclick="return confirm('{{ __('Are you sure you want to deleted?') }}')"><i
@@ -90,7 +91,7 @@
                                                     <input type="text" name="m_name" class="form-control">
                                                     <span class="text-danger">
                                                         @error('m_name')
-                                                            {{$message}}
+                                                            {{ $message }}
                                                         @enderror
                                                     </span>
                                                 </div>
@@ -99,7 +100,7 @@
                                                     <input type="text" name="slot" class="form-control">
                                                     <span class="text-danger">
                                                         @error('slot')
-                                                            {{$message}}
+                                                            {{ $message }}
                                                         @enderror
                                                     </span>
                                                 </div>
@@ -111,7 +112,7 @@
                                                     <input type="date" name="installation_date" class="form-control">
                                                     <span class="text-danger">
                                                         @error('installation_date')
-                                                            {{$message}}
+                                                            {{ $message }}
                                                         @enderror
                                                     </span>
                                                 </div>
@@ -120,7 +121,7 @@
                                                     <input type="date" name="expiry_date" class="form-control">
                                                     <span class="text-danger">
                                                         @error('expiry_date')
-                                                            {{$message}}
+                                                            {{ $message }}
                                                         @enderror
                                                     </span>
                                                 </div>
@@ -195,7 +196,7 @@
                                                 <textarea class="form-control" name="address"></textarea>
                                                 <span class="text-danger">
                                                     @error('address')
-                                                        {{$message}}
+                                                        {{ $message }}
                                                     @enderror
                                                 </span>
                                             </div>

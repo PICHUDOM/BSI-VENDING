@@ -9,7 +9,7 @@
                                 @csrf
                                 <div class="card space-card">
                                     <div class="card-header">
-                                        <h5>Our Slot detail</h5>
+                                        <h5> Slot </h5>
                                     </div>
                                     <div class="card-body">
                                         <div class="row col-md-12">

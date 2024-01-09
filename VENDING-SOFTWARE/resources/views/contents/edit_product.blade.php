@@ -3,7 +3,7 @@
 <div class="content">
     <div class="container">
         <div class="col-md-12">
-            <form action="{{ url('/update_product'.$data->id) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ url('update_product/'.$data->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
                 <div class="card space-card">

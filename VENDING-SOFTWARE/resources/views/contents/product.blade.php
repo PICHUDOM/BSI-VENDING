@@ -32,8 +32,7 @@
                                                               </tr>
                                                             </thead>
                                                             <tbody>
-                                                                    @foreach ($data as
-                            $data)
+                                                                    @foreach ($data as $data)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>

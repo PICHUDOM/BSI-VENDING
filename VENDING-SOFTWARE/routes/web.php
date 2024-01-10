@@ -68,7 +68,6 @@ Route::get('/inventory', [InventoryController::class, 'index']);
 
 
 
-
 // Route::get('/welcome', [DistrictsController::class, 'index']);
 Route::get('/index', function () {
     return view('index');

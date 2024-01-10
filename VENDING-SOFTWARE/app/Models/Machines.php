@@ -26,10 +26,15 @@ class Machines extends Model
     public function scopeByOwner($query)
     {
         return $query->where('m_name', '!=', 'NULL');
-    }  
+    }
     //relationship
     public function slot()
     {
         return $this->hasOne(Slot::class, 'id_ven_machines');
+    }
+
+    public function income()
+    {
+        return $this->hasOne(Income::class, 'id_vending_machine');
     }
 }

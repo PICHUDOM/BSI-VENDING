@@ -24,7 +24,7 @@ $(function () {
     });
 });
 $(document).ready(function () {
-    
+
     $("#uielementsmenu").on("show.bs.collapse", function () {
         $(".fa-angle-right")
             .removeClass("fa-angle-right")
@@ -43,6 +43,18 @@ $(document).ready(function () {
     });
 
     $("#pro").on("hide.bs.collapse", function () {
+        $(".fa-chevron-down")
+            .removeClass("fa-chevron-down")
+            .addClass("fa-angle-right");
+    });
+
+    $("#inco").on("show.bs.collapse", function () {
+        $(".fa-angle-right")
+            .removeClass("fa-angle-right")
+            .addClass("fa-chevron-down");
+    });
+
+    $("#inco").on("hide.bs.collapse", function () {
         $(".fa-chevron-down")
             .removeClass("fa-chevron-down")
             .addClass("fa-angle-right");

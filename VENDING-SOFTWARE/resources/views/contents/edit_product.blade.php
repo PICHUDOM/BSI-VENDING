@@ -3,7 +3,7 @@
 <div class="content">
     <div class="container">
         <div class="col-md-12">
-            <form action="{{ url('/update_product'.$data->id) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ url('update_product/'.$data->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
                 <div class="card space-card">
@@ -43,7 +43,7 @@
                                     </span>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="mb-3 col-md-6> <label for=" province"
+                                    <div class="mb-3 col-md-6"> <label for=" province"
                                         class=" block text-sm font-medium leading-6 text-gray-900">
                                         Product Categories</label>
                                         <div class="relative mt-2 rounded-md shadow-sm">

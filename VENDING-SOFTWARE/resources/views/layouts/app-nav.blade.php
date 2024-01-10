@@ -69,7 +69,16 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#"><i class="fas fa-dollar-sign"> </i> Income </a>
+                        <a href="#inco" data-bs-toggle="collapse" aria-expanded="false"
+                        class="dropdown-toggle no-caret-down"><i class="fas fa-dollar-sign"> </i> Income <i class="fas fa-angle-right"></i></a>
+                        <ul class="collapse list-unstyled" id="inco">
+                            <li>
+                                <a href="{{ url('/income') }}"><i class="fas fa-angle-right"></i> Income List</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/inco_category') }}"><i class="fas fa-angle-right"></i> Income Category</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="{{url('/inventory')}}"><i class="fas fa-lock"></i> Inventory </a>
@@ -129,7 +138,7 @@
                                                 alt="Profile Picture" class="profile-image">
                                         @else
                                             <img src="{{ asset('images/defaul.jpg') }}" alt="logo" class="profile-image">
-                                            
+
                                         @endif
                                     </a>
 

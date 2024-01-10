@@ -35,6 +35,7 @@ class MachinesController extends Controller
      */
     public function store(Request $request)
     {
+
         $validatedData = $request->validate([
             'm_name' => 'required|string',
             'address' => 'required|string',
@@ -42,17 +43,17 @@ class MachinesController extends Controller
             'expiry_date' => 'required|date',
             'm_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'slot' => 'required|int',
-            // 'province' => 'required|string',
+            // 'province' => 'required|g©string',
             // 'district' => 'required|string',
             // 'commune' => 'required|string',
             // 'village' => 'required|string',
 
-        ],[
-            'm_name.required'=>'Please input Name',
-            'address.required'=>'Please input Address',
-            'installation_date.required'=>'Please input Installation date',
-            'expiry_date.required'=>'Please input Expired Date',
-            'slot.required'=>'Please input Slot',
+        ], [
+            'm_name.required' => 'Please input Name',
+            'address.required' => 'Please input Address',
+            'installation_date.required' => 'Please input Installation date',
+            'expiry_date.required' => 'Please input Expired Date',
+            'slot.required' => 'Please input Slot',
         ]);
         if ($request->hasFile('m_image')) {
             $image = $request->file('m_image');
@@ -77,7 +78,7 @@ class MachinesController extends Controller
     {
         $dataPg = Machines::paginate(5);
         $data = Machines::all();
-        return view('contents/vending_machines', compact('data','dataPg'));
+        return view('contents/vending_machines', compact('data', 'dataPg'));
     }
 
     /**
@@ -86,7 +87,7 @@ class MachinesController extends Controller
      * @param  \App\Models\Machines  $machines
      * @return \Illuminate\Http\Response
      */
-    public function edit(Machines $machines,$id)
+    public function edit(Machines $machines, $id)
     {
         //
         $data = Machines::findOrFail($id);
@@ -100,7 +101,7 @@ class MachinesController extends Controller
      * @param  \App\Models\Machines  $machines
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Machines $machines,$id)
+    public function update(Request $request, Machines $machines, $id)
     {
         //
         $machine = Machines::find($id);

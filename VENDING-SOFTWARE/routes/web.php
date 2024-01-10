@@ -7,6 +7,7 @@ use App\Http\Controllers\SlotsController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\MachinesController;
 use App\Http\Controllers\DistrictsController;
+use App\Http\Controllers\IncomeCategoryController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PatientController;
@@ -62,6 +63,18 @@ Route::get('/create_product', [ProductController::class, 'create']);
 Route::get('product/destroy/{id}', [ProductController::class, 'destroy']);
 Route::get('/edit_product/{id}', [ProductController::class, 'edit']);
 Route::patch('update_product/{id}', [ProductController::class, 'update']);
+
+//income
+Route::get('/incomecategory', [IncomeCategoryController::class, 'index']);
+Route::get('/create_IncGategory', [IncomeCategoryController::class, 'create']);
+Route::post('/create-IncGa', [IncomeCategoryController::class, 'store']);
+Route::get('/edit_incomecategory/{id}', [IncomeCategoryController::class, 'edit']);
+Route::patch('update-incomCat/{id}', [IncomeCategoryController::class, 'update']);
+Route::get('/incomeCa/destroy/{id}', [IncomeCategoryController::class, 'destroy']);
+
+
+
+
 
 //user route
 Route::get('/user', [UserController::class, 'index']);

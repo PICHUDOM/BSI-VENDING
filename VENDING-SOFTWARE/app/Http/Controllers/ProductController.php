@@ -29,7 +29,7 @@ class ProductController extends Controller
     {
         $categories = Pro_category::all();
         $data = Product::all();
-        return view('contents/create/create_product', compact('data','categories'));
+        return view('contents/create/create_product', compact('data', 'categories'));
     }
 
     /**
@@ -40,19 +40,20 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'm_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'p_name' => 'required|string',
-            'expiry_date' => 'required|date',
-            'specific_code' => 'required|string',
-            'id_pro_categories' => 'required|int',
-        ],
-        [
-            'p_name.required'=>'Please input Product name',
-            'expiry_date.required'=>'Please input Expired Date',
-            'specific_code.required'=>'Please input Specific code',
-        ]
-    );
+        $validatedData = $request->validate(
+            [
+                'm_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                'p_name' => 'required|string',
+                'expiry_date' => 'required|date',
+                'specific_code' => 'required|string',
+                'id_pro_categories' => 'required|int',
+            ],
+            [
+                'p_name.required' => 'Please input Product name',
+                'expiry_date.required' => 'Please input Expired Date',
+                'specific_code.required' => 'Please input Specific code',
+            ]
+        );
         if ($request->hasFile('p_image')) {
             $image = $request->file('p_image');
             $imageName = time() . '_' . $image->getClientOriginalName();
@@ -61,7 +62,7 @@ class ProductController extends Controller
         }
         Product::create($validatedData);
 
-        return redirect()->back()->with('success', 'Machine data has been saved successfully.');
+        return redirect('products')->with('flash_message', 'Incom Category Updated Successfully');
     }
 
     /**
@@ -81,7 +82,7 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product,$id)
+    public function edit(Product $product, $id)
     {
         //
         $data = Product::findOrFail($id);
@@ -107,18 +108,18 @@ class ProductController extends Controller
             'expiry_date.required' => 'Please input Expiry Date',
             'specific_code.required' => 'Please input Specific Code',
         ]);
-    
+
         // Find the product by ID
         $product = Product::find($id);
-    
+
         $product->p_name = $validatedData['p_name'];
         $product->expiry_date = $validatedData['expiry_date'];
         $product->specific_code = $validatedData['specific_code'];
-            $product->update();
-    
+        $product->update();
+
         return redirect('/products')->with('flash_message', 'Product Updated Successfully');
     }
-    
+
 
     /**
      * Remove the specified resource from storage.

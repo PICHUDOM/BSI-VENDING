@@ -29,6 +29,9 @@ function backPro() {
 function backProGa() {
     window.location.href = '/productCategory';
 }
+function backincomCat() {
+    window.location.href = '/incomecategory';
+}
 
 // patient("/api/patient/web?page=1");
 // $(".pagination").css("cursor", "pointer");

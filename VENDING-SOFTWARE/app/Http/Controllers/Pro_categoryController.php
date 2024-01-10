@@ -47,7 +47,7 @@ class Pro_categoryController extends Controller
 
         Pro_category::create($validatedData);
 
-        return redirect()->back()->with('success', 'Machine data has been saved successfully.');
+        return redirect('productCategory')->with('flash_message', 'Incom Category Updated Successfully');
     }
 
     /**

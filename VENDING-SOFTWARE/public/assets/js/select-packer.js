@@ -23,31 +23,31 @@ $(function () {
         }
     });
 });
-$(document).ready(function () {
+// $(document).ready(function () {
     
-    $("#uielementsmenu").on("show.bs.collapse", function () {
-        $(".fa-angle-right")
-            .removeClass("fa-angle-right")
-            .addClass("fa-chevron-down");
-    });
+//     $("#uielementsmenu").on("show.bs.collapse", function () {
+//         $(".fa-angle-right")
+//             .removeClass("fa-angle-right")
+//             .addClass("fa-chevron-down");
+//     });
 
-    $("#uielementsmenu").on("hide.bs.collapse", function () {
-        $(".fa-chevron-down")
-            .removeClass("fa-chevron-down")
-            .addClass("fa-angle-right");
-    });
-    $("#pro").on("show.bs.collapse", function () {
-        $(".fa-angle-right")
-            .removeClass("fa-angle-right")
-            .addClass("fa-chevron-down");
-    });
+//     $("#uielementsmenu").on("hide.bs.collapse", function () {
+//         $(".fa-chevron-down")
+//             .removeClass("fa-chevron-down")
+//             .addClass("fa-angle-right");
+//     });
+//     $("#pro").on("show.bs.collapse", function () {
+//         $(".fa-angle-right")
+//             .removeClass("fa-angle-right")
+//             .addClass("fa-chevron-down");
+//     });
 
-    $("#pro").on("hide.bs.collapse", function () {
-        $(".fa-chevron-down")
-            .removeClass("fa-chevron-down")
-            .addClass("fa-angle-right");
-    });
-});
+//     $("#pro").on("hide.bs.collapse", function () {
+//         $(".fa-chevron-down")
+//             .removeClass("fa-chevron-down")
+//             .addClass("fa-angle-right");
+//     });
+// });
 // $(document).ready(function () {
 //     $("#provinc").change(function () {
 //         if ($(this).val() !== "") {

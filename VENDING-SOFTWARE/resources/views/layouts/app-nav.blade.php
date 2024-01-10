@@ -52,7 +52,6 @@
                         </ul>
                     </li>
                     <li>
-                        {{-- <a href="#"><i class="fas fa-table"></i> Product</a> --}}
                         <a href="#pro" data-bs-toggle="collapse" aria-expanded="false"
                             class="dropdown-toggle no-caret-down">
                             <i class="fas fa-table"></i> Product <i class="fas fa-angle-right"></i>
@@ -68,7 +67,19 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#"><i class="fas fa-dollar-sign"> </i> Income </a>
+                        <a href="#inc" data-bs-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle no-caret-down">
+                            <i class="fas fa-dollar-sign"></i> Income <i class="fas fa-angle-right"></i>
+                        </a>
+                        <ul class="collapse list-unstyled" id="inc">
+                            <li>
+                                <a href="{{ url('/incomeList') }}"><i class="fas fa-angle-right"></i> Income List</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/incomecategory') }}"><i class="fas fa-angle-right"></i>
+                                    Income Categories</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="{{ url('/inventory') }}"><i class="fas fa-lock"></i> Inventory </a>

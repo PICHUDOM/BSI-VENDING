@@ -35,6 +35,7 @@ Route::get('/dashboard', [HomeController::class, 'index']);
 //Vending Machines  route
 Route::get('/vending_machines', [MachinesController::class, 'show']);
 Route::post('/create', [MachinesController::class, 'store']);
+Route::get('/create_machin', [MachinesController::class, 'create']);
 Route::get('/destroy/{id}', [MachinesController::class, 'destroy']);
 Route::get('/edit_machine/{id}', [MachinesController::class, 'edit']);
 Route::patch('update_machine/{id}', [MachinesController::class, 'update']);
@@ -50,12 +51,14 @@ Route::post('/slot/create', [SlotsController::class, 'store']);
 //product categories route
 Route::get('/productCategory', [Pro_categoryController::class, 'index']);
 Route::post('/create-proCategory', [Pro_categoryController::class, 'store']);
+Route::get('/create_proGategory', [Pro_categoryController::class, 'create']);
 Route::get('/edit_productCategory/{id}', [Pro_categoryController::class, 'edit']); // Add this line for edit
 Route::patch('/update_productCategory/{id}', [Pro_categoryController::class, 'update']); // Add this line for update
 Route::get('productCategory/destroy/{id}', [Pro_categoryController::class, 'destroy']);
 //Product route
 Route::get('/products', [ProductController::class, 'index']);
 Route::post('/create-product', [ProductController::class, 'store']);
+Route::get('/create_product', [ProductController::class, 'create']);
 Route::get('product/destroy/{id}', [ProductController::class, 'destroy']);
 Route::get('/edit_product/{id}', [ProductController::class, 'edit']);
 Route::patch('update_product/{id}', [ProductController::class, 'update']);

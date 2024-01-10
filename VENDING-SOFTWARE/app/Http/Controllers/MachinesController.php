@@ -24,7 +24,8 @@ class MachinesController extends Controller
      */
     public function create()
     {
-        //
+        $data = Machines::all();
+        return view('contents/create/create_machine', compact('data'));
     }
 
     /**
@@ -64,7 +65,7 @@ class MachinesController extends Controller
 
         Machines::create($validatedData);
 
-        return redirect()->back()->with('success', 'Machine data has been saved successfully.');
+        return redirect('/vending_machines')->with('success', 'Machine data has been saved successfully.');
     }
 
 
@@ -78,7 +79,6 @@ class MachinesController extends Controller
     {
         $data = Machines::all();
         return view('contents/vending_machines', compact('data',));
-
     }
 
     /**
@@ -91,7 +91,7 @@ class MachinesController extends Controller
     {
         //
         $data = Machines::findOrFail($id);
-        return view('contents/edit_machine', compact('data'));
+        return view('contents/update/edit_machine', compact('data'));
     }
 
     /**
@@ -101,18 +101,32 @@ class MachinesController extends Controller
      * @param  \App\Models\Machines  $machines
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Machines $machines, $id)
+    public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'm_name' => 'required|string',
+            'address' => 'required|string',
+            'installation_date' => 'required|date',
+            'expiry_date' => 'required|date',
+            'slot' => 'required|int',
+        ], [
+            'm_name.required' => 'Please input Name',
+            'address.required' => 'Please input Address',
+            'installation_date.required' => 'Please input Installation date',
+            'expiry_date.required' => 'Please input Expired Date',
+            'slot.required' => 'Please input Slot',
+        ]); 
         $machine = Machines::find($id);
-        $machine->m_name = $request->input('m_name');
-        $machine->address = $request->input('address');
-        $machine->installation_date = $request->input('installation_date');
-        $machine->expiry_date = $request->input('expiry_date');
-        $machine->slot = $request->input('slot');
-        $machine->update();
-        return redirect('vending_machines')->with('flash_message', 'Machine Update');
+        $machine->m_name = $validatedData['m_name'];
+        $machine->address = $validatedData['address'];
+        $machine->installation_date = $validatedData['installation_date'];
+        $machine->expiry_date = $validatedData['expiry_date'];
+        $machine->slot = $validatedData['slot'];
+        $machine->save();
+    
+        return redirect('vending_machines')->with('flash_message', 'Machine Updated Successfully');
     }
+    
 
     /**
      * Remove the specified resource from storage.

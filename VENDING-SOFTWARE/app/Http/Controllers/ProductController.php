@@ -27,7 +27,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Pro_category::all();
+        $data = Product::all();
+        return view('contents/create/create_product', compact('data','categories'));
     }
 
     /**
@@ -83,7 +85,7 @@ class ProductController extends Controller
     {
         //
         $data = Product::findOrFail($id);
-        return view('contents/edit_product', compact('data'));
+        return view('contents/update/edit_product', compact('data'));
     }
 
     /**
@@ -93,16 +95,30 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product,$id)
+    public function update(Request $request, Product $product, $id)
     {
-        //
+        // Validate the request data
+        $validatedData = $request->validate([
+            'p_name' => 'required|string',
+            'expiry_date' => 'required|date',
+            'specific_code' => 'required|string',
+        ], [
+            'p_name.required' => 'Please input Product Name',
+            'expiry_date.required' => 'Please input Expiry Date',
+            'specific_code.required' => 'Please input Specific Code',
+        ]);
+    
+        // Find the product by ID
         $product = Product::find($id);
-        $product->p_name = $request->input('p_name');
-        $product->expiry_date = $request->input('expiry_date');
-        $product->specific_code = $request->input('specific_code');
-        $product->update();
-        return redirect('/products')->with('flash_message', 'Products Update');
+    
+        $product->p_name = $validatedData['p_name'];
+        $product->expiry_date = $validatedData['expiry_date'];
+        $product->specific_code = $validatedData['specific_code'];
+            $product->update();
+    
+        return redirect('/products')->with('flash_message', 'Product Updated Successfully');
     }
+    
 
     /**
      * Remove the specified resource from storage.

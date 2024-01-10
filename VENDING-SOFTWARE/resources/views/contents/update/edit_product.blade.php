@@ -51,10 +51,6 @@
                                                 autocomplete="off" class="border-style-select">
                                                 <option value="" selected>Select product
                                                     Categories</option>
-                                                {{-- @foreach ($categories as $category)
-                                                    <option value="{{ $category->id }}">
-                                                        {{ $category->type }}</option>
-                                                @endforeach --}}
                                             </select>
                                         </div>
                                     </div>
@@ -67,6 +63,8 @@
                                         1MB</small>
                                 </div>
                                 <div class="mb-3 text-end">
+                                    <button class="btn btn-danger" data-bs-dismiss="modal" onclick="backPro()"
+                                    type="button"><i class="fa fa-chevron-left"></i> Return</button>
                                     <button class="btn btn-success" type="submit"><i
                                             class="fas fa-check"></i>
                                         Save</button>

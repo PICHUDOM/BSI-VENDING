@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Pro_category;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class Pro_categoryController extends Controller
 {
@@ -25,7 +27,8 @@ class Pro_categoryController extends Controller
      */
     public function create()
     {
-        //
+        $data = Pro_category::all();
+        return view('contents/create/create_proGategory', compact('data'));
     }
 
     /**
@@ -38,8 +41,8 @@ class Pro_categoryController extends Controller
     {
         $validatedData = $request->validate([
             'type' => 'required|string',
-        ],[
-            'type.required'=>'Please inpute Type'
+        ], [
+            'type.required' => 'Please inpute Type'
         ]);
 
         Pro_category::create($validatedData);
@@ -68,7 +71,7 @@ class Pro_categoryController extends Controller
     {
         // Fetch the record you want to edit
         $data = Pro_category::findOrFail($id);
-        return view('contents/edit_productCategory', compact('data'));
+        return view('contents/update/edit_productCategory', compact('data'));
     }
 
     /**
@@ -80,22 +83,20 @@ class Pro_categoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        $validatedData = $request->validate([
+            'type' => [
+                'required',
+                'string',
+                Rule::unique('pro_categories')->ignore($id), // Ignore the current record with ID $id
+            ],
+        ], [
+            'type.required' => 'Please input Type',
+            'type.unique' => 'The type has already been taken.',
+        ]);
         $Pro_category = Pro_category::find($id);
-        $Pro_category->type = $request->input('type');
+        $Pro_category->type = $validatedData['type'];
         $Pro_category->update();
-        return redirect('/productCategory')->with('flash_message', 'Type Update');
-        // $validatedData = $request->validate([
-        //     'type' => 'required|string',
-        // ]);
-
-        // // Find the record you want to update
-        // $proCategory = Pro_category::findOrFail($id);
-
-        // // Update the record with the new data
-        // $proCategory->update($validatedData);
-
-        // return redirect()->back()->with('success', 'Machine data has been updated successfully.');
+        return redirect('/productCategory')->with('flash_message', 'Type Updated Successfully');
     }
 
     /**

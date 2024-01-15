@@ -118,3 +118,14 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        $('#staticBackdrop').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var recordId = button.data('record-id'); // Extract record ID from data-* attributes
+            console.log('Record ID:', recordId);
+
+            $('#staticBackdrop').find('.modal-content').data('record-id', recordId);
+        });
+    });
+</script>

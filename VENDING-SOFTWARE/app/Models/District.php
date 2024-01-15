@@ -42,4 +42,8 @@ class District extends Model
     {
         return $this->belongsTo(Province::class, 'province_id', 'id');
     }
+    public function machines()
+    {
+        return $this->hasMany(Machines::class);
+    }
 }

@@ -36,4 +36,8 @@ class Province extends Model
     {
         return $this->hasMany(District::class);
     }
+    public function machines()
+    {
+        return $this->hasMany(Machines::class);
+    }
 }

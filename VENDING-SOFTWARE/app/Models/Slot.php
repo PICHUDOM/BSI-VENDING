@@ -17,7 +17,7 @@ class Slot extends Model
     protected $fillable = [
         'quantity',
         'id_ven_machines',
-        'product_id',
+        'pro_id',
 
     ];
     //relathionshi[]
@@ -27,7 +27,7 @@ class Slot extends Model
     }
     public function productRe()
     {
-        return $this->belongsTo(Product::class, 'product_id', 'id');
+        return $this->belongsTo(Product::class, 'pro_id', 'id');
     }
     public function inventory(): HasMany
     {

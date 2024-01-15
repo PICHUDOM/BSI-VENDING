@@ -13,7 +13,7 @@ class Inventory extends Model
     protected $fillable = [
         'slot_id',
         'pro_id',
-        'product_id',
+        'pro_id',
         'QTY'
 
     ];
@@ -23,6 +23,6 @@ class Inventory extends Model
     }
     public function product()
     {
-        return $this->belongsTo(Product::class, 'product_id', 'id');
+        return $this->belongsTo(Product::class, 'pro_id', 'id');
     }
 }

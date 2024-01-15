@@ -41,4 +41,8 @@ class Commune extends Model
     {
         return $this->belongsTo(District::class, 'district_id', 'id');
     }
+    public function machines()
+    {
+        return $this->hasMany(Machines::class);
+    }
 }

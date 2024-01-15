@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('tab_slots', function (Blueprint $table) {
-            $table->tinyInteger('product_id')->nullable();
+            $table->tinyInteger('pro_id')->nullable();
         });
     }
 

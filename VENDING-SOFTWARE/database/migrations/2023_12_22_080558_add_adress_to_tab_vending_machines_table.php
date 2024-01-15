@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::table('tab_vending_machines', function (Blueprint $table) {
             $table->string('province')->nullable();
-            $table->string('district')->nullable();
-            $table->string('commune')->nullable();
-            $table->string('village')->nullable();
+            $table->string('districts')->nullable();
+            $table->string('communes')->nullable();
+            $table->string('villages')->nullable();
         });
     }
 

@@ -34,12 +34,14 @@ Route::redirect('/', '/login');
 //Dashboard route
 Route::get('/dashboard', [HomeController::class, 'index']);
 //Vending Machines  route
-Route::get('/vending_machines', [MachinesController::class, 'show']);
+Route::get('/vending_machines', [MachinesController::class, 'index']);
 Route::post('/create', [MachinesController::class, 'store']);
 Route::get('/create_machin', [MachinesController::class, 'create']);
 Route::get('/destroy/{id}', [MachinesController::class, 'destroy']);
 Route::get('/edit_machine/{id}', [MachinesController::class, 'edit']);
 Route::patch('update_machine/{id}', [MachinesController::class, 'update']);
+Route::get('show_machines/{id}', [MachinesController::class, 'show']);
+
 
 //Locoation route
 Route::get('/location', [AddressController::class, 'show']);

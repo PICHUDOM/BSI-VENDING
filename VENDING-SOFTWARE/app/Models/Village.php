@@ -42,4 +42,8 @@ class Village extends Model
     {
         return $this->belongsTo(Commune::class, 'commune_id', 'id');
     }
+    public function machines()
+    {
+        return $this->hasMany(Machines::class);
+    }
 }

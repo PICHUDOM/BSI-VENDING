@@ -46,12 +46,12 @@ class SlotsController extends Controller
         $validatedData = $request->validate([
             'quantity' => 'required|array',
             'id_ven_machines' => 'required|int',
-            'product_id' => 'required|array',
+            'pro_id' => 'required|array',
         ]);
 
         // Assuming both arrays have the same length
         $quantityArray = $validatedData['quantity'];
-        $productIdsArray = $validatedData['product_id'];
+        $productIdsArray = $validatedData['pro_id'];
 
         // Create the slot record
         $slotData = [
@@ -66,7 +66,7 @@ class SlotsController extends Controller
 
             $invenData = [
                 'QTY' => $quantity,
-                'product_id' => $productId,
+                'pro_id' => $productId,
                 'slot_id' => $slot->id, // Associate the inventory record with the slot
             ];
 

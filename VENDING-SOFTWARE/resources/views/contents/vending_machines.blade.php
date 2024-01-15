@@ -39,12 +39,13 @@
                                 <td>{{ $data->slot }}</td>
                                 <td>{{ $data->installation_date }}</td>
                                 <td>{{ $data->expiry_date }}</td>
-                                <td>{{ $data->address }}</td>
+                                <td>{{ $data->villageRe->name_en ?? '' }}/{{ $data->communeRe->name_en ?? '' }}/{{ $data->districtsRe->name_en ?? '' }}/{{ $data->provinceRe->name_en ?? '' }}</td>
                                 <td>Active</td>
                                 <td class="text-end">
-                                    <a href="" class="btn btn-outline-muted btn-rounded"><i
-                                    class="fas fa-regular fa-eye "></i></a>
-                                    <a href="{{ url('edit_machine/' . $data->id) }}" data-bs-target="#staticBackdrop"
+                                    <a href="{{ url('show_machines/' . $data->id) }}" class="btn btn-outline-muted btn-rounded" ">
+                                        <i class="fas fa-regular fa-eye"></i>
+                                    </a>
+                                    <a href="{{ url('edit_machine/' . $data->id) }}" 
                                     class="btn btn-outline-muted btn-rounded"><i class="fas fa-pen"></i></a>
                                     <a href="/destroy/{{ $data->id }}" class="btn btn-outline-danger btn-rounded"
                                     onclick="return confirm('{{ __('Are you sure you want to deleted?') }}')"><i

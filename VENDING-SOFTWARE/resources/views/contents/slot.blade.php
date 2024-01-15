@@ -81,7 +81,7 @@
                 html += '</div>';
                 html += '<div class="mb-3 col-md-5 text-center">';
 
-                html += '<select name="product_id[]" id="product_id1' + i +
+                html += '<select name="pro_id[]" id="pro_id1' + i +
                     '" class="border-style-select text-center" autocomplete="off">';
                 html += '<option value=""  selected disabled></option>';
 

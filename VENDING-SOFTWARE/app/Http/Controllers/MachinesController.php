@@ -14,7 +14,8 @@ class MachinesController extends Controller
      */
     public function index()
     {
-        //
+        $data = Machines::all();
+        return view('contents/vending_machines', compact('data',));
     }
 
     /**
@@ -36,7 +37,7 @@ class MachinesController extends Controller
      */
     public function store(Request $request)
     {
-
+        // dd($request->all());
         $validatedData = $request->validate([
             'm_name' => 'required|string',
             'address' => 'required|string',
@@ -44,10 +45,10 @@ class MachinesController extends Controller
             'expiry_date' => 'required|date',
             'm_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'slot' => 'required|int',
-            // 'province' => 'required|g©string',
-            // 'district' => 'required|string',
-            // 'commune' => 'required|string',
-            // 'village' => 'required|string',
+            'province' => 'required|string',
+            'districts' => 'required|string',
+            'communes' => 'required|string',
+            'villages' => 'required|string',
 
         ], [
             'm_name.required' => 'Please input Name',
@@ -75,10 +76,10 @@ class MachinesController extends Controller
      * @param  \App\Models\Machines  $machines
      * @return \Illuminate\Http\Response
      */
-    public function show(Machines $machines)
+    public function show($id)
     {
-        $data = Machines::all();
-        return view('contents/vending_machines', compact('data',));
+        $data = Machines::findOrFail($id);
+        return view('contents/show/show_machines', compact('data'));
     }
 
     /**
@@ -115,7 +116,7 @@ class MachinesController extends Controller
             'installation_date.required' => 'Please input Installation date',
             'expiry_date.required' => 'Please input Expired Date',
             'slot.required' => 'Please input Slot',
-        ]); 
+        ]);
         $machine = Machines::find($id);
         $machine->m_name = $validatedData['m_name'];
         $machine->address = $validatedData['address'];
@@ -123,10 +124,10 @@ class MachinesController extends Controller
         $machine->expiry_date = $validatedData['expiry_date'];
         $machine->slot = $validatedData['slot'];
         $machine->save();
-    
+
         return redirect('vending_machines')->with('flash_message', 'Machine Updated Successfully');
     }
-    
+
 
     /**
      * Remove the specified resource from storage.

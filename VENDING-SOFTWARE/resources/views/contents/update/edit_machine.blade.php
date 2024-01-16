@@ -78,7 +78,7 @@
                                                         <div class="relative mt-2 rounded-md shadow-sm">
                                                             <select id="province" name="province"
                                                                 autocomplete="country-name" class="border-style-select">
-                                                                <option value="" selected>Select Province
+                                                                <option value="{{ $data->provinceRe->id }}" selected>{{ $data->provinceRe->name_en ?? '' }}
                                                                 </option>
                                                             </select>
                                                         </div>
@@ -91,7 +91,7 @@
                                                         <div class="relative mt-2 rounded-md shadow-sm">
                                                             <select id="districts" name="districts"
                                                                 autocomplete="country-name" class="border-style-select">
-                                                                <option selected>Select Districts</option>
+                                                                <option value="{{ $data->districtsRe->id }}" selected>{{ $data->districtsRe->name_en ?? '' }}</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -103,7 +103,7 @@
                                                         <div class="relative mt-2 rounded-md shadow-sm">
                                                             <select id="communes" name="communes"
                                                                 autocomplete="country-name" class="border-style-select">
-                                                                <option selected>Select Communes</option>
+                                                                <option value="{{ $data->communeRe->id }}" selected>{{ $data->communeRe->name_en ?? '' }}</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -115,18 +115,18 @@
                                                         <div class="relative mt-2 rounded-md shadow-sm">
                                                             <select id="villages" name="villages"
                                                                 autocomplete="country-name" class="border-style-select">
-                                                                <option selected>Select Village</option>
+                                                                <option value="{{ $data->villageRe->id }}" selected>{{ $data->villageRe->name_en ?? '' }}</option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="mb-3">
+                                            {{-- <div class="mb-3">
                                                 <label for="address" class="form-label">Full Address</label>
                                                 <textarea class="form-control" name="address">
-                                                {{ $data->address }}{{-- {{ $data->first()->address ?? '' }} --}}
+                                                {{ $data->address }}
                                             </textarea>
-                                            </div>
+                                            </div> --}}
                                             <div class="mb-3 text-end">
                                                 <button class="btn btn-danger" data-bs-dismiss="modal" onclick="back()"
                                                     type="button"><i class="fa fa-chevron-left"></i> Return</button>

@@ -42,7 +42,7 @@
                                         </span>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="mb-3 col-md-6> <label for=" province"
+                                        <div class="mb-3 col-md-6"> <label for=" province"
                                             class=" block text-sm font-medium leading-6 text-gray-900">
                                             Product Categories</label>
                                             <div class="relative mt-2 rounded-md shadow-sm">

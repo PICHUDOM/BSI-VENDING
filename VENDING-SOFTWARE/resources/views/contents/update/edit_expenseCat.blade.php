@@ -3,7 +3,7 @@
     <div class="content">
         <div class="container">
             <div class="col-md-12">
-                <form action="{{ url('update-incomCat/' . $data->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ url('edit_expenseCat/' . $data->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
                     <div class="card space-card">
@@ -24,14 +24,13 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label for="type" class="form-label"> Price</label> <input type="number"
-                                        name="price" class="form-control" value="{{ $data->price }}">
+                                        name="prices" class="form-control" value="{{ $data->prices }}">
                                     <span class="text-danger">
-                                        @error('price')
+                                        @error('prices')
                                             {{ $message }}
                                         @enderror
                                     </span>
                                 </div>
-
                             </div>
                             <br>
                             <div class="mb-3 text-end">

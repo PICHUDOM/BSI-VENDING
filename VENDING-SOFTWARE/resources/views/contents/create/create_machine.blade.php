@@ -117,7 +117,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="mb-3">
+                                    {{-- <div class="mb-3">
                                         <label for="address" class="form-label">Full Address</label>
                                         <textarea class="form-control" name="address"></textarea>
                                         <span class="text-danger">
@@ -125,7 +125,7 @@
                                                 {{ $message }}
                                             @enderror
                                         </span>
-                                    </div>
+                                    </div> --}}
                                     <div class="mb-3 text-end">
                                         <button class="btn btn-danger" onclick="back()" data-bs-dismiss="modal" type="button"><i
                                             class="fa fa-chevron-left"></i> Return</button>

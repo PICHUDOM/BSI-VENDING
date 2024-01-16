@@ -2,23 +2,22 @@
 
 namespace App\Models;
 
-use App\Models\Product;
+use App\Models\ExpenseList;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class IncomeCategory extends Model
+class Expense extends Model
 {
     use HasFactory;
-    protected $table = 'tab_income_categories';
+    protected $table = 'tab_expense_categories';
 
     protected $fillable = [
         'type',
-        'price',
-
+        'prices',
     ];
-    public function incomeList(): HasMany
+    public function expenseList(): HasMany
     {
-        return $this->hasMany(IncomeList::class);
+        return $this->hasMany(ExpenseList::class);
     }
 }

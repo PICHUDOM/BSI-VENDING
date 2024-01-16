@@ -49,8 +49,12 @@
                                         <div class="relative mt-2 rounded-md shadow-sm">
                                             <select id="id_pro_categories" name="id_pro_categories"
                                                 autocomplete="off" class="border-style-select">
-                                                <option value="" selected>Select product
-                                                    Categories</option>
+                                                <option value= "{{$data->pro_category->id}}" selected >{{$data->pro_category->type ?? '' }}</option>
+                                                @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">
+                                                    {{ $category->type }}
+                                                </option>
+                                            @endforeach
                                             </select>
                                         </div>
                                     </div>

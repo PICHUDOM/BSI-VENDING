@@ -3,18 +3,17 @@
     <div class="content">
         <div class="container">
             <div class="col-md-12">
-                <form action="{{ url('update-incomCat/' . $data->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ url('/create_expenseCat') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    @method('PATCH')
                     <div class="card space-card">
                         <div class="card-header">
-                            <h5>Update Income Categories</h5>
+                            <h5>Create Expense Categories</h5>
                         </div>
                         <div class="card-body">
                             <div class="row col-md-12">
                                 <div class="mb-3 col-md-6">
                                     <label for="type" class="form-label">Type</label> <input type="text"
-                                        name="type" class="form-control" value="{{ $data->type }}">
+                                        name="type" class="form-control">
                                     <span class="text-danger">
                                         @error('type')
                                             {{ $message }}
@@ -24,9 +23,9 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label for="type" class="form-label"> Price</label> <input type="number"
-                                        name="price" class="form-control" value="{{ $data->price }}">
+                                        name="prices" class="form-control">
                                     <span class="text-danger">
-                                        @error('price')
+                                        @error('prices')
                                             {{ $message }}
                                         @enderror
                                     </span>

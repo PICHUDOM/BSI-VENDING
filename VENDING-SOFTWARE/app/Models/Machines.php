@@ -2,9 +2,15 @@
 
 namespace App\Models;
 
+use App\Models\Commune;
+use App\Models\District;
+use App\Models\IncomeList;
+use App\Models\Province;
 use App\Models\Slot;
+use App\Models\Village;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -51,5 +57,13 @@ class Machines extends Model
     public function provinceRe()
     {
         return $this->belongsTo(Province::class, 'province', 'id');
+    }
+    public function incomeList(): HasMany
+    {
+        return $this->hasMany(IncomeList::class);
+    }
+    public function expenseList(): HasMany
+    {
+        return $this->hasMany(ExpenseList::class);
     }
 }

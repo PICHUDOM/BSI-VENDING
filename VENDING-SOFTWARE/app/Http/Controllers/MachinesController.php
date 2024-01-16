@@ -40,7 +40,7 @@ class MachinesController extends Controller
         // dd($request->all());
         $validatedData = $request->validate([
             'm_name' => 'required|string',
-            'address' => 'required|string',
+            // 'address' => 'required|string',
             'installation_date' => 'required|date',
             'expiry_date' => 'required|date',
             'm_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -52,10 +52,15 @@ class MachinesController extends Controller
 
         ], [
             'm_name.required' => 'Please input Name',
-            'address.required' => 'Please input Address',
+            // 'address.required' => 'Please input Address',
             'installation_date.required' => 'Please input Installation date',
             'expiry_date.required' => 'Please input Expired Date',
             'slot.required' => 'Please input Slot',
+            // 'province.required' => 'Please select province',
+            // 'districts.required' => 'Please select districts',
+            // 'communes.required' => 'Please select communes',
+            // 'villages.required' => 'Please select villages',
+
         ]);
         if ($request->hasFile('m_image')) {
             $image = $request->file('m_image');
@@ -104,25 +109,38 @@ class MachinesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request->all());
         $validatedData = $request->validate([
             'm_name' => 'required|string',
             'address' => 'required|string',
             'installation_date' => 'required|date',
             'expiry_date' => 'required|date',
             'slot' => 'required|int',
+            'province' => 'required|string',
+            'districts' => 'required|string',
+            'communes' => 'required|string',
+            'villages' => 'required|string',
         ], [
             'm_name.required' => 'Please input Name',
-            'address.required' => 'Please input Address',
+            // 'address.required' => 'Please input Address',
             'installation_date.required' => 'Please input Installation date',
             'expiry_date.required' => 'Please input Expired Date',
             'slot.required' => 'Please input Slot',
+            'province.required' => 'Please select province',
+            'districts.required' => 'Please select districts',
+            'communes.required' => 'Please select communes',
+            'villages.required' => 'Please select villages',
         ]);
         $machine = Machines::find($id);
         $machine->m_name = $validatedData['m_name'];
-        $machine->address = $validatedData['address'];
+        // $machine->address = $validatedData['address'];
         $machine->installation_date = $validatedData['installation_date'];
         $machine->expiry_date = $validatedData['expiry_date'];
         $machine->slot = $validatedData['slot'];
+        $machine->province = $validatedData['province'];
+        $machine->districts = $validatedData['districts'];
+        $machine->communes = $validatedData['communes'];
+        $machine->villages = $validatedData['villages'];
         $machine->save();
 
         return redirect('vending_machines')->with('flash_message', 'Machine Updated Successfully');

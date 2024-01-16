@@ -85,8 +85,9 @@ class ProductController extends Controller
     public function edit(Product $product, $id)
     {
         //
+        $categories = Pro_category::all();
         $data = Product::findOrFail($id);
-        return view('contents/update/edit_product', compact('data'));
+        return view('contents/update/edit_product', compact('data','categories'));
     }
 
     /**
@@ -98,15 +99,20 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product, $id)
     {
+        // dd($request->all());
         // Validate the request data
         $validatedData = $request->validate([
             'p_name' => 'required|string',
             'expiry_date' => 'required|date',
             'specific_code' => 'required|string',
+            'id_pro_categories' => 'required|int',
+
         ], [
             'p_name.required' => 'Please input Product Name',
             'expiry_date.required' => 'Please input Expiry Date',
             'specific_code.required' => 'Please input Specific Code',
+            'id_pro_categories.required' => 'Please select product category',
+
         ]);
 
         // Find the product by ID
@@ -115,6 +121,8 @@ class ProductController extends Controller
         $product->p_name = $validatedData['p_name'];
         $product->expiry_date = $validatedData['expiry_date'];
         $product->specific_code = $validatedData['specific_code'];
+        $product->id_pro_categories = $validatedData['id_pro_categories'];
+
         $product->update();
 
         return redirect('/products')->with('flash_message', 'Product Updated Successfully');

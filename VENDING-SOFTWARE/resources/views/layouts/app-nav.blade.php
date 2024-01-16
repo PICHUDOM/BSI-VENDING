@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 
-<head> 
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -74,7 +74,7 @@
                         </a>
                         <ul class="collapse list-unstyled" id="inc">
                             <li>
-                                <a href="{{ url('/incomeList') }}"><i class="fas fa-angle-right"></i> Income List</a>
+                                <a href="{{ url('/incomelist') }}"><i class="fas fa-angle-right"></i> Income List</a>
                             </li>
                             <li>
                                 <a href="{{ url('/incomecategory') }}"><i class="fas fa-angle-right"></i>
@@ -84,6 +84,22 @@
                     </li>
                     <li>
                         <a href="{{ url('/inventory') }}"><i class="fas fa-lock"></i> Inventory </a>
+                    </li>
+                    <li>
+                        <a href="#exp" data-bs-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle no-caret-down">
+                            <i class="fas fa-dollar-sign"></i> Expense <i class="fas fa-angle-right"></i>
+                        </a>
+                        <ul class="collapse list-unstyled" id="exp">
+                            <li>
+                                <a href="{{ url('/expense-list') }}"><i class="fas fa-angle-right"></i> Expense List
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/expense-cat') }}"><i class="fas fa-angle-right"></i>
+                                    Expense Categories</a>
+                            </li>
+                        </ul>
                     </li>
 
                     <li>

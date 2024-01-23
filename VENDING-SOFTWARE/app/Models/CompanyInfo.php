@@ -5,22 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Address extends Model
+class CompanyInfo extends Model
 {
     use HasFactory;
-    protected $table = 'tab_location';
+    protected $table = 'tab_company_information';
 
     protected $fillable = [
-        'id',
-        'location_name',
-        'latitude',
-        'logtitude',
-        'province', 'districts', 'communes', 'villages', 'company_id', 'company_info_id'
+        'company_name',
+        'email',
+        'contact',
+        'address',
+        'province',
+        'communes',
+        'villages',
+
     ];
-    public function company()
-    {
-        return $this->belongsTo(CompanyInfo::class, 'company_info_id', 'id');
-    }
     public function villageRe()
     {
         return $this->belongsTo(Village::class, 'villages', 'id');
@@ -36,5 +35,9 @@ class Address extends Model
     public function provinceRe()
     {
         return $this->belongsTo(Province::class, 'province', 'id');
+    }
+    public function address()
+    {
+        return $this->hasMany(Address::class, 'company_info_id');
     }
 }

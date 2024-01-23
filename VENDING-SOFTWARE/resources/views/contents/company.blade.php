@@ -2,8 +2,8 @@
     <div class="content">
         <div class="container">
             <div class="page-title">
-                <h3> Expense List <a class="btn btn-sm btn-outline-primary float-end" href="/create-expense-list"
-                        aria-selected="false"> <i class="fas fa-plus-circle"></i><span class="btn-header" "> Add exense</span>
+                <h3> Company Information <a class="btn btn-sm btn-outline-primary float-end" href="/create-companyinfo"
+                        aria-selected="false"> <i class="fas fa-plus-circle"></i><span class="btn-header" "> Add Company info</span>
                     </a>
                  </h3>
               </div>
@@ -16,26 +16,29 @@
                             <thead>
                                <tr>
                                   <th>#</th>
-                                  <th>Description</th>
-                                  <th>Expense Type</th>
-                                  <th>Machine Name</th>
-                                  <th>Status</th>
-                                  <th>Action</th>
+                                  <th>Company Name</th>
+                                  <th>Email</th>
+                                  <th>Contact</th>
+                                  <th>Province</th>
+                                  {{-- <th>Status</th> --}}
+                                  <td>Action</td>
 
                                </tr>
                             </thead>
                             <tbody>
-                            @foreach ($data as $data)
+                                 @foreach ($data as $companyinfo)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $data->description }}</td>
-                                <td>{{ $data->expense_category->type ?? '' }}</td>
-                                <td>{{ $data->machin->m_name ?? '' }}</td>
-                                <td>Active</td>
+                                <td>{{ $companyinfo->company_name }}</td>
+                                <td>{{ $companyinfo->email }}</td>
+                                <td>{{ $companyinfo->contact }}</td>
+                                <td>{{ $companyinfo->villageRe->name_en ?? '' }}/{{ $companyinfo->communeRe->name_en ?? '' }}/{{ $companyinfo->districtsRe->name_en ?? '' }}/{{ $companyinfo->provinceRe->name_en ?? '' }}
+                                </td>
+                                {{-- <td>Active</td> --}}
                                 <td class="text-end">
-                                    <a href="{{ url('edit_expenseList/' . $data->id) }}"
+                                    <a href="{{ url('edit_expenseCata/' . $companyinfo->id) }}"
                                         class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></a>
-                                    <a href="expense-list/destroy/{{ $data->id }}"
+                                    <a href="company-info/destroy/{{ $companyinfo->id }}"
                                         class="btn btn-outline-danger btn-rounded"
                                         onclick="return confirm('{{ __('Are you sure you want to deleted?') }}')"><i
                                             class="fas fa-trash"></i></a>
@@ -43,15 +46,15 @@
                             </tr>
                             @endforeach
                             </tbody>
-                                </table>
-                </div>
+                            </table>
             </div>
         </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
 @endsection

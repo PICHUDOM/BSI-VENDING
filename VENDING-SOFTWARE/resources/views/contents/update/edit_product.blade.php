@@ -33,7 +33,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row col-md-12">
-                                <div class="mb-3 col-md-6">
+                                {{-- <div class="mb-3 col-md-6">
                                     <label for="p_name" class="form-label">Specific Code</label>
                                     <input type="text" name="specific_code" class="form-control" value="{{$data->specific_code}}">
                                     <span class="text-danger">
@@ -41,9 +41,9 @@
                                             {{$message}}
                                         @enderror
                                     </span>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-6">
-                                    <div class="mb-3 col-md-6> <label for=" province"
+                                    <div class="mb-3 col-md-12> <label for=" province"
                                         class=" block text-sm font-medium leading-6 text-gray-900">
                                         Product Categories</label>
                                         <div class="relative mt-2 rounded-md shadow-sm">

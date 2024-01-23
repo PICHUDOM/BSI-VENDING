@@ -102,7 +102,7 @@
                         </ul>
                     </li>
 
-                    <li>
+                    {{-- <li>
                         <a href="#authmenu" data-bs-toggle="collapse" aria-expanded="false"
                             class="dropdown-toggle no-caret-down"><i class="fas fa-user-shield"></i> Authentication</a>
                         <ul class="collapse list-unstyled" id="authmenu">
@@ -116,12 +116,21 @@
                                 <a href="forgot-password.html"><i class="fas fa-user-lock"></i> Forgot password</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
                     <li>
-                        <a href="{{ url('/user') }}"><i class="fas fa-user-friends"></i> Users</a>
-                    </li>
-                    <li>
-                        <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#set" data-bs-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle no-caret-down"><i class="fas fa-cog"></i>Settings <i class="fas fa-angle-right"></i></a>
+                        <ul class="collapse list-unstyled" id="set">
+                            <li>
+                                <a href="/company-info"><i class="fas fa-angle-right"></i> Company Information</a>
+                            </li>
+                            <li>
+                                <a href="/saledetail"><i class="fas fa-angle-right"></i> Price</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/user') }}"><i class="fas fa-user-friends"></i> Users</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </nav>

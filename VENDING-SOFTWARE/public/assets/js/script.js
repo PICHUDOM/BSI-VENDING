@@ -33,9 +33,6 @@ function backincomCat() {
     window.location.href = '/incomecategory';
 }
 
-// patient("/api/patient/web?page=1");
-// $(".pagination").css("cursor", "pointer");
-
 function patient(url) {
     $.ajax({
         type: "GET",
@@ -233,50 +230,50 @@ $("#communes").change(function () {
 });
 
 //post data patient to database
-$("html").on("click", "#submit", function (e) {
-    e.preventDefault();
-    var myGender = $("input[name='gender']:checked").val();
-    var data = {
-        name: $("#name").val(),
-        email: $("#email").val(),
-        phone: $("#phone").val(),
-        gender: myGender,
-        date_of_birth: $("#date_of_birth").val(),
-        village_id: $("#villages").val(),
-        province: $("#province").val(),
-        districts: $("#districts").val(),
-        communes: $("#communes").val(),
-    };
-    $.ajaxSetup({
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-        },
-    });
-    // ajax request send
-    $.ajax({
-        type: "POST",
-        url: "/api/patient/store",
-        data: data,
-        dataType: "json",
-        success: function (response) {
-            if (response.status == 400) {
-                $("#savaform_errlist").html();
-                $("#savaform_errlist").addClass("alert alert-danger");
-                $("#savaform_errlist").find("li").remove();
-                $.each(response.messages, function (key, err_value) {
-                    $("#savaform_errlist").append(
-                        '<li> <i class="fa fa-exclamation-circle" aria-hidden="true"></i> ' +
-                            err_value +
-                            "</li>"
-                    );
-                });
-            }
-            if (response.messages == "successfully") {
-                location.reload();
-            }
-        },
-        error: function () {
-            console.log(data);
-        },
-    });
-});
+// $("html").on("click", "#submit", function (e) {
+//     e.preventDefault();
+//     var myGender = $("input[name='gender']:checked").val();
+//     var data = {
+//         name: $("#name").val(),
+//         email: $("#email").val(),
+//         phone: $("#phone").val(),
+//         gender: myGender,
+//         date_of_birth: $("#date_of_birth").val(),
+//         village_id: $("#villages").val(),
+//         province: $("#province").val(),
+//         districts: $("#districts").val(),
+//         communes: $("#communes").val(),
+//     };
+//     $.ajaxSetup({
+//         headers: {
+//             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+//         },
+//     });
+//     // ajax request send
+//     $.ajax({
+//         type: "POST",
+//         url: "/api/patient/store",
+//         data: data,
+//         dataType: "json",
+//         success: function (response) {
+//             if (response.status == 400) {
+//                 $("#savaform_errlist").html();
+//                 $("#savaform_errlist").addClass("alert alert-danger");
+//                 $("#savaform_errlist").find("li").remove();
+//                 $.each(response.messages, function (key, err_value) {
+//                     $("#savaform_errlist").append(
+//                         '<li> <i class="fa fa-exclamation-circle" aria-hidden="true"></i> ' +
+//                             err_value +
+//                             "</li>"
+//                     );
+//                 });
+//             }
+//             if (response.messages == "successfully") {
+//                 location.reload();
+//             }
+//         },
+//         error: function () {
+//             console.log(data);
+//         },
+//     });
+// });

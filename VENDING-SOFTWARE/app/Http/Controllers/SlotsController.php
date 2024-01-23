@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Inventory;
 use App\Models\Machines;
 use App\Models\Product;
 use App\Models\Slot;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class SlotsController extends Controller
 {
@@ -20,7 +22,6 @@ class SlotsController extends Controller
         $product_ca = Product::all();
         $machin = Machines::all();
         $data = Slot::all();
-        // dd($data);
         return view('contents/slot', compact('data', 'machin', 'product_ca'));
     }
 
@@ -47,34 +48,46 @@ class SlotsController extends Controller
             'quantity' => 'required|array',
             'id_ven_machines' => 'required|int',
             'pro_id' => 'required|array',
+            'slot_num' => 'required|array',
         ]);
 
         // Assuming both arrays have the same length
         $quantityArray = $validatedData['quantity'];
         $productIdsArray = $validatedData['pro_id'];
+        $slotNumArray = $validatedData['slot_num'];
+
+        // Check if a slot with the given id_ven_machines already exists
+        $existingSlot = Slot::where('id_ven_machines', $validatedData['id_ven_machines'])->first();
+
+        if ($existingSlot) {
+            throw ValidationException::withMessages(['id_ven_machines' => 'Slot with the given vening machines already exists.']);
+        }
 
         // Create the slot record
-        $slotData = [
+        $slot = Slot::create([
             'id_ven_machines' => $validatedData['id_ven_machines'],
-
-        ];
-        $slot = Slot::create($slotData);
+        ]);
 
         foreach ($productIdsArray as $index => $productId) {
             // Check if the productId is empty, and set quantity to null in that case
             $quantity = $productId === '' ? null : $quantityArray[$index];
 
-            $invenData = [
+            // Create the inventory record with the dynamic slot_id and auto-generated slot_num
+            $inventoryData = [
                 'QTY' => $quantity,
                 'pro_id' => $productId,
                 'slot_id' => $slot->id, // Associate the inventory record with the slot
+                'slot_num' => $slotNumArray[$index], // Assuming slot_num is provided in the request
             ];
 
-            Inventory::create($invenData);
+            Inventory::create($inventoryData);
         }
 
         return redirect()->back()->with('success', 'Slot data has been saved successfully.');
     }
+
+
+
 
 
 

@@ -26,7 +26,7 @@ class Commune extends Model
         "updated_by"
     ];
 
-     /*
+    /*
     |--------------------------------------------------------------------------
     | RELATIONS
     |--------------------------------------------------------------------------
@@ -44,5 +44,9 @@ class Commune extends Model
     public function machines()
     {
         return $this->hasMany(Machines::class);
+    }
+    public function companyinfo()
+    {
+        return $this->hasMany(CompanyInfo::class);
     }
 }

@@ -12,9 +12,10 @@ class Inventory extends Model
 
     protected $fillable = [
         'slot_id',
+        'slot_num',
         'pro_id',
-        'pro_id',
-        'QTY'
+        'QTY',
+        'id_sale_details'
 
     ];
     public function slots()
@@ -24,5 +25,9 @@ class Inventory extends Model
     public function product()
     {
         return $this->belongsTo(Product::class, 'pro_id', 'id');
+    }
+    public function saleDetail()
+    {
+        return $this->belongsTo(SaleDetail::class, 'id_sale_details', 'id');
     }
 }

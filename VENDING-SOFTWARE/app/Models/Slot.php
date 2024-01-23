@@ -18,6 +18,8 @@ class Slot extends Model
         'quantity',
         'id_ven_machines',
         'pro_id',
+        'slot_num',
+        'id_sale_details'
 
     ];
     //relathionshi[]
@@ -32,5 +34,10 @@ class Slot extends Model
     public function inventory(): HasMany
     {
         return $this->hasMany(Inventory::class);
+    }
+    public function saleDetail()
+    {
+        dd(111);
+        return $this->belongsTo(SaleDetail::class, 'id_sale_details', 'id');
     }
 }

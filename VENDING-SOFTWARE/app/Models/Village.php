@@ -46,4 +46,8 @@ class Village extends Model
     {
         return $this->hasMany(Machines::class);
     }
+    public function companyinfo()
+    {
+        return $this->hasMany(CompanyInfo::class);
+    }
 }

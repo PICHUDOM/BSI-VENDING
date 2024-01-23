@@ -15,6 +15,7 @@ class MachinesController extends Controller
     public function index()
     {
         $data = Machines::all();
+
         return view('contents/vending_machines', compact('data',));
     }
 

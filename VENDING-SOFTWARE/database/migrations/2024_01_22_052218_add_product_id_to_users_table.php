@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('tab_slots', function (Blueprint $table) {
-            $table->tinyInteger('pro_id')->nullable();
+        Schema::table('tab_product_prices', function (Blueprint $table) {
+            $table->tinyInteger('product_id')->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('tab_slots', function (Blueprint $table) {
-            $table->dropColumn('pro_id');
+        Schema::table('tab_product_prices', function (Blueprint $table) {
+            //
         });
     }
 };

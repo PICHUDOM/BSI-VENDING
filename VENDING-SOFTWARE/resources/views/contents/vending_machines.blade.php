@@ -21,10 +21,10 @@
                                 <th>Machine Image</th>
                                 <th>Slot</th>
                                 <th>Installation Date</th>
-                                <th>Expired Date</th>
+                                {{-- <th>Expired Date</th> --}}
                                 <th>Address</th>
                                 <th>Status</th>
-                                <th></th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -38,7 +38,7 @@
                                 </td>
                                 <td>{{ $data->slot }}</td>
                                 <td>{{ $data->installation_date }}</td>
-                                <td>{{ $data->expiry_date }}</td>
+                                {{-- <td>{{ $data->expiry_date }}</td> --}}
                                 <td>{{ $data->villageRe->name_en ?? '' }}/{{ $data->communeRe->name_en ?? '' }}/{{ $data->districtsRe->name_en ?? '' }}/{{ $data->provinceRe->name_en ?? '' }}</td>
                                 <td>Active</td>
                                 <td class="text-end">

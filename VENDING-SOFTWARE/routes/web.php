@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SlotsController;
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\CompanyInfoController;
 use App\Http\Controllers\MachinesController;
 use App\Http\Controllers\DistrictsController;
 use App\Http\Controllers\ExpenseController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\Pro_categoryController;
+use App\Http\Controllers\ProducPriceController;
 use App\Http\Controllers\ProductController;
 use App\Models\ExpenseList;
 use App\Models\IncomeList;
@@ -101,10 +103,17 @@ Route::post('/create_expenseList', [ExpenseListController::class, 'store']);
 Route::get('/edit_expenseList/{id}', [ExpenseListController::class, 'edit']);
 Route::patch('/update_expenseList/{id}', [ExpenseListController::class, 'update']);
 Route::get('/expense-list/destroy/{id}', [ExpenseListController::class, 'destroy']);
+//company infomation
+Route::get('/company-info', [CompanyInfoController::class, 'index']);
+Route::get('/create-companyinfo', [CompanyInfoController::class, 'create']);
+Route::post('/add_companyinfor', [CompanyInfoController::class, 'store']);
+Route::get('/company-info/destroy/{id}', [CompanyInfoController::class, 'destroy']);
 
 //user route
 Route::get('/user', [UserController::class, 'index']);
 Route::get('/inventory', [InventoryController::class, 'index']);
+
+Route::post('/products-price', [ProducPriceController::class, 'store']);
 
 
 // Route::get('/welcome', [DistrictsController::class, 'index']);

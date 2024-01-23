@@ -17,129 +17,33 @@
                     <table width="100%" class="table table-hover" id="dataTables-example">
                         <thead>
                             <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
+                                <th>#</th>
+                                <th>Name</th>
                                 <th>Email</th>
-                                <th>Contact</th>
-                                <th>Role Name</th>
+                                <th>Password</th>
                                 <th>Status</th>
-                                <th></th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($data as $data)
                             <tr>
-                                <td>Sa</td>
-                                <td>Ra</td>
-                                <td>sara@gmail.com</td>
-                                <td>01233</td>
-                                <td>Administrator</td>
-                                <td>Active</td>
-                                <td class="text-end">
-                                    <a href="permissions.html" class="btn btn-outline-secondary btn-rounded"><i
-                                            class="fas fa-toggle-on"></i></a>
-                                    <a href="" class="btn btn-outline-info btn-rounded"><i
-                                            class="fas fa-pen"></i></a>
-                                    <a href="" class="btn btn-outline-danger btn-rounded"><i
-                                            class="fas fa-trash"></i></a>
-                                </td>
+                               <td>{{ $loop->iteration }}</td>
+                               <td>{{ $data->name }}</td>
+                               <td>{{ $data->email }}</td>
+                               <td>{{ $data->password }}</td>
+                               <td>Active</td>
+                               <td class="text-end">
+                                <a href="permissions.html" class="btn btn-outline-secondary btn-rounded"><i
+                                        class="fas fa-toggle-on"></i></a>
+                                <a href="" class="btn btn-outline-info btn-rounded"><i
+                                        class="fas fa-pen"></i></a>
+                                <a href="" class="btn btn-outline-danger btn-rounded"><i
+                                        class="fas fa-trash"></i></a>
+                            </td>
                             </tr>
-                            <tr>
-                                <td>Sa</td>
-                                <td>Ra</td>
-                                <td>sara@gmail.com</td>
-                                <td>01233</td>
-                                <td>Manager</td>
-                                <td>Active</td>
-                                <td class="text-end">
-                                    <a href="permissions.html" class="btn btn-outline-secondary btn-rounded"><i
-                                            class="fas fa-toggle-on"></i></a>
-                                    <a href="" class="btn btn-outline-info btn-rounded"><i
-                                            class="fas fa-pen"></i></a>
-                                    <a href="" class="btn btn-outline-danger btn-rounded"><i
-                                            class="fas fa-trash"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Sa</td>
-                                <td>Ra</td>
-                                <td>sara@gmail.com</td>
-                                <td>01233</td>
-                                <td>Writer</td>
-                                <td>Active</td>
-                                <td class="text-end">
-                                    <a href="permissions.html" class="btn btn-outline-secondary btn-rounded"><i
-                                            class="fas fa-toggle-on"></i></a>
-                                    <a href="" class="btn btn-outline-info btn-rounded"><i
-                                            class="fas fa-pen"></i></a>
-                                    <a href="" class="btn btn-outline-danger btn-rounded"><i
-                                            class="fas fa-trash"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Sa</td>
-                                <td>Ra</td>
-                                <td>sara@gmail.com</td>
-                                <td>01233</td>
-                                <td>Editor</td>
-                                <td>Disabled</td>
-                                <td class="text-end">
-                                    <a href="permissions.html" class="btn btn-outline-secondary btn-rounded"><i
-                                            class="fas fa-toggle-on"></i></a>
-                                    <a href="" class="btn btn-outline-info btn-rounded"><i
-                                            class="fas fa-pen"></i></a>
-                                    <a href="" class="btn btn-outline-danger btn-rounded"><i
-                                            class="fas fa-trash"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Sa</td>
-                                <td>Ra</td>
-                                <td>sara@gmail.com</td>
-                                <td>01233</td>
-                                <td>Audit</td>
-                                <td>Active</td>
-                                <td class="text-end">
-                                    <a href="permissions.html" class="btn btn-outline-secondary btn-rounded"><i
-                                            class="fas fa-toggle-on"></i></a>
-                                    <a href="" class="btn btn-outline-info btn-rounded"><i
-                                            class="fas fa-pen"></i></a>
-                                    <a href="" class="btn btn-outline-danger btn-rounded"><i
-                                            class="fas fa-trash"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Sa</td>
-                                <td>Ra</td>
-                                <td>sara@gmail.com</td>
-                                <td>01233</td>
-                                <td>Contributor</td>
-                                <td>Active</td>
-                                <td class="text-end">
-                                    <a href="permissions.html" class="btn btn-outline-secondary btn-rounded"><i
-                                            class="fas fa-toggle-on"></i></a>
-                                    <a href="" class="btn btn-outline-info btn-rounded"><i
-                                            class="fas fa-pen"></i></a>
-                                    <a href="" class="btn btn-outline-danger btn-rounded"><i
-                                            class="fas fa-trash"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Sa</td>
-                                <td>Ra</td>
-                                <td>sara@gmail.com</td>
-                                <td>01233</td>
-                                <td>Author</td>
-                                <td>Active</td>
-                                <td class="text-end">
-                                    <a href="permissions.html" class="btn btn-outline-secondary btn-rounded"><i
-                                            class="fas fa-toggle-on"></i></a>
-                                    <a href="" class="btn btn-outline-info btn-rounded"><i
-                                            class="fas fa-pen"></i></a>
-                                    <a href="" class="btn btn-outline-danger btn-rounded"><i
-                                            class="fas fa-trash"></i></a>
-                                </td>
-                            </tr>
-                        </tbody>
+                            @endforeach
+                         </tbody>
                     </table>
                 </div>
             </div>

@@ -21,4 +21,8 @@ class Pro_category extends Model
     {
         return $this->hasMany(Product::class);
     }
+    public function saleDetail(): HasMany
+    {
+        return $this->hasMany(SaleDetail::class);
+    }
 }

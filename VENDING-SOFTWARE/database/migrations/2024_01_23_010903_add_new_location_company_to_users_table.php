@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('tab_slots', function (Blueprint $table) {
-            $table->tinyInteger('pro_id')->nullable();
+        Schema::table('tab_company_information', function (Blueprint $table) {
+            $table->string('province')->nullable();
+            $table->string('districts')->nullable();
+            $table->string('communes')->nullable();
+            $table->string('villages')->nullable();
         });
     }
 
@@ -25,8 +28,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('tab_slots', function (Blueprint $table) {
-            $table->dropColumn('pro_id');
+        Schema::table('tab_company_information', function (Blueprint $table) {
+            //
         });
     }
 };

@@ -1,18 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+public function store(Request $request)
+{
+    $validatedData = $request->validate([
+        'price_in' => 'required|array',
+        'price_out' => 'required|array',
+        'product_id' => 'required|array',
+    ]);
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+    foreach ($validatedData['product_id'] as $key => $productId) {
+        if ($validatedData['price_in'][$key] !== null && $validatedData['price_out'][$key] !== null) {
+            ProducPrice::updateOrCreate(
+                ['product_id' => $productId],
+                [
+                    'price_in' => $validatedData['price_in'][$key],
+                    'price_out' => $validatedData['price_out'][$key],
+                ]
+            );
+        }
+    }
 
-<body>
-    @foreach ($districts as $item)
-        <span>{{ $item->name }}</span>
-        <span>{{ $item->provinces_id }}</span><br>
-    @endforeach
-</body>
-
-</html>
+    return redirect('products')->with('flash_message', 'Product Prices Updated Successfully');
+}

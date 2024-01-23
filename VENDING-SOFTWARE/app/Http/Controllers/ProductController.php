@@ -17,6 +17,7 @@ class ProductController extends Controller
     {
         $categories = Pro_category::all();
         $data = Product::all();
+        // dd($data->producPrice);
         return view('contents/product', compact('data', 'categories'));
     }
 
@@ -45,13 +46,13 @@ class ProductController extends Controller
                 'm_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
                 'p_name' => 'required|string',
                 'expiry_date' => 'required|date',
-                'specific_code' => 'required|string',
+                'specific_code',
                 'id_pro_categories' => 'required|int',
             ],
             [
                 'p_name.required' => 'Please input Product name',
                 'expiry_date.required' => 'Please input Expired Date',
-                'specific_code.required' => 'Please input Specific code',
+                // 'specific_code.required' => 'Please input Specific code',
             ]
         );
         if ($request->hasFile('p_image')) {
@@ -104,13 +105,13 @@ class ProductController extends Controller
         $validatedData = $request->validate([
             'p_name' => 'required|string',
             'expiry_date' => 'required|date',
-            'specific_code' => 'required|string',
+            'specific_code' ,
             'id_pro_categories' => 'required|int',
 
         ], [
             'p_name.required' => 'Please input Product Name',
             'expiry_date.required' => 'Please input Expiry Date',
-            'specific_code.required' => 'Please input Specific Code',
+            // 'specific_code.required' => 'Please input Specific Code',
             'id_pro_categories.required' => 'Please select product category',
 
         ]);

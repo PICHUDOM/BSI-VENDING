@@ -22,7 +22,7 @@ class SlotsController extends Controller
         $product_ca = Product::all();
         $machin = Machines::all();
         $data = Slot::all();
-        return view('contents/slot', compact('data', 'machin', 'product_ca'));
+        return view('contents/inventory', compact('data', 'machin', 'product_ca'));
     }
 
     /**

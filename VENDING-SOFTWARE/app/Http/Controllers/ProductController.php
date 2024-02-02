@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Pro_category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class ProductController extends Controller
 {
@@ -15,10 +17,11 @@ class ProductController extends Controller
      */
     public function index()
     {
+
         $categories = Pro_category::all();
         $data = Product::all();
-        // dd($data->producPrice);
         return view('contents/product', compact('data', 'categories'));
+
     }
 
     /**
@@ -45,7 +48,7 @@ class ProductController extends Controller
             [
                 'm_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
                 'p_name' => 'required|string',
-                'expiry_date' => 'required|date',
+                'expiry_date',
                 'specific_code',
                 'id_pro_categories' => 'required|int',
             ],
@@ -88,7 +91,7 @@ class ProductController extends Controller
         //
         $categories = Pro_category::all();
         $data = Product::findOrFail($id);
-        return view('contents/update/edit_product', compact('data','categories'));
+        return view('contents/update/edit_product', compact('data', 'categories'));
     }
 
     /**
@@ -105,7 +108,7 @@ class ProductController extends Controller
         $validatedData = $request->validate([
             'p_name' => 'required|string',
             'expiry_date' => 'required|date',
-            'specific_code' ,
+            'specific_code',
             'id_pro_categories' => 'required|int',
 
         ], [
@@ -121,7 +124,7 @@ class ProductController extends Controller
 
         $product->p_name = $validatedData['p_name'];
         $product->expiry_date = $validatedData['expiry_date'];
-        $product->specific_code = $validatedData['specific_code'];
+        // $product->specific_code = $validatedData['specific_code'];
         $product->id_pro_categories = $validatedData['id_pro_categories'];
 
         $product->update();

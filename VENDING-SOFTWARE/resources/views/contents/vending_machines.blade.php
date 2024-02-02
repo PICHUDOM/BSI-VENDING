@@ -39,7 +39,7 @@
                                 <td>{{ $data->slot }}</td>
                                 <td>{{ $data->installation_date }}</td>
                                 {{-- <td>{{ $data->expiry_date }}</td> --}}
-                                <td>{{ $data->villageRe->name_en ?? '' }}/{{ $data->communeRe->name_en ?? '' }}/{{ $data->districtsRe->name_en ?? '' }}/{{ $data->provinceRe->name_en ?? '' }}</td>
+                                <td>{{ $data->communeRe->name_en ?? '' }}/{{ $data->districtsRe->name_en ?? '' }}/{{ $data->provinceRe->name_en ?? '' }}</td>
                                 <td>Active</td>
                                 <td class="text-end">
                                     <a href="{{ url('show_machines/' . $data->id) }}" class="btn btn-outline-muted btn-rounded" ">

@@ -15,6 +15,7 @@ class Slot extends Model
     protected $table = 'tab_slots';
 
     protected $fillable = [
+        'id',
         'quantity',
         'id_ven_machines',
         'pro_id',
@@ -37,7 +38,6 @@ class Slot extends Model
     }
     public function saleDetail()
     {
-        dd(111);
         return $this->belongsTo(SaleDetail::class, 'id_sale_details', 'id');
     }
 }

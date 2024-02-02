@@ -4,28 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Inventory;
-use App\Models\Reslot;
-use App\Models\SaleDetail;
+use App\Models\SaleReport;
+use App\Models\Slot;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 
-class InventoryController extends Controller
+class SaleReportController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, Inventory $dataSyncService)
+    public function index()
     {
-        dd('1111');
-        $syncedDataApi = $dataSyncService->syncDataFromApi();
-        $saledetail = SaleDetail::all();
         $data = Inventory::all();
-        $syncedData = Reslot::all();
-        return view('contents/inventory', compact('data', 'saledetail', 'syncedData', 'syncedDataApi'));
-    }
 
+        return view('contents/saleReport', compact('data'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -45,15 +40,16 @@ class InventoryController extends Controller
      */
     public function store(Request $request)
     {
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\SaleReport  $saleReport
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(SaleReport $saleReport)
     {
         //
     }
@@ -61,10 +57,10 @@ class InventoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\SaleReport  $saleReport
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(SaleReport $saleReport)
     {
         //
     }
@@ -73,30 +69,21 @@ class InventoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\SaleReport  $saleReport
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Inventory $dataSyncService)
+    public function update(Request $request, SaleReport $saleReport)
     {
-        $syncedData = $dataSyncService->syncDataFromApi();
-        Inventory::updateInventory($request->input('inventory_id'), $request->input('to_refill'), $syncedData);
-        return redirect('inventory')->with('flash_message', 'Refill quantities updated successfully.');
+        //
     }
-
-
-
-
-
-
-
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\SaleReport  $saleReport
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(SaleReport $saleReport)
     {
         //
     }

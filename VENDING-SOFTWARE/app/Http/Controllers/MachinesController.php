@@ -41,10 +41,9 @@ class MachinesController extends Controller
         // dd($request->all());
         $validatedData = $request->validate([
             'm_name' => 'required|string',
-            // 'address' => 'required|string',
             'installation_date' => 'required|date',
             'expiry_date' => 'required|date',
-            'm_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'm_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:1024',
             'slot' => 'required|int',
             'province' => 'required|string',
             'districts' => 'required|string',
@@ -53,14 +52,17 @@ class MachinesController extends Controller
 
         ], [
             'm_name.required' => 'Please input Name',
-            // 'address.required' => 'Please input Address',
             'installation_date.required' => 'Please input Installation date',
             'expiry_date.required' => 'Please input Expired Date',
+            'm_image.required' => 'Please input an image',
+            'm_image.image' => 'The uploaded file must be an image',
+            'm_image.mimes' => 'The image must be a file of type: jpeg, png, jpg, gif',
+            'm_image.max' => 'The image must have a maximum size of 1MB', // Custom message for maximum size validation
             'slot.required' => 'Please input Slot',
-            // 'province.required' => 'Please select province',
-            // 'districts.required' => 'Please select districts',
-            // 'communes.required' => 'Please select communes',
-            // 'villages.required' => 'Please select villages',
+            'province.required' => 'Please select province',
+            'districts.required' => 'Please select districts',
+            'communes.required' => 'Please select communes',
+            'villages.required' => 'Please select villages',
 
         ]);
         if ($request->hasFile('m_image')) {

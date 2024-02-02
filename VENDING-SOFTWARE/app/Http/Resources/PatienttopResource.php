@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PatientResource extends JsonResource
+class PatienttopResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,8 +15,9 @@ class PatientResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'Type Gategories' => $this->type,
             'count same slot' => $this->total_count_same_slot,
+            'Product Name' => $this->p_name,
+            'Top Number' => $this->number_top,
         ];
     }
 }

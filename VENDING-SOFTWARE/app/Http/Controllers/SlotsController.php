@@ -19,6 +19,7 @@ class SlotsController extends Controller
      */
     public function index()
     {
+
         $product_ca = Product::all();
         $machin = Machines::all();
         $data = Slot::all();

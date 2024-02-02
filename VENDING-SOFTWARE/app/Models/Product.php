@@ -37,4 +37,9 @@ class Product extends Model
     {
         return $this->hasOne(ProducPrice::class);
     }
+    //scope
+    public function scopeTotalPrice($query)
+    {
+        return $query->where('m_name', '!=', 'NULL');
+    }
 }

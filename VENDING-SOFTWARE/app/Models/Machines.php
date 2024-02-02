@@ -32,11 +32,6 @@ class Machines extends Model
         'villages'
     ];
 
-    public function scopeByOwner($query)
-    {
-        return $query->where('m_name', '!=', 'NULL');
-    }
-
     //relationship
     public function slot()
     {

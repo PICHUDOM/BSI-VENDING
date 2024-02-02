@@ -1,22 +1,28 @@
-public function store(Request $request)
-{
-    $validatedData = $request->validate([
-        'price_in' => 'required|array',
-        'price_out' => 'required|array',
-        'product_id' => 'required|array',
-    ]);
+<!-- contents/reslot.blade.php -->
 
-    foreach ($validatedData['product_id'] as $key => $productId) {
-        if ($validatedData['price_in'][$key] !== null && $validatedData['price_out'][$key] !== null) {
-            ProducPrice::updateOrCreate(
-                ['product_id' => $productId],
-                [
-                    'price_in' => $validatedData['price_in'][$key],
-                    'price_out' => $validatedData['price_out'][$key],
-                ]
-            );
-        }
-    }
+@extends('layouts.app')
 
-    return redirect('products')->with('flash_message', 'Product Prices Updated Successfully');
-}
+@section('content')
+    <h1>Reslot Data</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Slot</th>
+                <th>Date</th>
+                <th>Address</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($reslotData as $reslot)
+                <tr>
+                    <td>{{ $reslot->slot }}</td>
+                    <td>{{ $reslot->date }}</td>
+                    <td>{{ $reslot->adddress }}</td>
+                    <td>{{ $reslot->location }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+@endsection

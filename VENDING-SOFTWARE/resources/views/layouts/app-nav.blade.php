@@ -45,11 +45,11 @@
                                 <a href="{{ url('/vending_machines') }}"><i class="fas fa-angle-right"></i> Machine</a>
                             </li>
                             <li>
-                                <a href="{{ url('/slot') }}"><i class="fas fa-plus"></i>Add Slot</a>
+                                <a href="{{ url('/slot') }}"><i class="fas fa-angle-right"></i>Add Slot</a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="{{ url('/location') }}"><i class="fas fa-angle-right"></i> Location</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </li>
                     <li>
@@ -86,9 +86,22 @@
                         <a href="{{ url('/inventory') }}"><i class="fas fa-lock"></i> Inventory </a>
                     </li>
                     <li>
+                        <a href="#sale" data-bs-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle no-caret-down">
+                            <i class="fas fas fa-file-signature"></i>
+                            Report <i class="fas fa-regular fa-note-sticky"></i>
+                        </a>
+                        <ul class="collapse list-unstyled" id="sale">
+                            <li>
+                                <a href="{{ url('/sale-out') }}"><i class="fas fa-angle-right"></i> Sale Out
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
                         <a href="#exp" data-bs-toggle="collapse" aria-expanded="false"
                             class="dropdown-toggle no-caret-down">
-                            <i class="fas fa-dollar-sign"></i> Expense <i class="fas fa-angle-right"></i>
+                            <i class="fas fas fa-hand-holding-usd"></i> Expense <i class="fas fa-angle-right"></i>
                         </a>
                         <ul class="collapse list-unstyled" id="exp">
                             <li>
@@ -119,13 +132,14 @@
                     </li> --}}
                     <li>
                         <a href="#set" data-bs-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle no-caret-down"><i class="fas fa-cog"></i>Settings <i class="fas fa-angle-right"></i></a>
+                            class="dropdown-toggle no-caret-down"><i class="fas fa-cog"></i>Settings <i
+                                class="fas fa-angle-right"></i></a>
                         <ul class="collapse list-unstyled" id="set">
                             <li>
                                 <a href="/company-info"><i class="fas fa-angle-right"></i> Company Information</a>
                             </li>
                             <li>
-                                <a href="/saledetail"><i class="fas fa-angle-right"></i> Price</a>
+                                <a href="#"><i class="fas fa-angle-right"></i> Price</a>
                             </li>
                             <li>
                                 <a href="{{ url('/user') }}"><i class="fas fa-user-friends"></i> Users</a>

@@ -18,6 +18,8 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\Pro_categoryController;
 use App\Http\Controllers\ProducPriceController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReslotController;
+use App\Http\Controllers\SaleReportController;
 use App\Models\ExpenseList;
 use App\Models\IncomeList;
 
@@ -111,12 +113,20 @@ Route::get('/company-info/destroy/{id}', [CompanyInfoController::class, 'destroy
 
 //user route
 Route::get('/user', [UserController::class, 'index']);
+//Inventory
 Route::get('/inventory', [InventoryController::class, 'index']);
+Route::post('/products-refill', [InventoryController::class, 'update']);
 
+//createOrupdate
 Route::post('/products-price', [ProducPriceController::class, 'store']);
 
+Route::get('/sale-out', [SaleReportController::class, 'index']);
 
 // Route::get('/welcome', [DistrictsController::class, 'index']);
 Route::get('/index', function () {
     return view('index');
 });
+
+
+
+Route::resource('welcome', ReslotController::class);

@@ -12,7 +12,7 @@ use App\Repositories\Provinces\ProvinceRepository;
 class ProvinceController extends Controller
 {
 
-    private $Repositoryprovince;
+    private $c;
 
     public function __construct(ProvinceRepository $Repositoryprovince)
     {

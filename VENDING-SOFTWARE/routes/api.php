@@ -38,6 +38,8 @@ Route::group(['middleware' => 'api'], function () {
     Route::get('/update', [PatientController::class, 'update']);
 
     Route::post('/patient/store', [PatientController::class, 'store']);
+    Route::get('/filter-data', [PatientController::class, 'filterData']);
+
     // Route::post('/machines/store', [MachinesController::class, 'store']);
     // Route::get('/test', [HomeController::class, 'patient']);
 });

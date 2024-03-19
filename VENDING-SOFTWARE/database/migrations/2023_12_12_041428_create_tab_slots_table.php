@@ -19,6 +19,8 @@ return new class extends Migration
             $table->integer('quantity')->nullable();
             $table->tinyInteger('id_ven_machines')->nullable();
             $table->string('status')->nullable();
+            $table->tinyInteger('product_id')->nullable();
+            $table->tinyInteger('pro_id')->nullable();
             $table->timestamps();
         });
     }

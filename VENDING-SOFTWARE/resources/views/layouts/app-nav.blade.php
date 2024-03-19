@@ -1,3 +1,6 @@
+@php
+    $admin = Auth::user()->role == 'admin';
+@endphp
 <!doctype html>
 <html lang="en">
 
@@ -32,72 +35,88 @@
                 </div>
 
                 <ul class=" list-unstyled components text-secondary">
-                    <li>
-                        <a href="{{ url('/dashboard') }}"><i class="fas fa-home "></i> Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="#uielementsmenu" data-bs-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle no-caret-down">
-                            <i class="fas fa-layer-group"></i> Vending Machine &emsp;<i class="fas fa-angle-right"></i>
-                        </a>
-                        <ul class="collapse list-unstyled" id="uielementsmenu">
-                            <li>
-                                <a href="{{ url('/vending_machines') }}"><i class="fas fa-angle-right"></i> Machine</a>
-                            </li>
-                            <li>
-                                <a href="{{ url('/slot') }}"><i class="fas fa-angle-right"></i>Add Slot</a>
-                            </li>
-                            {{-- <li>
+                    @if ($admin || Auth::user()->per_dash == 1)
+                        <li>
+                            <a href="{{ url('bsi/dashboard') }}"><i class="fas fa-home "></i> Dashboard</a>
+                        </li>
+                    @endif
+                    @if ($admin || Auth::user()->per_ven == 1)
+                        <li>
+                            <a href="#uielementsmenu" data-bs-toggle="collapse" aria-expanded="false"
+                                class="dropdown-toggle no-caret-down">
+                                <i class="fas fa-layer-group"></i> Vending Machine &emsp;<i
+                                    class="fas fa-angle-right"></i>
+                            </a>
+                            <ul class="collapse list-unstyled" id="uielementsmenu">
+                                <li>
+                                    <a href="{{ url('/vending_machines') }}"><i class="fas fa-angle-right"></i>
+                                        Machine</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/slot') }}"><i class="fas fa-angle-right"></i>Add Slot</a>
+                                </li>
+                                {{-- <li>
                                 <a href="{{ url('/location') }}"><i class="fas fa-angle-right"></i> Location</a>
                             </li> --}}
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#pro" data-bs-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle no-caret-down">
-                            <i class="fas fa-table"></i> Product <i class="fas fa-angle-right"></i>
-                        </a>
-                        <ul class="collapse list-unstyled" id="pro">
-                            <li>
-                                <a href="{{ url('/products') }}"><i class="fas fa-angle-right"></i> Product List</a>
-                            </li>
-                            <li>
-                                <a href="{{ url('/productCategory') }}"><i class="fas fa-angle-right"></i>
-                                    Categories</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#inc" data-bs-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle no-caret-down">
-                            <i class="fas fa-dollar-sign"></i> Income <i class="fas fa-angle-right"></i>
-                        </a>
-                        <ul class="collapse list-unstyled" id="inc">
-                            <li>
-                                <a href="{{ url('/incomelist') }}"><i class="fas fa-angle-right"></i> Income List</a>
-                            </li>
-                            <li>
-                                <a href="{{ url('/incomecategory') }}"><i class="fas fa-angle-right"></i>
-                                    Income Categories</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="{{ url('/inventory') }}"><i class="fas fa-lock"></i> Inventory </a>
-                    </li>
-                    <li>
-                        <a href="#sale" data-bs-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle no-caret-down">
-                            <i class="fas fas fa-file-signature"></i>
-                            Report <i class="fas fa-regular fa-note-sticky"></i>
-                        </a>
-                        <ul class="collapse list-unstyled" id="sale">
-                            <li>
-                                <a href="{{ url('/sale-out') }}"><i class="fas fa-angle-right"></i> Sale Out
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                            </ul>
+                        </li>
+                    @endif
+                    @if ($admin || Auth::user()->per_pro == 1)
+                        <li>
+                            <a href="#pro" data-bs-toggle="collapse" aria-expanded="false"
+                                class="dropdown-toggle no-caret-down">
+                                <i class="fas fa-table"></i> Product <i class="fas fa-angle-right"></i>
+                            </a>
+                            <ul class="collapse list-unstyled" id="pro">
+                                <li>
+                                    <a href="{{ url('/products') }}"><i class="fas fa-angle-right"></i> Product
+                                        List</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/productCategory') }}"><i class="fas fa-angle-right"></i>
+                                        Categories</a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
+                    @if ($admin || Auth::user()->per_in == 1)
+                        <li>
+                            <a href="#inc" data-bs-toggle="collapse" aria-expanded="false"
+                                class="dropdown-toggle no-caret-down">
+                                <i class="fas fa-dollar-sign"></i> Income <i class="fas fa-angle-right"></i>
+                            </a>
+                            <ul class="collapse list-unstyled" id="inc">
+                                <li>
+                                    <a href="{{ url('/incomelist') }}"><i class="fas fa-angle-right"></i> Income
+                                        List</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/incomecategory') }}"><i class="fas fa-angle-right"></i>
+                                        Income Categories</a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
+                    @if ($admin || Auth::user()->per_inv == 1)
+                        <li>
+                            <a href="{{ url('/inventory') }}"><i class="fas fa-lock"></i> Inventory </a>
+                        </li>
+                    @endif
+                    @if ($admin || Auth::user()->per_rep == 1)
+                        <li>
+                            <a href="#sale" data-bs-toggle="collapse" aria-expanded="false"
+                                class="dropdown-toggle no-caret-down">
+                                <i class="fas fas fa-file-signature"></i>
+                                Report <i class="fas fa-regular fa-note-sticky"></i>
+                            </a>
+                            <ul class="collapse list-unstyled" id="sale">
+                                <li>
+                                    <a href="{{ url('/sale-out') }}"><i class="fas fa-angle-right"></i> Sale Out
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
                     <li>
                         <a href="#exp" data-bs-toggle="collapse" aria-expanded="false"
                             class="dropdown-toggle no-caret-down">
@@ -114,38 +133,42 @@
                             </li>
                         </ul>
                     </li>
-
-                    {{-- <li>
-                        <a href="#authmenu" data-bs-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle no-caret-down"><i class="fas fa-user-shield"></i> Authentication</a>
-                        <ul class="collapse list-unstyled" id="authmenu">
-                            <li>
-                                <a href="login.html"><i class="fas fa-lock"></i> Login</a>
-                            </li>
-                            <li>
-                                <a href="signup.html"><i class="fas fa-user-plus"></i> Signup</a>
-                            </li>
-                            <li>
-                                <a href="forgot-password.html"><i class="fas fa-user-lock"></i> Forgot password</a>
-                            </li>
-                        </ul>
-                    </li> --}}
                     <li>
-                        <a href="#set" data-bs-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle no-caret-down"><i class="fas fa-cog"></i>Settings <i
-                                class="fas fa-angle-right"></i></a>
-                        <ul class="collapse list-unstyled" id="set">
+                        <a href="#supp" data-bs-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle no-caret-down">
+                            <i class="fas fa-user-friends"></i>Stock Information  <i class="fas fa-angle-right"></i>
+                        </a>
+                        <ul class="collapse list-unstyled" id="supp">
                             <li>
-                                <a href="/company-info"><i class="fas fa-angle-right"></i> Company Information</a>
+                                <a href="{{ url('/stock-list') }}"><i class="fas fa-angle-right"></i> Stock List</a>
                             </li>
                             <li>
-                                <a href="#"><i class="fas fa-angle-right"></i> Price</a>
+                                <a href="{{ url('/warehouse') }}"><i class="fas fa-angle-right"></i>Warehouse</a>
                             </li>
                             <li>
-                                <a href="{{ url('/user') }}"><i class="fas fa-user-friends"></i> Users</a>
+                                <a href="{{ url('/supp') }}"><i class="fas fa-angle-right"></i>Supplier</a>
                             </li>
                         </ul>
                     </li>
+                    @if ($admin)
+                        <li>
+                            <a href="#set" data-bs-toggle="collapse" aria-expanded="false"
+                                class="dropdown-toggle no-caret-down"><i class="fas fa-cog"></i>Settings <i
+                                    class="fas fa-angle-right"></i></a>
+                            <ul class="collapse list-unstyled" id="set">
+                                <li>
+                                    <a href="/company-info"><i class="fas fa-angle-right"></i> Company Information</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fas fa-angle-right"></i> Price</a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ url('/user') }}"><i class="fas fa-user-friends"></i> Users</a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
                 </ul>
             </nav>
             <div id="body" class="active">

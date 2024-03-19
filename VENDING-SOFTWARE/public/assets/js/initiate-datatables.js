@@ -4,7 +4,7 @@
     
     $('#dataTables-example').DataTable({
         responsive: true,
-        pageLength: 5,
+        pageLength: 6,
         lengthChange: false,
         searching: true,
         ordering: true

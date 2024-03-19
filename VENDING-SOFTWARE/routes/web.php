@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SlotsController;
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CompanyInfoController;
 use App\Http\Controllers\MachinesController;
 use App\Http\Controllers\DistrictsController;
@@ -20,6 +21,9 @@ use App\Http\Controllers\ProducPriceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReslotController;
 use App\Http\Controllers\SaleReportController;
+use App\Http\Controllers\StockController;
+use App\Http\Controllers\SuppController;
+use App\Http\Controllers\WarehouseController;
 use App\Models\ExpenseList;
 use App\Models\IncomeList;
 
@@ -34,14 +38,17 @@ use App\Models\IncomeList;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 //login route
 Auth::routes();
 Route::redirect('/', '/login');
-//Dashboard route
-Route::get('/dashboard', [HomeController::class, 'index']);
+Route::prefix('bsi')->group(function () {
+    //Dashboard route
+    Route::get('/dashboard', [HomeController::class, 'index']);
+});
+
 //Vending Machines  route
 Route::get('/vending_machines', [MachinesController::class, 'index']);
 Route::post('/create', [MachinesController::class, 'store']);
@@ -55,7 +62,7 @@ Route::get('show_machines/{id}', [MachinesController::class, 'show']);
 //Locoation route
 Route::get('/location', [AddressController::class, 'show']);
 Route::post('/adress/create', [AddressController::class, 'store']);
-
+//slot
 Route::get('/slot', [SlotsController::class, 'index']);
 Route::post('/slot/create', [SlotsController::class, 'store']);
 
@@ -113,14 +120,46 @@ Route::get('/company-info/destroy/{id}', [CompanyInfoController::class, 'destroy
 
 //user route
 Route::get('/user', [UserController::class, 'index']);
+Route::get('/user/create', [UserController::class, 'display']);
+Route::post('/create-user', [UserController::class, 'create']);
+Route::get('/edit_roleuser/{id}', [UserController::class, 'edit']);
+Route::patch('/update_roleuser/{id}', [UserController::class, 'update']); // Add this line for update
+
 //Inventory
 Route::get('/inventory', [InventoryController::class, 'index']);
+Route::get('/edit_inventoryproduct/{id}', [InventoryController::class, 'edit']);
+Route::patch('/update_inventoryproduct/{id}', [InventoryController::class, 'updateInventory']);
 Route::post('/products-refill', [InventoryController::class, 'update']);
+
 
 //createOrupdate
 Route::post('/products-price', [ProducPriceController::class, 'store']);
-
 Route::get('/sale-out', [SaleReportController::class, 'index']);
+
+//stock
+Route::get('/stock-list', [StockController::class, 'index']);
+Route::get('/create-stock', [StockController::class, 'create']);
+Route::post('/add-stock', [StockController::class, 'store']);
+Route::get('/edit_stock/{id}', [StockController::class, 'edit']);
+Route::patch('/update_stock/{id}', [StockController::class, 'update']); // Add this line for update
+
+//subplier
+Route::get('/supp', [SuppController::class, 'index']);
+Route::get('/create-sub', [SuppController::class, 'create']);
+Route::post('/add-supp', [SuppController::class, 'store']);
+Route::get('/edit-supp/{id}',[ SuppController::class, 'edit']);
+Route::patch('/update-supp/{id}', [SuppController::class, 'update']); // Add this line for update
+Route::get('supp/destroy/{id}', [SuppController::class, 'destroy']);
+
+
+//warehouse
+Route::get('/warehouse', [WarehouseController::class, 'index']);
+Route::get('/create-warehouse', [WarehouseController::class, 'create']);
+Route::post('/add-warehouse', [WarehouseController::class, 'store']);
+Route::get('/warehouse-list/{id}', [WarehouseController::class, 'show']);
+
+
+
 
 // Route::get('/welcome', [DistrictsController::class, 'index']);
 Route::get('/index', function () {

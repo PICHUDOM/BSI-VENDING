@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Pro_category;
 use App\Models\Product;
+use App\Repositories\Dashboard\HomeRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+
 
 class ProductController extends Controller
 {
@@ -15,13 +17,20 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $homeRepository;
+
+
+    public function __construct(HomeRepository $homeRepository)
+    {
+        $this->homeRepository = $homeRepository;
+    }
     public function index()
     {
-
+        // $resultsApi = $this->homeRepository->getSshLogin();
+        // dd($resultsApi);
         $categories = Pro_category::all();
         $data = Product::all();
         return view('contents/product', compact('data', 'categories'));
-
     }
 
     /**

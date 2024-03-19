@@ -21,6 +21,12 @@ return new class extends Migration
             $table->date('expiry_date')->nullable();
             $table->string('address')->nullable();
             $table->string('status')->nullable();
+            $table->integer('slot')->nullable();
+            $table->string('province')->nullable();
+            $table->string('districts')->nullable();
+            $table->string('communes')->nullable();
+            $table->string('villages')->nullable();
+            $table->string('m_image')->nullable();
             $table->timestamps();
         });
     }

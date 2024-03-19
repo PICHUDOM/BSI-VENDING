@@ -20,6 +20,13 @@ return new class extends Migration
             $table->integer('quantity_add')->nullable();
             $table->date('datetime')->nullable();
             $table->string('status')->nullable();
+            $table->integer('slot_num')->nullable();
+            $table->integer('inventory_id')->nullable();
+            $table->integer('slot')->nullable();
+            $table->date('date')->nullable();
+            $table->string('adddress')->nullable();
+            $table->string('location')->nullable();
+
             $table->timestamps();
         });
     }

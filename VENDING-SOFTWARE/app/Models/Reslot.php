@@ -17,7 +17,7 @@ class Reslot extends Model
         'date',
         'adddress',
         'location',
-        'id_slots',
+        'quantity_add',
         'inventory_id'
 
     ];

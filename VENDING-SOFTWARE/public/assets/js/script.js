@@ -20,18 +20,7 @@
     });
 })();
 //return to page button 
-function back() {
-    window.location.href = '/vending_machines';
-}
-function backPro() {
-    window.location.href = '/products';
-}
-function backProGa() {
-    window.location.href = '/productCategory';
-}
-function backincomCat() {
-    window.location.href = '/incomecategory';
-}
+
 
 function patient(url) {
     $.ajax({

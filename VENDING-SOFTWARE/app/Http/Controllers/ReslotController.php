@@ -17,35 +17,34 @@ class ReslotController extends Controller
      */
     public function index()
     {
-        $response = Http::get('https://retoolapi.dev/SII5b3/data', ['cache' => 0]);
+        try {
+            $response = Http::get('api.bsi-kh.com', ['cache' => 0]);
 
-        if ($response->successful()) {
-            $dataslot = $response->json();
-            // dd($dataslot);
-            foreach ($dataslot as $slot) {
-                Reslot::updateOrCreate(
-                    [
-                        'id_slots' => $slot['id'],
-                    ],
-                    [
-                        'slot' => $slot['slot'] ?? null,
-                        'date' => $slot['date'] ?? null,
-                        'adddress' => $slot['adddress'] ?? null,
-                        'location' => $slot['location'] ?? null,
-                    ]
-                );
+            if ($response->successful()) {
+                $dataslot = $response->json();
+                foreach ($dataslot as $slot) {
+                    Reslot::updateOrCreate(
+                        [
+                            'id_slots' => $slot['id'],
+                        ],
+                        [
+                            'slot' => isset($slot['slot']) ? $slot['slot'] : null,
+                            'date' => isset($slot['date']) ? $slot['date'] : null,
+                            'address' => isset($slot['adddress']) ? $slot['address'] : null,
+                            'location' => isset($slot['location']) ? $slot['location'] : null,
+                        ]
+                    );
+                }
+                return $dataslot; // Return the synchronized data
+            } else {
+                $statusCode = $response->status();
+                $errorMessage = $response->body();
+                throw new \Exception($errorMessage, $statusCode);
             }
-
-            $reslotData = Reslot::all();
-
-            return view('welcome', compact('reslotData'));
-        } else {
-            $statusCode = $response->status();
-            $errorMessage = $response->body();
-            return response()->json(['error' => $errorMessage], $statusCode);
+        } catch (\Exception $e) {
+            return [];
         }
     }
-
 
     /**
      * Show the form for creating a new resource.

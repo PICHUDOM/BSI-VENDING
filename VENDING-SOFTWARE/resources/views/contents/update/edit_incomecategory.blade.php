@@ -35,8 +35,8 @@
                             </div>
                             <br>
                             <div class="mb-3 text-end">
-                                <button class="btn btn-danger" data-bs-dismiss="modal" onclick="backincomCat()"
-                                    type="button"><i class="fa fa-chevron-left"></i> Return</button>
+                                <button class="btn btn-danger" onclick="window.history.back()" type="button"><i class="fa fa-chevron-left"></i> Return</button>
+
                                 <button class="btn btn-success" type="submit"><i class="fas fa-check"></i> Save</button>
                             </div>
                         </div>

@@ -8,6 +8,25 @@
                     <h2 class="page-title">Dashboard</h2>
                     {{-- <input type="text" name="date" class="form-control" placeholder="Select Date" > --}}
                 </div>
+                <form id="filterForm">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="start_date" class="form-label">Start Date:</label>
+                                <input type="date" class="form-control" id="start_date" name="start_date">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="end_date" class="form-label">End Date:</label>
+                                <input type="date" class="form-control" id="end_date" name="end_date">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-primary mt-4">Filter</button>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="row">
                 <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
@@ -50,11 +69,13 @@
                                         <span class="number">
                                             @php
                                                 $totalPriceSum = 0;
-
-                                                foreach ($resultsApi as $value) {
+                                                $todayDate = date('2024-02-07'); // Get today's date
+                                            foreach ($resultsApi as $value) {
+                                                if ($value->date >= $todayDate) {
                                                     $totalPriceSum += $value->total_price;
                                                 }
-                                                echo number_format($totalPriceSum, 2) . ' (៛)';
+                                            }
+                                            echo number_format($totalPriceSum, 2) . ' (៛)';
                                             @endphp
 
                                         </span>
@@ -92,7 +113,7 @@
                             <div class="footer">
                                 <hr />
                                 <div class="stats">
-                                    <i class="fas fa-stopwatch"></i> For this Month
+                                    <i class="fas fa-stopwatch"></i> For this week
                                 </div>
                             </div>
                         </div>
@@ -111,7 +132,7 @@
                                     <div class="detail">
                                         <p class="detail-subtitle">Sales Transection
                                         </p>
-                                        <span class="number">{{ $getTransection }}</span>
+                                        <span class="number" id="transectionCount">{{ $getTransection }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -178,13 +199,15 @@
                                     <tbody class="img-size">
                                         @php
                                             $slotCounts = [];
+                                            $dateThreshold = '2024-02-07'; // Threshold date
                                             foreach ($dataslot as $slot) {
-                                                $slotNumber = $slot['slot'] ?? null;
-                                                if ($slotNumber !== null) {
+                                                if (isset($slot['slot']) && isset($slot['date']) && strtotime($slot['date']) > strtotime($dateThreshold)) {
+                                                    $slotNumber = $slot['slot'];
                                                     $slotCounts[$slotNumber] = isset($slotCounts[$slotNumber]) ? $slotCounts[$slotNumber] + 1 : 1;
                                                 }
                                             }
                                         @endphp
+
                                         @foreach ($data as $data)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
@@ -199,6 +222,11 @@
                                                         $uniqueSlot = $data->slot_num;
                                                         $countAll = $slotCounts[$uniqueSlot] ?? 0;
                                                         $quantity = $data->QTY - $countAll;
+                                                        // if ($sortDate >= $todayDate) {
+                                                        //     $quantity = $item->QTY - $countAll;
+                                                        // } else {
+                                                        //     $quantity = $item->QTY; // or any other default value you want
+                                                        // }
                                                     @endphp
                                                     @if ($quantity != $data->QTY)
                                                         {{ $quantity + ($data->to_refill ?? 0) }}
@@ -232,7 +260,27 @@
             </div>
         </div>
     </div>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('filterForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent form submission
+                var startDate = document.getElementById('start_date').value;
+                var endDate = document.getElementById('end_date').value;
+                fetch(`/api/filter-data?start_date=${startDate}&end_date=${endDate}`)
+                    .then(response => response.json()) // Parse response as JSON
+                    .then(data => {
+                        if (data && data.data && Array.isArray(data.data)) {
+                            document.getElementById('transectionCount').textContent = data.data.length;
+                        } else {
+                            console.log('Invalid response format');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            });
+        });
+    </script>
     <script src="{{ asset('assets/vendor/chartsjs/Chart.min.js') }}"></script>
     <script src="{{ asset('assets/js/dashboard-charts.js') }}"></script>
 @endsection

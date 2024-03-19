@@ -20,6 +20,8 @@ return new class extends Migration
             $table->float('price_out')->nullable();
             $table->tinyInteger('id_pro_season')->nullable();
             $table->string('status')->nullable();
+            $table->tinyInteger('product_id')->nullable();
+
             $table->timestamps();
         });
     }

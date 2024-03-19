@@ -20,6 +20,10 @@ return new class extends Migration
             $table->string('contact')->nullable();
             $table->string('address')->nullable();
             $table->tinyText('status')->nullable();
+            $table->string('province')->nullable();
+            $table->string('districts')->nullable();
+            $table->string('communes')->nullable();
+            $table->string('villages')->nullable();
             $table->timestamps();
         });
     }

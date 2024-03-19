@@ -13,11 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('tab_product_slot', function (Blueprint $table) {
-            $table->integer('slot')->nullable();
-            $table->date('date')->nullable();
-            $table->string('adddress')->nullable();
+        Schema::create('tab_warehouse', function (Blueprint $table) {
+            $table->id();
+            $table->string('warehouse_name')->nullable();
             $table->string('location')->nullable();
+            $table->string('province')->nullable();
+            $table->string('districts')->nullable();
+            $table->string('communes')->nullable();
+            $table->string('villages')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -28,8 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('tab_product_slot', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('tab_warehouse');
     }
 };

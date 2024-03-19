@@ -13,11 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('tab_company_information', function (Blueprint $table) {
+        Schema::create('tab_supp', function (Blueprint $table) {
+            $table->id();
+            $table->string('supp_name')->nullable();
+            $table->string('location')->nullable();
             $table->string('province')->nullable();
             $table->string('districts')->nullable();
             $table->string('communes')->nullable();
             $table->string('villages')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -28,8 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('tab_company_information', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('tab_supp');
     }
 };

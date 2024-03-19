@@ -1,4 +1,3 @@
-var trafficchart = document.getElementById("trafficflow");
 var saleschart = document.getElementById("sales");
 var myChart2 = new Chart(saleschart, {
     type: "bar",
@@ -38,6 +37,26 @@ var myChart2 = new Chart(saleschart, {
                 borderColor: "#6da252",
                 borderWidth: 1,
             },
+            {
+                label: "Expense",
+                data: [
+                    "200",
+                    "220",
+                    "250",
+                    "300",
+                    "280",
+                    "300",
+                    "320",
+                    "350",
+                    "300",
+                    "380",
+                    "400",
+                    "420",
+                ],
+                backgroundColor: "rgba(244, 67, 54, 0.5)",
+                borderColor: "#f44336",
+                borderWidth: 1,
+            },
         ],
     },
     options: {
@@ -47,14 +66,19 @@ var myChart2 = new Chart(saleschart, {
         },
         plugins: {
             legend: {
-                display: false,
+                display: true,
                 position: "top",
             },
             title: {
                 display: true,
-                text: "Number of Sales",
+                text: "Income vs Expense",
                 position: "left",
             },
+        },
+        scales: {
+            y: {
+                beginAtZero: true
+            }
         },
         aspectRatio: 1,
         maintainAspectRatio: false,
@@ -122,7 +146,7 @@ fetch("/api/patient")
     });
 //Top product
 function fetchData() {
-    fetch("http://127.0.0.1:8000/api/update")
+    fetch("/api/update")
         .then((response) => response.json())
         .then((data) => {
             const sortedData = data.data.sort(

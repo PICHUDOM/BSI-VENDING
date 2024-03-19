@@ -20,6 +20,8 @@ return new class extends Migration
             $table->date('expiry_date')->nullable();
             $table->text('specific_code')->nullable();
             $table->string('status')->nullable();
+            $table->string('p_image')->nullable();
+
             $table->timestamps();
         });
     }

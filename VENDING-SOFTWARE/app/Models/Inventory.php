@@ -26,7 +26,8 @@ class Inventory extends Model
         'slot',
         'adddress',
         'location',
-        'to_refill'
+        'to_refill',
+        'ware_id'
 
     ];
     // relationship
@@ -46,19 +47,22 @@ class Inventory extends Model
     {
         return $this->belongsTo(Reslot::class, 'slot', 'slot_num');
     }
+    // public function warehouse()
+    // {
+    //     return $this->belongsTo(Warehouse::class, 'ware_id');
+    // }
 
     // fucntion 
     public function syncDataFromApi()
     {
         try {
-            $response = Http::get('https://retoolapi.dev/SII5b3/data', ['cache' => 0]);
-
+            $response = Http::get('api.bsi-kh.com', ['cache' => 0]);
             if ($response->successful()) {
                 $dataslot = $response->json();
                 foreach ($dataslot as $slot) {
                     Reslot::updateOrCreate(
                         [
-                            'id_slots' => $slot['id'],
+                            'quantity_add' => $slot['id'],
                         ],
                         [
                             'slot' => isset($slot['slot']) ? $slot['slot'] : null,
@@ -85,8 +89,9 @@ class Inventory extends Model
 
             $toRefill = isset($refillQuantities[$index]) ? $refillQuantities[$index] : null;
 
-            if ($inventoryItem && $toRefill !== null && $inventoryItem->to_refill != $toRefill) {
-                $inventoryItem->to_refill = $toRefill;
+            if ($inventoryItem && $toRefill !== null) {
+                $newToRefill = $inventoryItem->to_refill + $toRefill;
+                $inventoryItem->to_refill = $newToRefill;
                 $inventoryItem->save();
             }
         }

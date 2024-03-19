@@ -4,52 +4,20 @@ namespace App\Repositories\Patients;
 
 use App\Models\Patient;
 use App\Models\Product;
+use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\DB;
 
 class PatientRepository
 {
     public function getData()
     {
-        return  DB::select(" SELECT
-            SUM(count_same_slot) AS total_count_same_slot,
-            type
-        FROM (
-            SELECT
-                COUNT(*) AS count_same_slot,
-                tab_product_categories.type
-            FROM
-                tab_pro_slot
-            INNER JOIN
-                tab_product_slot ON tab_pro_slot.slot_num = tab_product_slot.slot
-            INNER JOIN
-                tab_products ON tab_pro_slot.pro_id = tab_products.id
-            INNER JOIN
-                tab_product_categories ON tab_products.id_pro_categories = tab_product_categories.id
-            GROUP BY
-                tab_pro_slot.slot_num,
-                tab_product_slot.slot,
-                tab_products.id,
-                tab_pro_slot.pro_id,
-                tab_product_categories.type
-        ) AS subquery
-        GROUP BY
-            type;
-    ");
-    }
-
-    public function getDatatop()
-    {
-        return DB::select(" SELECT
-            total_count_same_slot,
-            p_name
-        FROM (
-            SELECT
+        return DB::select("SELECT
                 SUM(count_same_slot) AS total_count_same_slot,
-                p_name
+                type
             FROM (
                 SELECT
                     COUNT(*) AS count_same_slot,
-                    tab_products.p_name
+                    tab_product_categories.type
                 FROM
                     tab_pro_slot
                 INNER JOIN
@@ -58,21 +26,59 @@ class PatientRepository
                     tab_products ON tab_pro_slot.pro_id = tab_products.id
                 INNER JOIN
                     tab_product_categories ON tab_products.id_pro_categories = tab_product_categories.id
+                WHERE
+                    tab_product_slot.date > '2024-02-07'
                 GROUP BY
                     tab_pro_slot.slot_num,
                     tab_product_slot.slot,
                     tab_products.id,
                     tab_pro_slot.pro_id,
-                    tab_products.p_name
+                    tab_product_categories.type
             ) AS subquery
             GROUP BY
+                type;
+        ");
+    }
+
+
+    public function getDatatop()
+    {
+        return DB::select("SELECT
+                total_count_same_slot,
                 p_name
-        ) AS result
-        ORDER BY
-            total_count_same_slot DESC
-        LIMIT
-            5
-    ");
+            FROM (
+                SELECT
+                    SUM(count_same_slot) AS total_count_same_slot,
+                    p_name
+                FROM (
+                    SELECT
+                        COUNT(*) AS count_same_slot,
+                        tab_products.p_name
+                    FROM
+                        tab_pro_slot
+                    INNER JOIN
+                        tab_product_slot ON tab_pro_slot.slot_num = tab_product_slot.slot
+                    INNER JOIN
+                        tab_products ON tab_pro_slot.pro_id = tab_products.id
+                    INNER JOIN
+                        tab_product_categories ON tab_products.id_pro_categories = tab_product_categories.id
+                    WHERE
+                        tab_product_slot.date > '2024-02-07'
+                    GROUP BY
+                        tab_pro_slot.slot_num,
+                        tab_product_slot.slot,
+                        tab_products.id,
+                        tab_pro_slot.pro_id,
+                        tab_products.p_name
+                ) AS subquery
+                GROUP BY
+                    p_name
+            ) AS result
+            ORDER BY
+                total_count_same_slot DESC
+            LIMIT
+                5
+        ");
     }
     public function gettopNum()
     {

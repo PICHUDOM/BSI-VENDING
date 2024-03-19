@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Inventory;
 use App\Models\SaleReport;
 use App\Models\Slot;
+use App\Repositories\Patients\PatientRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SaleReportController extends Controller
 {
@@ -15,6 +17,11 @@ class SaleReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    private $RepositoryPatient;
+    public function __construct(PatientRepository $RepositoryPatient)
+    {
+        $this->PatientRepository = $RepositoryPatient;
+    }
     public function index()
     {
         $data = Inventory::all();

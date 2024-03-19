@@ -19,6 +19,16 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->integer('per_ven')->nullable();
+            $table->integer('per_pro')->nullable();
+            $table->integer('per_in')->nullable();
+            $table->integer('per_inv')->nullable();
+            $table->integer('per_rep')->nullable();
+            $table->integer('per_user')->nullable();
+            $table->integer('per_dash')->nullable();
+            $table->binary('prof_imag')->nullable();
+
+
             $table->rememberToken();
             $table->timestamps();
         });

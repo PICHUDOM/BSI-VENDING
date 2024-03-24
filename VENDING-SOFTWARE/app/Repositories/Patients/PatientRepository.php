@@ -27,7 +27,7 @@ class PatientRepository
                 INNER JOIN
                     tab_product_categories ON tab_products.id_pro_categories = tab_product_categories.id
                 WHERE
-                    tab_product_slot.date > '2024-02-07'
+                    tab_product_slot.date > '2024-03-23'
                 GROUP BY
                     tab_pro_slot.slot_num,
                     tab_product_slot.slot,
@@ -63,7 +63,7 @@ class PatientRepository
                     INNER JOIN
                         tab_product_categories ON tab_products.id_pro_categories = tab_product_categories.id
                     WHERE
-                        tab_product_slot.date > '2024-02-07'
+                        tab_product_slot.date > '2024-03-23'
                     GROUP BY
                         tab_pro_slot.slot_num,
                         tab_product_slot.slot,

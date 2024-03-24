@@ -69,7 +69,7 @@
                                         <span class="number">
                                             @php
                                                 $totalPriceSum = 0;
-                                                $todayDate = date('2024-02-07'); // Get today's date
+                                                $todayDate = date('2024-03-23'); // Get today's date
                                             foreach ($resultsApi as $value) {
                                                 if ($value->date >= $todayDate) {
                                                     $totalPriceSum += $value->total_price;
@@ -199,7 +199,7 @@
                                     <tbody class="img-size">
                                         @php
                                             $slotCounts = [];
-                                            $dateThreshold = '2024-02-07'; // Threshold date
+                                            $dateThreshold = '2024-03-23'; // Threshold date
                                             foreach ($dataslot as $slot) {
                                                 if (isset($slot['slot']) && isset($slot['date']) && strtotime($slot['date']) > strtotime($dateThreshold)) {
                                                     $slotNumber = $slot['slot'];

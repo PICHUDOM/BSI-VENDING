@@ -26,49 +26,37 @@
                                                 <th>Total</th>
                                                 <th>Available</th>
                                                 <th>To Refill</th>
-                                                <th>Warehouse</th>
+                                                {{-- <th>Warehouse</th> --}}
                                                 <th>Created At</th>
                                                 <th>Status</th>
-                                                <th>Action</th>
+                                                {{-- <th>Action</th> --}}
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($data as $item)
-                                                @php
-                                                    $slotCounts = [];
-                                                    $dateThreshold = '2024-02-07'; // Threshold date
-
-                                                    foreach ($syncedData as $slot) {
-                                                        $slotDate = date('Y-m-d', strtotime($slot['date']));
-                                                        $sortDatedate = date('Y-m-d', strtotime($item->updated_at));
-
-                                                        if (
-                                                            isset($slot['slot']) &&
-                                                            $slotDate < $dateThreshold &&
-                                                            $sortDatedate < $slotDate
-                                                        ) {
-                                                            $slotNumber = $slot['slot'];
-                                                            $slotCounts[$slotNumber] = isset($slotCounts[$slotNumber])
-                                                                ? $slotCounts[$slotNumber] + 1
-                                                                : 1;
-                                                        }
+                                            @php
+                                                $slotCounts = [];
+                                                foreach ($syncedData as $slot) {
+                                                    if (isset($slot['slot'])) {
+                                                        $slotNumber = $slot['slot'];
+                                                        $slotCounts[$slotNumber] = isset($slotCounts[$slotNumber])
+                                                            ? $slotCounts[$slotNumber] + 1
+                                                            : 1;
                                                     }
-                                                @endphp
+                                                }
+                                            @endphp
+                                            @foreach ($data as $item)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $item->product->p_name }}</td>
                                                     <td>{{ $item->QTY }}</td>
                                                     <td>
-
                                                         @php
                                                             $uniqueSlot = $item->slot_num;
                                                             $countAll = $slotCounts[$uniqueSlot] ?? 0;
                                                             $quantity = $item->QTY - $countAll;
-                                                            $todayDate = date('2024-02-08');
-                                                            $sortDate = date('Y-m-d', strtotime($item->created_at));
                                                         @endphp
-                                                        @if ($quantity != $item->QTY && $item->to_refill != null)
-                                                            {{ $item->to_refill - $countAll ?? 0 }}
+                                                        @if ($quantity != $item->QTY)
+                                                            {{ $quantity + ($item->to_refill ?? 0) }}
                                                         @else
                                                             @php
                                                                 $matchingSlot = null;
@@ -83,10 +71,9 @@
                                                                 }
                                                             @endphp
                                                             @if ($matchingSlot && $item->updated_at > $matchingSlot['date'])
-                                                                {{-- {{ $quantity }} --}}
-                                                                {{ $item->to_refill - $countAll ?? 0 }}
+                                                                {{ $quantity }}
                                                             @else
-                                                                {{ $item->to_refill ?? 0 }}
+                                                                {{ $item->QTY }}
                                                             @endif
                                                         @endif
                                                     </td>
@@ -95,46 +82,15 @@
                                                             <input type="hidden" name="inventory_id[]"
                                                                 value="{{ $item->id }}">
                                                             <div class="input-group">
-                                                                <span class="input-group-text">
-                                                                    @if ($item->to_refill != null)
-                                                                        {{ $item->to_refill - ($item->to_refill - $countAll) ?? 0 }}
-                                                                    @else
-                                                                        {{ $item->QTY }}
-                                                                    @endif
-                                                                </span>
+                                                                <span
+                                                                    class="input-group-text">{{ $item->QTY - ($quantity + ($item->to_refill ?? 0)) }}</span>
                                                                 <input type="number" name="to_refill[]" value=""
                                                                     class="form-control">
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td>
-                                                        <div class="col-md-6">
-                                                            <div class="mb-2">
-                                                                <select id="ware_id" name="ware_id[]" autocomplete="off" class="border-style-select">
-                                                                    <option value="" selected></option>
-                                                                    @php
-                                                                        $filteredWareData = $wareData->where('pro_id', $item->pro_id);
-                                                                    @endphp
-                                                                    @foreach ($filteredWareData as $result)
-                                                                        <option value="{{ $result->ware_id }}">
-                                                                            {{$result->warehouse_name }}
-                                                                        </option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>{{ date('Y-m-d', strtotime($item->created_at)) }}</td>
-                                                    <td
-                                                        class="{{ $item->QTY - ($quantity + ($item->to_refill ?? 0)) > 5 ? 'text-danger' : 'text-success' }}">
-                                                        {{ $item->QTY - ($quantity + ($item->to_refill ?? 0)) < 5 ? 'Active' : 'Active' }}
-                                                    </td>
-
-                                                    <td>
-                                                        <a href="{{ url('edit_inventoryproduct/' . $item->id) }}"
-                                                            class="btn btn-outline-info btn-rounded"><i
-                                                                class="fas fa-pen"></i></a>
-                                                    </td>
+                                                    <td>{{ $item->created_at }}</td>
+                                                    <td>active</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

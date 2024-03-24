@@ -110,11 +110,14 @@
                                                     <td>
                                                         <div class="col-md-6">
                                                             <div class="mb-2">
-                                                                <select id="ware_id" name="ware_id" autocomplete="off" class="border-style-select">
+                                                                <select id="ware_id" name="ware_id[]" autocomplete="off" class="border-style-select">
                                                                     <option value="" selected></option>
-                                                                    @foreach ($wareData as $ware)
-                                                                        <option value="{{ $ware->ware_id }}" data-slots="">
-                                                                            {{ $ware->warehouse->warehouse_name }}
+                                                                    @php
+                                                                        $filteredWareData = $wareData->where('pro_id', $item->pro_id);
+                                                                    @endphp
+                                                                    @foreach ($filteredWareData as $result)
+                                                                        <option value="{{ $result->ware_id }}">
+                                                                            {{$result->warehouse_name }}
                                                                         </option>
                                                                     @endforeach
                                                                 </select>

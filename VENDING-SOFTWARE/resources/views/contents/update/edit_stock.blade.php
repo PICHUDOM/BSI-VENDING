@@ -17,13 +17,13 @@
                                                     <div class="col-md-12">
                                                         <label for="province"
                                                             class="block text-sm font-medium leading-6 text-gray-900 fw-medium">From
-                                                            : {{  $data->supp->supp_name }}</label>
+                                                            : {{ $data->supp->supp_name }}</label>
                                                     </div>
                                                 </li>
                                                 <li class="row align-items-center">
                                                     <div class="col-md-12">
                                                         <p class="m-0"><span class="fw-medium">To Location :
-                                                                {{ $data->warehouse->warehouse_name}}</span></p>
+                                                                {{ $data->warehouse->warehouse_name }}</span></p>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -34,12 +34,14 @@
                                             <ul class="list-unstyled m-0">
                                                 <li class="row align-items-center">
                                                     <div class="col-md-12">
-                                                        <p class="m-0"><span class="fw-medium">Received date : {{ $data->received_date }}</span></p>
+                                                        <p class="m-0"><span class="fw-medium">Received date :
+                                                                {{ $data->received_date }}</span></p>
                                                     </div>
                                                 </li>
                                                 <li class="row align-items-center">
                                                     <div class="col-md-12">
-                                                        <p class="m-0"><span class="fw-medium">Source : {{ $data->source }}</span></p>
+                                                        <p class="m-0"><span class="fw-medium">Source :
+                                                                {{ $data->source }}</span></p>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -58,54 +60,62 @@
                                             </thead>
                                             <tbody>
                                                 @php
-                                                $qtyArray = json_decode($data->qty, true);
-                                                $priceArray = json_decode($data->price, true);
-                                                $subtotalArray = json_decode($data->subtotal, true);
-                                                $uomArray = json_decode($data->uom, true);
-                                                $proIdArray = json_decode($data->pro_id, true);
+                                                    $qtyArray = json_decode($data->qty, true);
+                                                    $priceArray = json_decode($data->price, true);
+                                                    $subtotalArray = json_decode($data->subtotal, true);
+                                                    $uomArray = json_decode($data->uom, true);
+                                                    $proIdArray = json_decode($data->pro_id, true);
                                                 @endphp
-                                                
-                                                @for ($i = 0; $i < count($qtyArray); $i++)
-                                                <tr>
-                                                    <th>
-                                                        <div class="">
-                                                            <select name="pro_id[]" autocomplete="off" class="border-style-select mb-2 col-md-8">
-                                                                <option value="{{ $proIdArray[$i] ?? '' }}" selected>
-                                                                    {{ App\Models\Product::find($proIdArray[$i])->p_name ?? '' }}
-                                                                </option>
-                                                                @foreach ($pro_data as $pro_data1)
-                                                                <option value="{{ $pro_data1->id }}" data-slots="">{{ $pro_data1->p_name }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </th>
-                                                    <td>
-                                                        <div class="mb-2 col-md-8">
-                                                            <input type="text" name="qty[]" value="{{ $qtyArray[$i] ?? '' }}" class="form-control">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="mb-2 col-md-8">
-                                                            <input type="text" name="price[]" value="{{ $priceArray[$i] ?? '' }}" class="form-control">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="mb-2 col-md-8">
-                                                            <input type="text" name="uom[]" value="{{ $uomArray[$i] ?? '' }}" class="form-control">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="mb-2 col-md-8">
-                                                            <input type="text" name="subtotal[]" value="{{ $subtotalArray[$i] ?? '' }}" class="form-control">
-                                                        </div>
-                                                    </td>
 
-                                                </tr>
+                                                @for ($i = 0; $i < count($qtyArray); $i++)
+                                                    <tr>
+                                                        <th>
+                                                            <div class="">
+                                                                <select name="pro_id[]" autocomplete="off"
+                                                                    class="border-style-select mb-2 col-md-8">
+                                                                    <option value="{{ $proIdArray[$i] ?? '' }}" selected>
+                                                                        {{ App\Models\Product::find($proIdArray[$i])->p_name ?? '' }}
+                                                                    </option>
+                                                                    @foreach ($pro_data as $pro_data1)
+                                                                        <option value="{{ $pro_data1->id }}" data-slots="">
+                                                                            {{ $pro_data1->p_name }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </th>
+                                                        <td>
+                                                            <div class="mb-2 col-md-8">
+                                                                <input type="text" name="qty[]"
+                                                                    value="{{ $qtyArray[$i] ?? '' }}" class="form-control">
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="mb-2 col-md-8">
+                                                                <input type="text" name="price[]"
+                                                                    value="{{ $priceArray[$i] ?? '' }}"
+                                                                    class="form-control">
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="mb-2 col-md-8">
+                                                                <input type="text" name="uom[]"
+                                                                    value="{{ $uomArray[$i] ?? '' }}" class="form-control">
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="mb-2 col-md-8">
+                                                                <input type="text" name="subtotal[]"
+                                                                    value="{{ $subtotalArray[$i] ?? '' }}"
+                                                                    class="form-control">
+                                                            </div>
+                                                        </td>
+
+                                                    </tr>
                                                 @endfor
                                             </tbody>
-                                            
-                                            
-                                            
+
+
+
                                         </table>
                                         <button type="button" class="btn btn-primary" id="addMore">Add More</button>
                                     </div>
@@ -160,9 +170,10 @@
             cell3.innerHTML =
                 `<div class="mb-2 col-md-8"><input type="text" name="price[]" value="" class="form-control"></div>`;
             cell4.innerHTML =
-                `<div class="mb-2 col-md-8"><input type="text" name="subtotal[]" value="" class="form-control"></div>`;
-            cell5.innerHTML =
                 `<div class="mb-2 col-md-8"><input type="text" name="uom[]" value="" class="form-control"></div>`;
+            cell5.innerHTML =
+                `<div class="mb-2 col-md-8"><input type="text" name="subtotal[]" value="" class="form-control"></div>`;
+
         });
     </script>
 @endsection

@@ -13,6 +13,7 @@ use App\Models\Stock;
 use App\Models\Warehouse;
 use App\Repositories\Dashboard\HomeRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
 class InventoryController extends Controller
@@ -31,18 +32,17 @@ class InventoryController extends Controller
         $saledetail = SaleDetail::all();
         $data = Inventory::all();
         $syncedData = Reslot::all();
-        $wareData = Stock::with('warehouse')->get();
-        // $proIds = $data->pluck('pro_id')->unique()->toArray(); // Get unique product IDs from inventory
+        $results = DB::table('tab_stock')
+            ->select('tab_stock.pro_id', 'tab_pro_slot.pro_id', 'tab_stock.ware_id', 'tab_warehouse.warehouse_name')
+            ->join('tab_pro_slot', function ($join) {
+                $join->on(DB::raw("JSON_SEARCH(tab_stock.pro_id, 'one', tab_pro_slot.pro_id)"), 'IS', DB::raw('NOT NULL'));
+            })
+            ->join('tab_warehouse', 'tab_stock.ware_id', '=', 'tab_warehouse.id')
+            ->distinct()
+            ->get();
 
-        // $wareData = Stock::where(function ($query) use ($proIds) {
-        //     foreach ($proIds as $proId) {
-        //         $query->orWhereJsonContains('pro_id', (string) $proId);
-        //     }
-        // })
-        //     ->with('warehouse')
-        //     ->get();
-        // dd($wareData);
-        return view('contents/inventory', compact('data', 'saledetail', 'syncedData', 'syncedDataApi', 'wareData'));
+        $wareData = $results;
+        return view('contents/inventory', compact('data', 'saledetail', 'syncedData', 'syncedDataApi', 'wareData', 'results'));
     }
 
 
@@ -102,13 +102,15 @@ class InventoryController extends Controller
     public function update(Request $request, Inventory $dataSyncService)
     {
         $syncedData = $dataSyncService->syncDataFromApi();
-        Inventory::updateInventory($request->input('inventory_id'), $request->input('to_refill'), $syncedData);
+        Inventory::updateInventory($request->input('inventory_id'), $request->input('to_refill'), $request->input('ware_id'), $syncedData);
         return redirect('inventory')->with('flash_message', 'Refill quantities updated successfully.');
     }
+
     public function updateInventory(Request $request, $id)
     {
         $validatedData = $request->validate([
             'pro_id' => 'required|int',
+
 
         ], [
             'pro_id.required' => 'Please select Product Name',
@@ -116,13 +118,14 @@ class InventoryController extends Controller
 
         // Find the product by ID
         $product = Inventory::find($id);
-        // $product->specific_code = $validatedData['specific_code'];
+        $product->specific_code = $validatedData['ware_id'];
         $product->pro_id = $validatedData['pro_id'];
 
         $product->update();
 
         return redirect('/inventory')->with('flash_message', 'Incomelist Updated Successfully');
     }
+
 
 
 

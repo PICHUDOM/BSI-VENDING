@@ -53,6 +53,7 @@ class Inventory extends Model
     // }
 
     // fucntion 
+
     public function syncDataFromApi()
     {
         try {
@@ -82,16 +83,18 @@ class Inventory extends Model
             return [];
         }
     }
-    public static function updateInventory($productIds, $refillQuantities, $syncedData)
+    public static function updateInventory($productIds, $refillQuantities, $wareIds, $syncedData)
     {
         foreach ($productIds as $index => $productId) {
             $inventoryItem = Inventory::find($productId);
 
             $toRefill = isset($refillQuantities[$index]) ? $refillQuantities[$index] : null;
+            $wareId = isset($wareIds[$index]) ? $wareIds[$index] : null;
 
             if ($inventoryItem && $toRefill !== null) {
                 $newToRefill = $inventoryItem->to_refill + $toRefill;
                 $inventoryItem->to_refill = $newToRefill;
+                $inventoryItem->ware_id = $wareId; // Update ware_id
                 $inventoryItem->save();
             }
         }

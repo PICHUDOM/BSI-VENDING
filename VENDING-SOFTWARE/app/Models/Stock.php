@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\Product;
+use App\Models\Supp;
+use App\Models\Warehouse;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Stock extends Model
 {
@@ -23,7 +27,8 @@ class Stock extends Model
         'received_date',
         'source',
         'ware_id',
-        // 'totalqty',
+        'totalqty',
+        'totalqty2'
 
 
     ];

@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Stock;
+use App\Models\Supp;
 use App\Models\Warehouse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 
 class WarehouseController extends Controller
 {
@@ -68,16 +72,24 @@ class WarehouseController extends Controller
      */
     public function show($id)
     {
-    // Assuming $id is the warehouse ID from the URL
-    // Retrieve the last record ID from the URL
-    $lastId = (int) $id;
+        $lastId = (int) $id;
 
-    // Query the database to get only the records where 'wear_id' equals the last ID
-    $data = Stock::where('ware_id', $lastId)->get();
+        // Fetch stock data for the warehouse
+        $data = Stock::where('ware_id', $lastId)->get();
+        // Fetch supplier data
+        $supp_data = Supp::all();
 
-    // Pass the filtered data to the view
-    return view('contents/warehouse-list', ['data' => $data]);
+        // Fetch product data
+        $pro_data = Product::all();
+
+        // Return the data to the view
+        return view('contents.warehouse-list', [
+            'data' => $data,
+            'supp_data' => $supp_data,
+            'pro_data' => $pro_data,
+        ]);
     }
+
 
     /**
      * Show the form for editing the specified resource.

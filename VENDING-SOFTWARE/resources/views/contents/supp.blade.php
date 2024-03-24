@@ -31,9 +31,6 @@
                                 <td>
                                     <a href="{{ url('edit-supp/' . $data->id) }}" 
                                     class="btn btn-outline-muted btn-rounded"><i class="fas fa-pen"></i></a>
-                                    {{-- <a href="/destroy/{{ $data->id }}" class="btn btn-outline-danger btn-rounded"
-                                    onclick="return confirm('{{ __('Are you sure you want to deleted?') }}')"><i
-                                    class="fas fa-trash"></i></a> --}}
                                 </td>
                             </tr>
                             @endforeach

@@ -29,7 +29,7 @@
                                                 {{-- <th>Warehouse</th> --}}
                                                 <th>Created At</th>
                                                 <th>Status</th>
-                                                {{-- <th>Action</th> --}}
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -91,6 +91,11 @@
                                                     </td>
                                                     <td>{{ $item->created_at }}</td>
                                                     <td>active</td>
+                                                    <td>
+                                                    <a href="{{ url('edit_inventoryproduct/' . $item->id) }}"
+                                                        class="btn btn-outline-info btn-rounded"><i
+                                                            class="fas fa-pen"></i></a>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

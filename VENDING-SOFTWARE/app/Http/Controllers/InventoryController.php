@@ -118,7 +118,7 @@ class InventoryController extends Controller
 
         // Find the product by ID
         $product = Inventory::find($id);
-        $product->specific_code = $validatedData['ware_id'];
+        // $product->specific_code = $validatedData['ware_id'];
         $product->pro_id = $validatedData['pro_id'];
 
         $product->update();

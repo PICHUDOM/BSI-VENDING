@@ -70,12 +70,12 @@
                                             @php
                                                 $totalPriceSum = 0;
                                                 $todayDate = date('2024-03-23'); // Get today's date
-                                            foreach ($resultsApi as $value) {
-                                                if ($value->date >= $todayDate) {
-                                                    $totalPriceSum += $value->total_price;
-                                                }
-                                            }
-                                            echo number_format($totalPriceSum, 2) . ' (៛)';
+foreach ($resultsApi as $value) {
+    if ($value->date >= $todayDate) {
+        $totalPriceSum += $value->total_price;
+    }
+}
+echo number_format($totalPriceSum, 2) . ' (៛)';
                                             @endphp
 
                                         </span>
@@ -201,9 +201,15 @@
                                             $slotCounts = [];
                                             $dateThreshold = '2024-03-23'; // Threshold date
                                             foreach ($dataslot as $slot) {
-                                                if (isset($slot['slot']) && isset($slot['date']) && strtotime($slot['date']) > strtotime($dateThreshold)) {
+                                                if (
+                                                    isset($slot['slot']) &&
+                                                    isset($slot['date']) &&
+                                                    strtotime($slot['date']) > strtotime($dateThreshold)
+                                                ) {
                                                     $slotNumber = $slot['slot'];
-                                                    $slotCounts[$slotNumber] = isset($slotCounts[$slotNumber]) ? $slotCounts[$slotNumber] + 1 : 1;
+                                                    $slotCounts[$slotNumber] = isset($slotCounts[$slotNumber])
+                                                        ? $slotCounts[$slotNumber] + 1
+                                                        : 1;
                                                 }
                                             }
                                         @endphp
@@ -234,7 +240,10 @@
                                                         @php
                                                             $matchingSlot = null;
                                                             foreach ($dataslot as $slot) {
-                                                                if (isset($slot['slot']) && $slot['slot'] == $uniqueSlot) {
+                                                                if (
+                                                                    isset($slot['slot']) &&
+                                                                    $slot['slot'] == $uniqueSlot
+                                                                ) {
                                                                     $matchingSlot = $slot;
                                                                     break;
                                                                 }
@@ -280,6 +289,9 @@
                     });
             });
         });
+        setTimeout(function() {
+            location.reload();
+        }, 15 * 60 * 1000);
     </script>
     <script src="{{ asset('assets/vendor/chartsjs/Chart.min.js') }}"></script>
     <script src="{{ asset('assets/js/dashboard-charts.js') }}"></script>

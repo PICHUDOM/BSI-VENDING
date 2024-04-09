@@ -77,8 +77,8 @@ var myChart2 = new Chart(saleschart, {
         },
         scales: {
             y: {
-                beginAtZero: true
-            }
+                beginAtZero: true,
+            },
         },
         aspectRatio: 1,
         maintainAspectRatio: false,
@@ -145,14 +145,34 @@ fetch("/api/patient")
         console.error("Error fetching data:", error);
     });
 //Top product
-function fetchData() {
-    fetch("/api/update")
+document
+    .getElementById("filterForm")
+    .addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const startDate = document.getElementById("start_date").value;
+        const endDate = document.getElementById("end_date").value;
+        fetchData(startDate, endDate);
+    });
+
+function fetchData(startDate, endDate) {
+    console.log(startDate);
+    const defaultStartDate = "2024-03-23"; // Change this to your desired default start date
+    const defaultEndDate = "2026-12-31"; // Change this to your desired default end date
+
+    if (!startDate) {
+        startDate = defaultStartDate;
+    }
+    if (!endDate) {
+        endDate = defaultEndDate;
+    }
+    fetch(`/api/update?start_date=${startDate}&end_date=${endDate}`)
         .then((response) => response.json())
         .then((data) => {
+            console.log(data);
             const sortedData = data.data.sort(
                 (a, b) => a["Top Number"] - b["Top Number"]
             );
-
             let html = "";
             sortedData.slice(0, 5).forEach((product, index) => {
                 const topNumber = index + 1;
@@ -169,6 +189,30 @@ function fetchData() {
             console.error("Error fetching data:", error);
         });
 }
+// function fetchData() {
+//     fetch("/api/update")
+//         .then((response) => response.json())
+//         .then((data) => {
+//             const sortedData = data.data.sort(
+//                 (a, b) => a["Top Number"] - b["Top Number"]
+//             );
+
+//             let html = "";
+//             sortedData.slice(0, 5).forEach((product, index) => {
+//                 const topNumber = index + 1;
+//                 html += `<span id="product_${index}" class="number-top" style="display: ${
+//                     index === 0 ? "inline" : "none"
+//                 };">${topNumber}<span style="font-size: 15px;">. ${
+//                     product["Product Name"]
+//                 } (${product["count same slot"]})</span></span>`;
+//             });
+//             document.getElementById("productData").innerHTML = html;
+//             switchProducts();
+//         })
+//         .catch((error) => {
+//             console.error("Error fetching data:", error);
+//         });
+// }
 
 function switchProducts() {
     let currentProductIndex = 0;

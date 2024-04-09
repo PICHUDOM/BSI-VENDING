@@ -17,15 +17,15 @@ class FillterResource extends JsonResource
         return [
             'Date' => $this->date,
             'Product_total' => $this->total_count_same_slot,
-            'Product_name'=>$this->p_name,
-            'Price_Out'=>$this->price_out,
-            'price_In'=>$this->price_in,
-            'Sales_date'=>$this->date,
-            'Total_salse'=>$this->total_count_same_slot,
-
-            
+            'Product_name' => $this->p_name,
+            'Price_Out' => $this->price_out,
+            'price_In' => $this->price_in,
+            'Sales_date' => $this->date,
+            'Total_salse' => $this->total_count_same_slot,
 
 
         ];
     }
 }
+
+

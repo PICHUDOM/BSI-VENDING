@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Inventory;
 use App\Models\Product;
 use App\Models\Stock;
+use App\Models\Stockproduct;
 use App\Models\Supp;
 use App\Models\Warehouse;
 use Illuminate\Http\Request;
@@ -71,8 +72,6 @@ class StockController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
-
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -85,35 +84,53 @@ class StockController extends Controller
             'price' => 'required|array',
             'subtotal' => 'required|array',
             'uom' => 'required|array',
-            'pro_id.*' => 'required|int',
-            'qty.*' => 'required|int',
-            'price.*' => 'required|numeric',
-            'subtotal.*' => 'required|numeric',
-            'uom.*' => 'required|string',
-
         ]);
-        $totalqty = [];
 
-        foreach ($validatedData['subtotal'] as $key => $subtotal) {
-            $totalqty[$key] = $subtotal * $validatedData['qty'][$key];
+        // Prepare array of objects for qty, price, subtotal, and uom
+        $qtyArray = [];
+        $priceArray = [];
+        $subtotalArray = [];
+        $uomArray = [];
+        $totalqtyArray = [];
+
+        foreach ($validatedData['qty'] as $key => $qty) {
+            $qtyArray[] = ['qty' => $qty];
+            $priceArray[] = ['price' => $validatedData['price'][$key]];
+            $subtotalArray[] = ['subtotal' => $validatedData['subtotal'][$key]];
+            $uomArray[] = ['uom' => $validatedData['uom'][$key]];
+
+            // Calculate totalqty
+            // $totalqty[$key] = (float)$validatedData['subtotal'][$key] * (int)$qty;
+            $totalqtyArray[] = ['totalqty' => (float)$validatedData['subtotal'][$key] * (int)$qty];
         }
 
-        // Assign totalqty to validatedData
-        $validatedData['totalqty'] = $totalqty;
         // Convert arrays to JSON before assigning to model properties
         $validatedData['pro_id'] = json_encode($validatedData['pro_id']);
-        $validatedData['qty'] = json_encode($validatedData['qty']);
-        $validatedData['price'] = json_encode($validatedData['price']);
-        $validatedData['subtotal'] = json_encode($validatedData['subtotal']);
-        $validatedData['uom'] = json_encode($validatedData['uom']);
-        $validatedData['totalqty'] = json_encode($totalqty);
+        $validatedData['qty'] = json_encode($qtyArray);
+        $validatedData['price'] = json_encode($priceArray);
+        $validatedData['subtotal'] = json_encode($subtotalArray);
+        $validatedData['uom'] = json_encode($uomArray);
+        $validatedData['totalqty'] = json_encode($totalqtyArray);
+
+        // Save the stock data
         $stock = new Stock();
         $stock->fill($validatedData);
         $stock->save();
+
+        // Save stock product data
+        $proIds = json_decode($validatedData['pro_id'], true);
+        foreach ($proIds as $key => $pro_id) {
+            $stockpro = new Stockproduct();
+            $stockpro->ware_id = $validatedData['ware_id'];
+            $stockpro->pro_id = $pro_id;
+
+            // Access the 'totalqty' property within the object
+            $stockpro->totalqty = $totalqtyArray[$key]['totalqty']; // Use the correct key
+
+            $stockpro->save();
+        }
         return redirect('/stock-list')->with('success', 'Stock data has been saved successfully.');
     }
-
-
 
 
     /**
@@ -148,6 +165,7 @@ class StockController extends Controller
      * @param  \App\Models\Stock  $stock
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
@@ -160,25 +178,72 @@ class StockController extends Controller
 
         $stock = Stock::findOrFail($id);
 
-        // Calculate totalqty for new indices only
-        $totalqty = json_decode($stock->totalqty, true) ?? [];
-        foreach ($validatedData['subtotal'] as $key => $subtotal) {
-            if (!isset($totalqty[$key])) {
-                $totalqty[$key] = floatval($subtotal) * floatval($validatedData['qty'][$key]);
+        $proIdArray = json_decode($stock->pro_id, true) ?? [];
+        $qtyArray = json_decode($stock->qty, true) ?? [];
+        $priceArray = json_decode($stock->price, true) ?? [];
+        $subtotalArray = json_decode($stock->subtotal, true) ?? [];
+        $uomArray = json_decode($stock->uom, true) ?? [];
+        $totalqtyArray = json_decode($stock->totalqty, true) ?? [];
+
+
+        foreach ($validatedData['pro_id'] as $key => $pro_id) {
+            // Check if the product ID already exists in proIdArray
+            if (in_array($pro_id, $proIdArray)) {
+                $index = array_search($pro_id, $proIdArray);
+                // Add old quantity and new quantity to qtyArray
+                $oldQty = $qtyArray[$index]['qty'] ?? 0;
+                $qtyArray[$index]['qty'] = [$oldQty, $validatedData['qty'][$key]];
+                $price = $priceArray[$index]['price'] ?? 0;
+                $priceArray[$index]['price'] = [$price, $validatedData['price'][$key]];
+                $oldsubtotalArray = $subtotalArray[$index]['subtotal'] ?? 0;
+                $subtotalArray[$index]['subtotal'] = [$oldsubtotalArray, $validatedData['subtotal'][$key]];
+                $oldQtyuomArray = $uomArray[$index]['uom'] ?? 0;
+                $uomArray[$index]['uom'] = [$oldQtyuomArray, $validatedData['uom'][$key]];
+                $oldTotalQty = $totalqtyArray[$index]['totalqty'] ?? 0;
+                $newTotalQty = (float)$validatedData['subtotal'][$key] * (int)$validatedData['qty'][$key];
+                $totalqtyArray[$index]['totalqty'] = [$oldTotalQty, $newTotalQty];
+            } else {
+                // If the product does not exist, add it
+                $proIdArray[] = $pro_id;
+                $qtyArray[] = ['qty' => [$validatedData['qty'][$key]]];
+                $priceArray[] = $validatedData['price'][$key];
+                $subtotalArray[] = $validatedData['subtotal'][$key];
+                $uomArray[] = $validatedData['uom'][$key];
+                $totalqtyArray[] = ['totalqty' => [(float)$validatedData['subtotal'][$key] * (int)$validatedData['qty'][$key]]];
             }
         }
-        // Update only the fields that need updating
-        $stock->pro_id = json_encode($validatedData['pro_id']);
-        $stock->qty = json_encode($validatedData['qty']);
-        $stock->price = json_encode($validatedData['price']);
-        $stock->subtotal = json_encode($validatedData['subtotal']);
-        $stock->uom = json_encode($validatedData['uom']);
-        $stock->totalqty = json_encode($totalqty);
+        // Re-encode arrays and update the stock object
+        $stock->pro_id = json_encode($proIdArray);
+        $stock->qty = json_encode($qtyArray);
+        $stock->price = json_encode($priceArray);
+        $stock->subtotal = json_encode($subtotalArray);
+        $stock->uom = json_encode($uomArray);
+        $stock->totalqty = json_encode($totalqtyArray);
+        // $stock->save();
+        // $ware_id = $stock->ware_id;
 
-        // Save the updated Stock instance
-        $stock->save();
+        // foreach ($validatedData['pro_id'] as $key => $pro_id) {
+        //     $stockpro = Stockproduct::firstOrNew(['pro_id' => $pro_id]);
+        //     $stockpro->ware_id = $ware_id;
+        //     $stockpro->pro_id = $pro_id;
+        //     $oldTotalQty = $stockpro->totalqty ?? 0;
+        //     $newTotalQty = $oldTotalQty + $totalqtyArray[$key]['totalqty'];
+        //     $stockpro->totalqty = $newTotalQty;
+        //     $stockpro->save();
+        // }
+        $ware_id = $stock->ware_id;
 
-        // Redirect back to the stock list page with a success message
+        foreach ($validatedData['pro_id'] as $key => $pro_id) {
+            $stockpro = Stockproduct::firstOrNew(['pro_id' => $pro_id]);
+            $stockpro->ware_id = $ware_id;
+            $stockpro->pro_id = $pro_id;
+            // Access the updated total quantity from $totalqtyArray directly
+            $newTotalQty = $totalqtyArray[$key]['totalqty'][1];
+            dd($newTotalQty);
+            // If the product already exists in Stockproduct, add to the existing quantity
+            $stockpro->totalqty = ($stockpro->totalqty ?? 0) + (int)$newTotalQty;
+            $stockpro->save();
+        }
         return redirect('/stock-list')->with('success', 'Stock data has been updated successfully.');
     }
 

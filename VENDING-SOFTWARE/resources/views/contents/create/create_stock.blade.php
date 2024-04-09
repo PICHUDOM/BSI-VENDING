@@ -148,7 +148,8 @@
                                     </div>
                                 </div>
                                 <div class="mb-3 text-end">
-                                    <button class="btn btn-danger" onclick="window.history.back()" type="button"><i class="fa fa-chevron-left"></i> Return</button>
+                                    <button class="btn btn-danger" onclick="window.history.back()" type="button"><i
+                                            class="fa fa-chevron-left"></i> Return</button>
 
                                     <button class="btn btn-success" type="submit"><i class="fas fa-check"></i>
                                         Save</button>
@@ -197,9 +198,10 @@
             cell3.innerHTML =
                 `<div class="mb-2 col-md-8"><input type="text" name="price[]" value="" class="form-control"></div>`;
             cell4.innerHTML =
-                `<div class="mb-2 col-md-8"><input type="text" name="subtotal[]" value="" class="form-control"></div>`;
-            cell5.innerHTML =
                 `<div class="mb-2 col-md-8"><input type="text" name="uom[]" value="" class="form-control"></div>`;
+            cell5.innerHTML =
+                `<div class="mb-2 col-md-8"><input type="text" name="subtotal[]" value="" class="form-control"></div>`;
+
         });
     </script>
 @endsection

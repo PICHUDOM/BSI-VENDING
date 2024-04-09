@@ -9,20 +9,20 @@
                             @csrf
                             @method('PATCH')
                             <section id="invoice">
-                                <div class="container my-5 ">
+                                <div class="container my-5">
                                     <div class="d-md-flex justify-content-between my-5">
                                         <div>
                                             <ul class="list-unstyled m-0">
                                                 <li class="row align-items-center">
                                                     <div class="col-md-12">
                                                         <label for="province"
-                                                            class="block text-sm font-medium leading-6 text-gray-900 fw-medium">From
-                                                            : {{ $data->supp->supp_name }}</label>
+                                                            class="block text-sm font-medium leading-6 text-gray-900 fw-medium">From:
+                                                            {{ $data->supp->supp_name }}</label>
                                                     </div>
                                                 </li>
                                                 <li class="row align-items-center">
                                                     <div class="col-md-12">
-                                                        <p class="m-0"><span class="fw-medium">To Location :
+                                                        <p class="m-0"><span class="fw-medium">To Location:
                                                                 {{ $data->warehouse->warehouse_name }}</span></p>
                                                     </div>
                                                 </li>
@@ -30,17 +30,16 @@
                                         </div>
 
                                         <div class="mt-5 mt-md-0">
-                                            {{-- <h4>William Peter</h4> --}}
                                             <ul class="list-unstyled m-0">
                                                 <li class="row align-items-center">
                                                     <div class="col-md-12">
-                                                        <p class="m-0"><span class="fw-medium">Received date :
+                                                        <p class="m-0"><span class="fw-medium">Received date:
                                                                 {{ $data->received_date }}</span></p>
                                                     </div>
                                                 </li>
                                                 <li class="row align-items-center">
                                                     <div class="col-md-12">
-                                                        <p class="m-0"><span class="fw-medium">Source :
+                                                        <p class="m-0"><span class="fw-medium">Source:
                                                                 {{ $data->source }}</span></p>
                                                     </div>
                                                 </li>
@@ -72,7 +71,7 @@
                                                         <th>
                                                             <div class="">
                                                                 <select name="pro_id[]" autocomplete="off"
-                                                                    class="border-style-select mb-2 col-md-8">
+                                                                    class="border-style-select mb-2 col-md-8" disabled>
                                                                     <option value="{{ $proIdArray[$i] ?? '' }}" selected>
                                                                         {{ App\Models\Product::find($proIdArray[$i])->p_name ?? '' }}
                                                                     </option>
@@ -85,41 +84,62 @@
                                                         </th>
                                                         <td>
                                                             <div class="mb-2 col-md-8">
+                                                                @php
+                                                                    $lastQty = is_array($qtyArray[$i]['qty'])
+                                                                        ? end($qtyArray[$i]['qty'])
+                                                                        : $qtyArray[$i]['qty'];
+                                                                @endphp
                                                                 <input type="text" name="qty[]"
-                                                                    value="{{ $qtyArray[$i] ?? '' }}" class="form-control">
+                                                                    value="{{ $lastQty }}" class="form-control"
+                                                                    disabled>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="mb-2 col-md-8">
+                                                                @php
+                                                                    $lastpriceArray = is_array($priceArray[$i]['price'])
+                                                                        ? end($priceArray[$i]['price'])
+                                                                        : $priceArray[$i]['price'];
+                                                                @endphp
                                                                 <input type="text" name="price[]"
-                                                                    value="{{ $priceArray[$i] ?? '' }}"
-                                                                    class="form-control">
+                                                                    value="{{ $lastpriceArray }}" class="form-control"
+                                                                    disabled>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="mb-2 col-md-8">
+                                                                @php
+                                                                    $lastuom = is_array($uomArray[$i]['uom'])
+                                                                        ? end($uomArray[$i]['uom'])
+                                                                        : $uomArray[$i]['uom'];
+                                                                @endphp
                                                                 <input type="text" name="uom[]"
-                                                                    value="{{ $uomArray[$i] ?? '' }}" class="form-control">
+                                                                    value="{{ $lastuom }}" class="form-control"
+                                                                    disabled>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="mb-2 col-md-8">
-                                                                <input type="text" name="subtotal[]"
-                                                                    value="{{ $subtotalArray[$i] ?? '' }}"
-                                                                    class="form-control">
+                                                                @php
+                                                                    $lastsubtotalArray = is_array(
+                                                                        $subtotalArray[$i]['subtotal'],
+                                                                    )
+                                                                        ? end($subtotalArray[$i]['subtotal'])
+                                                                        : $subtotalArray[$i]['subtotal'];
+                                                                @endphp
+                                                                <input type="subtotal" name="subtotal[]"
+                                                                    value="{{ $lastsubtotalArray }}" class="form-control"
+                                                                    disabled>
                                                             </div>
                                                         </td>
-
                                                     </tr>
                                                 @endfor
                                             </tbody>
-
-
-
                                         </table>
                                         <button type="button" class="btn btn-primary" id="addMore">Add More</button>
                                     </div>
                                 </div>
+
                                 <div class="mb-3 text-end">
                                     <button class="btn btn-danger" data-bs-dismiss="modal" onclick="" type="button"><i
                                             class="fa fa-chevron-left"></i> Return</button>
@@ -169,6 +189,7 @@
                 `<div class="mb-2 col-md-8"><input type="text" name="qty[]" value="" class="form-control"></div>`;
             cell3.innerHTML =
                 `<div class="mb-2 col-md-8"><input type="text" name="price[]" value="" class="form-control"></div>`;
+
             cell4.innerHTML =
                 `<div class="mb-2 col-md-8"><input type="text" name="uom[]" value="" class="form-control"></div>`;
             cell5.innerHTML =

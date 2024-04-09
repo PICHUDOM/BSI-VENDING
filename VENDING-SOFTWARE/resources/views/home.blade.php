@@ -70,12 +70,12 @@
                                             @php
                                                 $totalPriceSum = 0;
                                                 $todayDate = date('2024-03-23'); // Get today's date
-foreach ($resultsApi as $value) {
-    if ($value->date >= $todayDate) {
-        $totalPriceSum += $value->total_price;
-    }
-}
-echo number_format($totalPriceSum, 2) . ' (៛)';
+                                                foreach ($resultsApi as $value) {
+                                                    if ($value->date >= $todayDate) {
+                                                        $totalPriceSum += $value->total_price;
+                                                    }
+                                                }
+                                                echo number_format($totalPriceSum, 2) . ' (៛)';
                                             @endphp
 
                                         </span>
@@ -130,8 +130,7 @@ echo number_format($totalPriceSum, 2) . ' (៛)';
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="detail">
-                                        <p class="detail-subtitle">Sales Transection
-                                        </p>
+                                        <p class="detail-subtitle">Sales Transection</p>
                                         <span class="number" id="transectionCount">{{ $getTransection }}</span>
                                     </div>
                                 </div>
@@ -213,7 +212,6 @@ echo number_format($totalPriceSum, 2) . ' (៛)';
                                                 }
                                             }
                                         @endphp
-
                                         @foreach ($data as $data)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
@@ -275,11 +273,11 @@ echo number_format($totalPriceSum, 2) . ' (៛)';
                 event.preventDefault(); // Prevent form submission
                 var startDate = document.getElementById('start_date').value;
                 var endDate = document.getElementById('end_date').value;
-                fetch(`/api/filter-data?start_date=${startDate}&end_date=${endDate}`)
+                fetch(`/api/filter-data-dashboard?start_date=${startDate}&end_date=${endDate}`)
                     .then(response => response.json()) // Parse response as JSON
                     .then(data => {
-                        if (data && data.data && Array.isArray(data.data)) {
-                            document.getElementById('transectionCount').textContent = data.data.length;
+                        if (data && data.total_sales) {
+                            document.getElementById('transectionCount').textContent = data.total_sales;
                         } else {
                             console.log('Invalid response format');
                         }
@@ -289,6 +287,7 @@ echo number_format($totalPriceSum, 2) . ' (៛)';
                     });
             });
         });
+
         setTimeout(function() {
             location.reload();
         }, 15 * 60 * 1000);

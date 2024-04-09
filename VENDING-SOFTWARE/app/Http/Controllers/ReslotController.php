@@ -35,7 +35,7 @@ class ReslotController extends Controller
                         ]
                     );
                 }
-                return $dataslot; // Return the synchronized data
+                return $dataslot; // Return the synchronize data
             } else {
                 $statusCode = $response->status();
                 $errorMessage = $response->body();

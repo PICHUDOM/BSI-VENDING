@@ -29,9 +29,11 @@ class PatientController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $list =  $this->patientRepository->getData();
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
+        $list =  $this->patientRepository->getData($startDate, $endDate);
 
         return PatientResource::collection($list)->additional(
             [
@@ -40,10 +42,13 @@ class PatientController extends Controller
             ]
         );
     }
-    public function update()
+    public function update(Request $request)
     {
 
-        $list =  $this->patientRepository->gettopNum();
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
+
+        $list =  $this->patientRepository->gettopNum($startDate, $endDate);
         return PatienttopResource::collection($list)->additional(
             [
                 'message' => true,
@@ -116,5 +121,32 @@ class PatientController extends Controller
             'message' => true,
             'httpCode' => Response::HTTP_OK,
         ]);
+    }
+
+
+
+
+    public function filterDataDashboard(Request $request)
+    {
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
+
+$totalSales = DB::select("SELECT
+            SUM(total_count_same_slot) AS total_sales
+        FROM (
+            SELECT SUM(count_same_slot) AS total_count_same_slot
+            FROM (
+                SELECT COUNT(*) AS count_same_slot
+                FROM tab_pro_slot
+                INNER JOIN tab_product_slot ON tab_pro_slot.slot_num = tab_product_slot.slot
+                INNER JOIN tab_products ON tab_pro_slot.pro_id = tab_products.id
+                INNER JOIN tab_product_categories ON tab_products.id_pro_categories = tab_product_categories.id
+                LEFT JOIN tab_product_prices ON tab_products.id = tab_product_prices.product_id
+                WHERE tab_product_slot.date BETWEEN ? AND ?
+                GROUP BY tab_pro_slot.slot_num, tab_product_slot.slot, tab_products.id
+            ) AS subquery
+        ) AS result", [$startDate, $endDate]);
+
+        return response()->json(['total_sales' => $totalSales[0]->total_sales]);
     }
 }

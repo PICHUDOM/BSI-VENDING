@@ -65,7 +65,7 @@ class HomeRepository
     }
     public function getTransection(Reslot $query)
     {
-        $todayDate = date('2024-03-23');
+        $todayDate = date('2024-04-07');
         return $query->whereNotNull('slot')
             ->whereNotNull('location')
             ->where('date', '>', $todayDate)

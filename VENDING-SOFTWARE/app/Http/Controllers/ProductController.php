@@ -75,7 +75,7 @@ class ProductController extends Controller
         }
         Product::create($validatedData);
 
-        return redirect('products')->with('flash_message', 'Incom Category Updated Successfully');
+        return redirect('products')->with('flash_message', 'Income Category Updated Successfully');
     }
 
     /**

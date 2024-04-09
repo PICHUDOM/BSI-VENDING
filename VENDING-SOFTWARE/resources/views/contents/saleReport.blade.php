@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <button type="submit" class="btn btn-primary mt-4">Filter</button>
+                    <button type="submit" class="btn btn-primary mt-4 filter" id="filter">Filter</button>
                 </div>
             </div>
         </form>
@@ -63,7 +63,7 @@
             var startDate = document.getElementById('start_date').value;
             var endDate = document.getElementById('end_date').value;
             // Make AJAX request to the server to fetch filtered data
-            fetch(`/api/filter-data?start_date=${startDate}&end_date=${endDate}`)
+            fetch(`/api/filter-data-dashboard?start_date=${startDate}&end_date=${endDate}`)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);

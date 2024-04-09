@@ -37,8 +37,8 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
-                                    <img src="{{ asset('storage/' . $product->p_image) }}" alt="{{ $product->p_image }}"
-                                        style="max-width: 60px; max-height: 69px;">
+                                    <img src="{{ asset('storage/' . $product->p_image) }}" alt="{{ $product->p_image }}" style="max-width: 60px; max-height: 69px;">
+
                                 </td>
                                 <td>{{ $product->p_name }}</td>
                                 <td>{{ $product->expiry_date }}</td>

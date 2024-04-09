@@ -23,8 +23,6 @@ class FillterResource extends JsonResource
             'Sales_date'=>$this->date,
             'Total_salse'=>$this->total_count_same_slot,
 
-            
-
 
         ];
     }

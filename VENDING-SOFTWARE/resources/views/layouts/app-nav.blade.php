@@ -44,7 +44,7 @@
                         <li>
                             <a href="#uielementsmenu" data-bs-toggle="collapse" aria-expanded="false"
                                 class="dropdown-toggle no-caret-down">
-                                <i class="fas fa-layer-group"></i> Vending Machine &emsp;<i
+                                <i class="fas fa-fax"></i> Vending Machine &emsp;<i
                                     class="fas fa-angle-right"></i>
                             </a>
                             <ul class="collapse list-unstyled" id="uielementsmenu">
@@ -65,7 +65,7 @@
                         <li>
                             <a href="#pro" data-bs-toggle="collapse" aria-expanded="false"
                                 class="dropdown-toggle no-caret-down">
-                                <i class="fas fa-table"></i> Product <i class="fas fa-angle-right"></i>
+                                <i class="fas fa-baby-carriage"></i> Product <i class="fas fa-angle-right"></i>
                             </a>
                             <ul class="collapse list-unstyled" id="pro">
                                 <li>
@@ -99,7 +99,7 @@
                     @endif
                     @if ($admin || Auth::user()->per_inv == 1)
                         <li>
-                            <a href="{{ url('/inventory') }}"><i class="fas fa-lock"></i> Inventory </a>
+                            <a href="{{ url('/inventory') }}"><i class="fas fa-store-alt"></i> Inventory </a>
                         </li>
                     @endif
                     @if ($admin || Auth::user()->per_rep == 1)
@@ -107,7 +107,7 @@
                             <a href="#sale" data-bs-toggle="collapse" aria-expanded="false"
                                 class="dropdown-toggle no-caret-down">
                                 <i class="fas fas fa-file-signature"></i>
-                                Report <i class="fas fa-regular fa-note-sticky"></i>
+                                Report <i class="fas fa-angle-right"></i><i class="fas fa-regular fa-note-sticky"></i>
                             </a>
                             <ul class="collapse list-unstyled" id="sale">
                                 <li>
@@ -136,7 +136,7 @@
                     <li>
                         <a href="#supp" data-bs-toggle="collapse" aria-expanded="false"
                             class="dropdown-toggle no-caret-down">
-                            <i class="fas fa-user-friends"></i>Stock Information  <i class="fas fa-angle-right"></i>
+                            <i class="fas fa-city"></i> Stock Information  <i class="fas fa-angle-right"></i>
                         </a>
                         <ul class="collapse list-unstyled" id="supp">
                             <li>
@@ -153,7 +153,7 @@
                     @if ($admin)
                         <li>
                             <a href="#set" data-bs-toggle="collapse" aria-expanded="false"
-                                class="dropdown-toggle no-caret-down"><i class="fas fa-cog"></i>Settings <i
+                                class="dropdown-toggle no-caret-down"><i class="fas fa-cog"></i> Settings <i
                                     class="fas fa-angle-right"></i></a>
                             <ul class="collapse list-unstyled" id="set">
                                 <li>
@@ -164,7 +164,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="{{ url('/user') }}"><i class="fas fa-user-friends"></i> Users</a>
+                                    <a href="{{ url('/user') }}"><i class="fas fa-angle-right"></i> Users</a>
                                 </li>
                             </ul>
                         </li>

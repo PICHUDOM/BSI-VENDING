@@ -52,7 +52,7 @@ class Inventory extends Model
     //     return $this->belongsTo(Warehouse::class, 'ware_id');
     // }
 
-    // fucntion 
+    // fucntion
 
     public function syncDataFromApi()
     {

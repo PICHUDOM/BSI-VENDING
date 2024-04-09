@@ -33,8 +33,8 @@ var myChart2 = new Chart(saleschart, {
                     "950",
                     "1000",
                 ],
-                backgroundColor: "rgba(76, 175, 80, 0.5)",
-                borderColor: "#6da252",
+                backgroundColor: "#0066CB",
+                borderColor: "#0066C",
                 borderWidth: 1,
             },
             {
@@ -53,8 +53,8 @@ var myChart2 = new Chart(saleschart, {
                     "400",
                     "420",
                 ],
-                backgroundColor: "rgba(244, 67, 54, 0.5)",
-                borderColor: "#f44336",
+                backgroundColor: "#FF6608",
+                borderColor: "#FF6608",
                 borderWidth: 1,
             },
         ],
@@ -77,8 +77,8 @@ var myChart2 = new Chart(saleschart, {
         },
         scales: {
             y: {
-                beginAtZero: true
-            }
+                beginAtZero: true,
+            },
         },
         aspectRatio: 1,
         maintainAspectRatio: false,
@@ -102,9 +102,9 @@ function updatePieChart(labels, data) {
                     {
                         data: data,
                         backgroundColor: [
-                            "#FF6384",
-                            "#36A2EB",
-                            "#FFCE56",
+                            "#0066CB",
+                            "#FF6608",
+                            "#FC1D1D",
                             "#4CAF50",
                             "#FF9800",
                         ],
@@ -133,27 +133,36 @@ function updatePieChart(labels, data) {
     }
 }
 
-fetch("/api/patient")
-    .then((response) => response.json())
-    .then((response) => {
-        const data = response.data;
-        const labels = data.map((item) => item["Type Gategories"]);
-        const values = data.map((item) => parseInt(item["count same slot"]));
-        updatePieChart(labels, values);
-    })
-    .catch((error) => {
-        console.error("Error fetching data:", error);
+document
+    .getElementById("filterForm")
+    .addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const startDate = document.getElementById("start_date").value;
+        const endDate = document.getElementById("end_date").value;
+        fetchData(startDate, endDate);
     });
 //Top product
-function fetchData() {
-    fetch("/api/update")
-        .then((response) => response.json())
-        .then((data) => {
+function fetchData(startDate, endDate) {
+    const defaultStartDate = "2024-04-08";
+    const defaultEndDate = "2026-03-23";
+
+    if (!startDate) {
+        startDate = defaultStartDate;
+    }
+    if (!endDate) {
+        endDate = defaultEndDate;
+    }
+
+    fetch(`/api/update?start_date=${startDate}&end_date=${endDate}`)
+    .then((response) => response.json())
+    .then((data) => {
+        let html = "";
+        if (data && data.data && data.data.length > 0) {
             const sortedData = data.data.sort(
                 (a, b) => a["Top Number"] - b["Top Number"]
             );
 
-            let html = "";
             sortedData.slice(0, 5).forEach((product, index) => {
                 const topNumber = index + 1;
                 html += `<span id="product_${index}" class="number-top" style="display: ${
@@ -162,8 +171,23 @@ function fetchData() {
                     product["Product Name"]
                 } (${product["count same slot"]})</span></span>`;
             });
-            document.getElementById("productData").innerHTML = html;
-            switchProducts();
+        } else {
+            html = "<span>0</span>";
+        }
+        document.getElementById("productData").innerHTML = html;
+        switchProducts();
+    })
+    .catch((error) => {
+        console.error("Error fetching data:", error);
+    });
+        fetch(`/api/patient?start_date=${startDate}&end_date=${endDate}`)
+        .then((response) => response.json()) // Parse response as JSON
+        .then((response) => {
+            const data = response.data;
+
+            const labels = data.map((item) => item["Type Gategories"]);
+            const values = data.map((item) => parseInt(item["count same slot"]));
+            updatePieChart(labels, values);
         })
         .catch((error) => {
             console.error("Error fetching data:", error);
@@ -181,3 +205,9 @@ function switchProducts() {
     }, 3000);
 }
 fetchData();
+
+
+
+
+
+

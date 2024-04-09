@@ -25,9 +25,8 @@ class InventoryController extends Controller
      */
     protected $homeRepository;
 
-    public function index(Request $request, Inventory $dataSyncService)
+    public function index(Request $request, Inventory $dataSyncService,Machines $machinesCount)
     {
-
         $syncedDataApi = $dataSyncService->syncDataFromApi();
         $saledetail = SaleDetail::all();
         $data = Inventory::all();
